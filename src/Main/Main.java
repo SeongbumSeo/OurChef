@@ -42,7 +42,7 @@ public class Main
 		// 기존 씬(들)의 onHide 콜백 호출
 		for (Component comp:frame.getContentPane().getComponents())
 			if (Scene.class.isInstance(comp))
-				SceneAbst.class.cast(comp).onHide();
+				Scene.class.cast(comp).onHide();
 		
 		frame.getContentPane().removeAll(); // 프레임 내 모든 컴포넌트(씬 포함) 삭제
 		frame.getContentPane().add(JPanel.class.cast(scene)); // 프레임에 씬 패널 추가
