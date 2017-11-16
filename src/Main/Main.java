@@ -36,7 +36,7 @@ public class Main
 	 * 씬을 전환하는 메소드입니다.
 	 * @param scene 씬 객체
 	 */
-	public static void switchScene(JPanel scene) {
+	public static void switchScene(Scene scene) {
 		System.out.println(scene.getClass().getSimpleName() + "으로 씬을 전환중입니다.");
 		
 		// 기존 씬(들)의 onHide 콜백 호출
@@ -45,7 +45,7 @@ public class Main
 				SceneAbst.class.cast(comp).onHide();
 		
 		frame.getContentPane().removeAll(); // 프레임 내 모든 컴포넌트(씬 포함) 삭제
-		frame.getContentPane().add(scene); // 프레임에 씬 패널 추가
+		frame.getContentPane().add(JPanel.class.cast(scene)); // 프레임에 씬 패널 추가
 		frame.setVisible(true); // 윈도우 가시화
 
 		System.out.println(scene.getClass().getSimpleName() + "으로의 씬 전환이 완료되었습니다.");
