@@ -9,19 +9,19 @@ import Scene.*;
 public class RefrigeratorScene extends SceneAbst
 {
 	private JButton btnCart;
-	private RefrigeratorListener RefL;
-	private ImageIcon cart;
+	private ImageIcon imgCart;
+	private RefrigeratorListener refL;
 	//private Image cart;
 	
 	public void onShow() {
-		RefL = new RefrigeratorListener();
+		refL = new RefrigeratorListener();
 		
 		// CartScene으로 넘어가는 버튼 추가
-		cart = new ImageIcon("./images/cart.png");
+		imgCart = new ImageIcon("./images/cart.png");
 		btnCart = new JButton();
-		btnCart.setIcon(cart);
+		btnCart.setIcon(imgCart);
 		btnCart.setBounds(650,290,470,350);
-		btnCart.addActionListener(RefL);
+		btnCart.addActionListener(refL);
 		add(btnCart);
 	}
 	
