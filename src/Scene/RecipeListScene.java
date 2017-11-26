@@ -9,13 +9,18 @@ import GUI.*;
 
 public class RecipeListScene extends SceneAbst
 {
-	private JLabel lblWelcome;
+	// 배경
+	private ImageIcon imgBackground;
+	private JLabel lblBackground;
+
 	
 	public void onShow() {
-		lblWelcome = new JLabel("레시피에 오신 것을 환영합니다~~~");
-		lblWelcome.setBounds(500, 250, 500, 50);
-		add(lblWelcome);
-		
+		// 배경
+		imgBackground = new ImageIcon("./images/background.jpg");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		add(lblBackground);
 	}
 		
 	public void onHide() {
