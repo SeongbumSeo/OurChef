@@ -27,6 +27,8 @@ public class RefrigeratorScene extends SceneAbst
 		btnCart = new JButton();
 		btnCart.setIcon(imgCart);
 		btnCart.setBounds(650,290,470,350);
+		btnCart.setContentAreaFilled(false); // 버튼 바탕색 제거
+		btnCart.setBorderPainted(false); // 버튼 테두리 제거
 		btnCart.addActionListener(refL);
 		add(btnCart);
 		
