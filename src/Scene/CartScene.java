@@ -3,7 +3,6 @@ package Scene;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import Main.Main;
 import Scene.*;
 import GUI.*;
@@ -11,21 +10,27 @@ import GUI.*;
 public class CartScene extends SceneAbst
 {
 	// 배경
-		private ImageIcon imgBackground;
-		private JLabel lblBackground;
+	private ImageIcon imgBackground;
+	private JLabel lblBackground;
 	
-	private JButton btnTrash;
-	private JButton btnRecipe;
+	// 재료
 	private JPanel ingredients;
+	private ImageIcon imgContainer;
+	
+	// 버튼
+	private JButton btnTrash, btnRecipe;
+	
+	// 이벤트
 	private CartListener CartL;
 	
 	public void onShow() {
 		CartL = new CartListener();
 		
+		// ingredients
 		ingredients = new JPanel();
-		ingredients.setBounds(1000, 50, 140, 500);
-		ingredients.setBorder(new LineBorder(Color.black, 1));
-		ingredients.setBackground(Color.white);
+		ingredients.setOpaque(false);
+		ingredients.setLocation(1100, 50);
+		
 		add(ingredients);
 		
 		// trash button
@@ -41,7 +46,7 @@ public class CartScene extends SceneAbst
 		add(btnRecipe);
 		
 		// 배경
-		imgBackground = new ImageIcon("./images/background.jpg");
+		imgBackground = new ImageIcon("./images/cartBackground.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);

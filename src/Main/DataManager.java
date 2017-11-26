@@ -6,7 +6,7 @@ import com.opencsv.*;
 
 public class DataManager
 {
-	public List<String[]> load(String filename) {
+	public static List<String[]> readCSV(String filename) {
 		List<String[]> data = new ArrayList<String[]>();
 		
 		try {
