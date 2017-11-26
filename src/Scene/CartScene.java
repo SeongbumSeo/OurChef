@@ -3,9 +3,10 @@ package Scene;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import Main.Main;
 import Scene.*;
-import javax.swing.border.LineBorder;
+import GUI.*;
 
 public class CartScene extends SceneAbst
 {
@@ -13,7 +14,6 @@ public class CartScene extends SceneAbst
 	private JButton btnRecipe;
 	private JPanel ingredients;
 	private CartListener CartL;
-	private ImageIcon trash, recipe;
 	
 	public void onShow() {
 		CartL = new CartListener();
@@ -25,17 +25,13 @@ public class CartScene extends SceneAbst
 		add(ingredients);
 		
 		// trash button
-		trash = new ImageIcon("images/trash.png");
-		btnTrash = new JButton();
-		btnTrash.setIcon(trash);
+		btnTrash = new ImageButton("images/trash.png");
 		btnTrash.setBounds(1000, 550, 70, 70);
 		btnTrash.addActionListener(CartL);
 		add(btnTrash);
 		
 		// recipe button
-		recipe = new ImageIcon("images/recipe.png");
-		btnRecipe = new JButton();
-		btnRecipe.setIcon(recipe);
+		btnRecipe = new ImageButton("images/recipe.png");
 		btnRecipe.setBounds(1070, 550, 70, 70);
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);		

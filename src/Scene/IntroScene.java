@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import Main.Main;
 import Scene.*;
+import GUI.*;
 
 public class IntroScene extends SceneAbst
 {

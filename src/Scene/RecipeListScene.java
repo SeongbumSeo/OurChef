@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import Main.Main;
 import Scene.*;
+import GUI.*;
 
 public class RecipeListScene extends SceneAbst
 {

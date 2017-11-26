@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import Main.Main;
 import Scene.*;
+import GUI.*;
 
 public class RefrigeratorScene extends SceneAbst
 {
@@ -14,7 +15,6 @@ public class RefrigeratorScene extends SceneAbst
 	
 	// 카트
 	private JButton btnCart;
-	private ImageIcon imgCart;
 	
 	// 이벤트
 	private RefrigeratorListener refL;
@@ -23,9 +23,7 @@ public class RefrigeratorScene extends SceneAbst
 		refL = new RefrigeratorListener();
 		
 		// CartScene으로 넘어가는 버튼 추가
-		imgCart = new ImageIcon("images/cart.png");
-		btnCart = new JButton();
-		btnCart.setIcon(imgCart);
+		btnCart = new ImageButton("images/cart.png");
 		btnCart.setBounds(650,290,470,350);
 		btnCart.setContentAreaFilled(false); // 버튼 바탕색 제거
 		btnCart.setBorderPainted(false); // 버튼 테두리 제거
