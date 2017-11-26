@@ -23,24 +23,25 @@ public class RefrigeratorScene extends SceneAbst
 		refL = new RefrigeratorListener();
 		
 		// CartScene으로 넘어가는 버튼 추가
-		imgCart = new ImageIcon("images/cart.png");
+		imgCart = new ImageIcon("./images/cart.png");
 		btnCart = new JButton();
 		btnCart.setIcon(imgCart);
-		btnCart.setBounds(650,290,470,350);
-		btnCart.setContentAreaFilled(false); // 버튼 바탕색 제거
-		btnCart.setBorderPainted(false); // 버튼 테두리 제거
+		btnCart.setBounds(870,380,imgCart.getIconWidth(),imgCart.getIconHeight());
+		btnCart.setContentAreaFilled(false);
+		btnCart.setBorderPainted(false);
 		btnCart.addActionListener(refL);
 		add(btnCart);
 		
+		
 		// 배경_냉장고
-		imgRefrigerator = new ImageIcon("images/refrigerator.png");
+		imgRefrigerator = new ImageIcon("./images/refrigerator.png");
 		lblRefrigerator = new JLabel();
 		lblRefrigerator.setIcon(imgRefrigerator);
-		lblRefrigerator.setBounds(50, 50, 224, 487);
+		lblRefrigerator.setBounds(150, 35, imgRefrigerator.getIconWidth(), imgRefrigerator.getIconHeight() );
 		add(lblRefrigerator);
 		
 		// 배경
-		imgBackground = new ImageIcon("images/background.jpg");
+		imgBackground = new ImageIcon("./images/background.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);

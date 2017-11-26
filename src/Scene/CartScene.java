@@ -9,6 +9,10 @@ import javax.swing.border.LineBorder;
 
 public class CartScene extends SceneAbst
 {
+	// 배경
+		private ImageIcon imgBackground;
+		private JLabel lblBackground;
+	
 	private JButton btnTrash;
 	private JButton btnRecipe;
 	private JPanel ingredients;
@@ -38,7 +42,14 @@ public class CartScene extends SceneAbst
 		btnRecipe.setIcon(recipe);
 		btnRecipe.setBounds(1070, 550, 70, 70);
 		btnRecipe.addActionListener(CartL);
-		add(btnRecipe);		
+		add(btnRecipe);
+		
+		// 배경
+		imgBackground = new ImageIcon("./images/background.jpg");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		add(lblBackground);
 	}
 		
 	public void onHide() {
