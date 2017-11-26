@@ -13,7 +13,7 @@ public class Main
 	 * @param args ½ÇÇà ÀÎÀÚ
 	 */
 	public static void main(String[] args) {
-		showWindow("¿ì¸®Áý ¼ÎÇÁ´Ô", 1280, 760);
+		showWindow("¿ì¸®Áý ¼ÎÇÁ´Ô", 1600, 900);
 		switchScene(new IntroScene());
 	}
 	
