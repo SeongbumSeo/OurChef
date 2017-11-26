@@ -23,8 +23,7 @@ public class RefrigeratorScene extends SceneAbst
 		refL = new RefrigeratorListener();
 		
 		// CartScene으로 넘어가는 버튼 추가
-		btnCart = new ImageButton("images/cart.png");
-		btnCart.setLocation(870,380);
+		btnCart = new ImageButton("images/cart.png", 870, 380);
 		btnCart.addActionListener(refL);
 		add(btnCart);
 		
