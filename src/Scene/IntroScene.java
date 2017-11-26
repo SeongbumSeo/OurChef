@@ -41,7 +41,7 @@ public class IntroScene extends SceneAbst
 		add(btnStart);
 		
 		// 배경 설정
-		imgBackground = new ImageIcon("./images/tmpImgBackground.png");
+		imgBackground = new ImageIcon("images/tmpImgBackground.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
@@ -81,7 +81,7 @@ public class IntroScene extends SceneAbst
 		pnlAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.setLayout(null);
 		
-		imgGoBack = new ImageIcon("./images/goBack.png");
+		imgGoBack = new ImageIcon("images/goBack.png");
 		btnGoBack = new JButton();
 		btnGoBack.setIcon(imgGoBack);
 		btnGoBack.setLayout(null);
@@ -89,7 +89,7 @@ public class IntroScene extends SceneAbst
 		btnGoBack.addActionListener(introL);
 		pnlAbout.add(btnGoBack);
 		
-		imgPnlBackground = new ImageIcon("./images/imgPnlBackground.png");
+		imgPnlBackground = new ImageIcon("images/imgPnlBackground.png");
 		lblAbout = new JLabel();
 		lblAbout.setIcon(imgPnlBackground);
 		lblAbout.setBounds(0, 0, 1600, 900);

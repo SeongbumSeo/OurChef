@@ -25,7 +25,7 @@ public class CartScene extends SceneAbst
 		add(ingredients);
 		
 		// trash button
-		trash = new ImageIcon("./images/trash.png");
+		trash = new ImageIcon("images/trash.png");
 		btnTrash = new JButton();
 		btnTrash.setIcon(trash);
 		btnTrash.setBounds(1000, 550, 70, 70);
@@ -33,7 +33,7 @@ public class CartScene extends SceneAbst
 		add(btnTrash);
 		
 		// recipe button
-		recipe = new ImageIcon("./images/recipe.png");
+		recipe = new ImageIcon("images/recipe.png");
 		btnRecipe = new JButton();
 		btnRecipe.setIcon(recipe);
 		btnRecipe.setBounds(1070, 550, 70, 70);
