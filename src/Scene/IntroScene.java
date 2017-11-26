@@ -30,8 +30,7 @@ public class IntroScene extends SceneAbst
 		introL = new IntroListener();
 		
 		// 사용 방법 버튼 추가
-		btnAbout = new JButton("사용 방법");
-		btnAbout.setBounds(370, 500, 70, 300);
+		btnAbout = new ImageButton("images/bottle.png", "images/bottle_h.png", 350, 395);
 		btnAbout.addActionListener(introL);
 		add(btnAbout);
 		

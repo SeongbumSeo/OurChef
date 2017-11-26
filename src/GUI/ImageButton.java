@@ -9,6 +9,7 @@ public class ImageButton extends JButton
 	private ImageIcon image;
 	private ImageIcon hoverImage;
 	private ImageButtonListener imageButtonL;
+	private int iX, iY;
 	
 	public ImageButton(String imageName) {
 		image = new ImageIcon(imageName);
@@ -16,6 +17,17 @@ public class ImageButton extends JButton
 		constructor();
 	}
 	public ImageButton(String imageName, String hoverImageName) {
+		iX = 0;
+		iY = 0;
+		
+		image = new ImageIcon(imageName);
+		hoverImage = new ImageIcon(hoverImageName);
+		constructor();
+	}
+	public ImageButton(String imageName, String hoverImageName, int x, int y) {
+		iX = x;
+		iY = y;
+		
 		image = new ImageIcon(imageName);
 		hoverImage = new ImageIcon(hoverImageName);
 		constructor();
@@ -29,7 +41,9 @@ public class ImageButton extends JButton
 		this.setBorderPainted(false); // 버튼 테두리 제거
 		this.setIcon(image); // 이미지 적용
 		this.addMouseListener(imageButtonL);
+		this.setLocation(iX, iY);
 	}
+	
 	
 	private class ImageButtonListener implements MouseListener
 	{
@@ -37,12 +51,18 @@ public class ImageButton extends JButton
 			if (hoverImage == null)
 				return;
 			((JButton)event.getSource()).setIcon(hoverImage);
+			setSize(new Dimension(hoverImage.getIconWidth(), hoverImage.getIconHeight()));
+			
+			setLocation(iX - (hoverImage.getIconWidth() - image.getIconWidth())/2,
+						iY - (hoverImage.getIconHeight() - image.getIconHeight())/2);
 		}
 		
 		public void mouseExited(MouseEvent event) {
 			if (image == null)
 				return;
 			((JButton)event.getSource()).setIcon(image);
+			setSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
+			setLocation(iX, iY);
 		}
 		
 		public void mouseClicked(MouseEvent event) { }
