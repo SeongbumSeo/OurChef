@@ -42,7 +42,7 @@ public class IntroScene extends SceneAbst
 		add(btnStart);
 		
 		// 배경 설정
-		imgBackground = new ImageIcon("images/tmpImgBackground.png");
+		imgBackground = new ImageIcon("images/imgBackground.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
