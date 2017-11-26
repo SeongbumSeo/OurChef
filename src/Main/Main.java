@@ -40,7 +40,7 @@ public class Main
 		System.out.println(scene.getClass().getSimpleName() + "으로 씬을 전환중입니다.");
 		
 		// 기존 씬(들)의 onHide 콜백 호출
-		for (Component comp:frame.getContentPane().getComponents())
+		for (Component comp: frame.getContentPane().getComponents())
 			if (Scene.class.isInstance(comp))
 				Scene.class.cast(comp).onHide();
 		
