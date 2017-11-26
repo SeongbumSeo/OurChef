@@ -8,10 +8,16 @@ import Scene.*;
 
 public class RefrigeratorScene extends SceneAbst
 {
+	// 배경
+	private ImageIcon imgBackground, imgRefrigerator;
+	private JLabel lblBackground, lblRefrigerator;
+	
+	// 카트
 	private JButton btnCart;
 	private ImageIcon imgCart;
+	
+	// 이벤트
 	private RefrigeratorListener refL;
-	//private Image cart;
 	
 	public void onShow() {
 		refL = new RefrigeratorListener();
@@ -23,6 +29,21 @@ public class RefrigeratorScene extends SceneAbst
 		btnCart.setBounds(650,290,470,350);
 		btnCart.addActionListener(refL);
 		add(btnCart);
+		
+		// 배경_냉장고
+		imgRefrigerator = new ImageIcon("./images/refrigerator.png");
+		lblRefrigerator = new JLabel();
+		lblRefrigerator.setIcon(imgRefrigerator);
+		lblRefrigerator.setBounds(50, 50, 224, 487);
+		add(lblRefrigerator);
+		
+		// 배경
+		imgBackground = new ImageIcon("./images/background.jpg");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		add(lblBackground);
+		
 	}
 	
 	public void onHide() {

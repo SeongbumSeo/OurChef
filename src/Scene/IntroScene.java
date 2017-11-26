@@ -8,73 +8,95 @@ import Scene.*;
 
 public class IntroScene extends SceneAbst
 {
-	private JButton btnAbout;
+	// 배경
+	private ImageIcon imgBackground;
+	private JLabel lblBackground;
+	
+	// 시작화면 버튼
 	private JButton btnStart;
+	private JButton btnAbout;
+	
+	// 사용 설명 화면
 	private JPanel pnlAbout;
-	private JLabel lblHeader;
-	private JButton btnClose;
 	private JLabel lblAbout;
-	private IntroListener introL;
+	private JButton btnGoBack;
+	private ImageIcon imgPnlBackground, imgGoBack;
+	
+	
+	private IntroListener introL;	
 	
 	public void onShow() {
 		introL = new IntroListener();
 		
 		// 사용 방법 버튼 추가
 		btnAbout = new JButton("사용 방법");
-		btnAbout.setBounds(1000, 500, 100, 40);
+		btnAbout.setBounds(370, 500, 70, 300);
 		btnAbout.addActionListener(introL);
 		add(btnAbout);
 		
 		// 시작 버튼 추가
 		btnStart = new JButton("시작");
-		btnStart.setBounds(1000, 550, 100, 40);
+		btnStart.setBounds(1125, 650, 110, 140);
 		btnStart.addActionListener(introL);
 		add(btnStart);
 		
+		// 배경 설정
+		imgBackground = new ImageIcon("./images/tmpImgBackground.png");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		add(lblBackground);
+		
 		// 사용 방법 패널 생성
 		createAboutPanel();
+		btnGoBack.setVisible(false);
 	}
 	
 	public void onHide() {
 		
 	}
 	
+	public void onStartHide() {
+		btnAbout.setVisible(false);
+		btnStart.setVisible(false);
+		lblBackground.setVisible(false);
+	}
+	
+	public void onStartShow() {
+		btnAbout.setVisible(true);
+		btnStart.setVisible(true);
+		lblBackground.setVisible(true);
+	}
+	
+	public void onAboutHide() {
+		pnlAbout.setVisible(false);
+		btnGoBack.setVisible(false);
+	}
+	
 	/**
 	 * 사용 방법 패널을 생성하는 메소드입니다.
 	 */
 	private void createAboutPanel() {
-		// 패널 생성
 		pnlAbout = new JPanel();
-		pnlAbout.setBounds(Main.getFrame().getWidth()/4, Main.getFrame().getHeight()/4, Main.getFrame().getWidth()/2, Main.getFrame().getHeight()/2);
-		pnlAbout.setBackground(Color.gray);
+		pnlAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.setLayout(null);
-		pnlAbout.setVisible(false);
-		add(pnlAbout);
 		
-		// 헤더 라벨 추가
-		lblHeader = new JLabel("사용 방법");
-		lblHeader.setBounds(0, 0, pnlAbout.getWidth(), 50);
-		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHeader.setForeground(Color.white);
-		lblHeader.setBackground(Color.black);
-		lblHeader.setOpaque(true);
-		pnlAbout.add(lblHeader);
+		imgGoBack = new ImageIcon("./images/goBack.png");
+		btnGoBack = new JButton();
+		btnGoBack.setIcon(imgGoBack);
+		btnGoBack.setLayout(null);
+		btnGoBack.setBounds(1425, 50, 118, 118);
+		btnGoBack.addActionListener(introL);
+		pnlAbout.add(btnGoBack);
 		
-		// 닫기 버튼 추가
-		btnClose = new JButton("x");
-		btnClose.setBounds(pnlAbout.getWidth()-50, 0, 50, 50);
-		btnClose.addActionListener(introL);
-		lblHeader.add(btnClose);
-		
-		// 내용 추가
-		lblAbout = new JLabel("<html>사용방법입니다~~사용방법입니다~~사용방법입니다~~사용방법입니다~~사용방법입니다~~사용방법입니다~~사용방법입니다~~<br>사용방법입니다~~사용방법입니다~~</html>");
-		lblAbout.setBounds(10, 60, pnlAbout.getWidth()-20, pnlAbout.getHeight()-70);
-		lblAbout.setVerticalAlignment(SwingConstants.TOP);
-		lblAbout.setForeground(Color.white);
-		lblAbout.setBackground(Color.black);
-		lblAbout.setOpaque(true);
+		imgPnlBackground = new ImageIcon("./images/imgPnlBackground.png");
+		lblAbout = new JLabel();
+		lblAbout.setIcon(imgPnlBackground);
+		lblAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.add(lblAbout);
-	}
+		
+		add(pnlAbout);		
+	} // createAboutPanel()
 	
 	private class IntroListener implements ActionListener
 	{
@@ -82,11 +104,15 @@ public class IntroScene extends SceneAbst
 			Object obj = event.getSource();
 			
 			if (obj == btnAbout) { // 사용 방법 버튼 클릭
+				onStartHide();
 				pnlAbout.setVisible(true);
-			} else if (obj == btnStart) // 시작 버튼 클릭
+				btnGoBack.setVisible(true);
+			} else if (obj == btnStart) {// 시작 버튼 클릭
 				Main.switchScene(new RefrigeratorScene());
-			else if (obj == btnClose) // 닫기 버튼 클릭
-				pnlAbout.setVisible(false);
+			} else if (obj == btnGoBack) {
+				onAboutHide();
+				onStartShow();
+			}
 		}
 	}
 }
