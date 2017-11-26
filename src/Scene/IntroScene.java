@@ -35,8 +35,7 @@ public class IntroScene extends SceneAbst
 		add(btnAbout);
 		
 		// 시작 버튼 추가
-		btnStart = new JButton("시작");
-		btnStart.setBounds(1125, 650, 110, 140);
+		btnStart = new ImageButton("images/basket.png","images/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
 		

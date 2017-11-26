@@ -17,9 +17,6 @@ public class ImageButton extends JButton
 		constructor();
 	}
 	public ImageButton(String imageName, String hoverImageName) {
-		iX = 0;
-		iY = 0;
-		
 		image = new ImageIcon(imageName);
 		hoverImage = new ImageIcon(hoverImageName);
 		constructor();
