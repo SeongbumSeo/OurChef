@@ -1,6 +1,8 @@
-package DataManager;
+package Main;
 import java.io.*;  
-import java.util.*; 
+import java.util.*;
+
+import Data.Ingredient; 
 
 public class DataManager {
 	public void run() {  
