@@ -13,19 +13,21 @@ public class ImageButton extends JButton
 	public ImageButton(String imageName) {
 		image = new ImageIcon(imageName);
 		hoverImage = null;
-		
-		imageButtonL = new ImageButtonListener();
-		
-		this.setIcon(image);
-		this.addMouseListener(imageButtonL);
+		constructor();
 	}
 	public ImageButton(String imageName, String hoverImageName) {
 		image = new ImageIcon(imageName);
 		hoverImage = new ImageIcon(hoverImageName);
-		
+		constructor();
+	}
+	
+	private void constructor() {
 		imageButtonL = new ImageButtonListener();
-		
-		this.setIcon(image);
+
+		this.setSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
+		this.setContentAreaFilled(false); // 버튼 바탕색 제거
+		this.setBorderPainted(false); // 버튼 테두리 제거
+		this.setIcon(image); // 이미지 적용
 		this.addMouseListener(imageButtonL);
 	}
 	
