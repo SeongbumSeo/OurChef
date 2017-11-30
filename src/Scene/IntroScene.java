@@ -20,7 +20,7 @@ public class IntroScene extends SceneAbst
 	// 사용 설명 화면
 	private JPanel pnlAbout;
 	private JLabel lblAbout;
-	private JButton btnGoBack;
+	private ImageButton btnGoBack;
 	private ImageIcon imgPnlBackground, imgGoBack;
 	
 	
@@ -74,6 +74,7 @@ public class IntroScene extends SceneAbst
 	public void onAboutHide() {
 		pnlAbout.setVisible(false);
 		btnGoBack.setVisible(false);
+		btnStart2.setVisible(false);
 	}
 	
 	/**
@@ -85,10 +86,8 @@ public class IntroScene extends SceneAbst
 		pnlAbout.setLayout(null);
 		
 		imgGoBack = new ImageIcon("images/goBack.png");
-		btnGoBack = new JButton();
-		btnGoBack.setIcon(imgGoBack);
+		btnGoBack = new ImageButton("images/goBack.png", 40, 780);
 		btnGoBack.setLayout(null);
-		btnGoBack.setBounds(1425, 50, 118, 118);
 		btnGoBack.setContentAreaFilled(false);
 		btnGoBack.setBorderPainted(false);
 		btnGoBack.addActionListener(introL);
