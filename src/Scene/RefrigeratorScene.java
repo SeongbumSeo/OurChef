@@ -55,7 +55,8 @@ public class RefrigeratorScene extends SceneAbst
       linePanel1=new JPanel();//main이라고 가정
       linePanel1.setLayout(null);
       linePanel1.setBounds(290,130,410,80);
-      linePanel1.setBackground(Color.black);
+      linePanel1.setOpaque(false);
+      //linePanel1.setBackground(Color.black);
       add(linePanel1);
       
       
@@ -77,36 +78,37 @@ public class RefrigeratorScene extends SceneAbst
       
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
       scrollPanel.setBounds(290, 260,410, 80);
-      scrollPanel.setBackground(Color.green);
+      //scrollPanel.setBackground(Color.green);
             
       linePanel2=new JPanel();
       linePanel2.setLayout(new FlowLayout());
-      linePanel2.setBackground(Color.black);
+      //linePanel2.setBackground(Color.black);
+      linePanel2.setOpaque(false);
       scrollPanel.add(linePanel2);
       add(scrollPanel);
       
       linePanel3=new JPanel();
       linePanel3.setLayout(null);
       linePanel3.setBounds(290,370,410,80);
-      linePanel3.setBackground(Color.black);
+      //linePanel3.setBackground(Color.black);
       add(linePanel3);
       
       linePanel4=new JPanel();
       linePanel4.setLayout(null);
       linePanel4.setBounds(290,490,410,80);
-      linePanel4.setBackground(Color.black);
+      //linePanel4.setBackground(Color.black);
       add(linePanel4);
       
       linePanel5=new JPanel();
       linePanel5.setLayout(null);
       linePanel5.setBounds(290,610,410,80);
-      linePanel5.setBackground(Color.black);
+      //linePanel5.setBackground(Color.black);
       add(linePanel5);
       
       linePanel6=new JPanel();
       linePanel6.setLayout(null);
       linePanel6.setBounds(290,760,410,80);
-      linePanel6.setBackground(Color.black);
+      //linePanel6.setBackground(Color.black);
       add(linePanel6);
       
       // 배경
