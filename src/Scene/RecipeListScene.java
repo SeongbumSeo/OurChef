@@ -13,10 +13,30 @@ public class RecipeListScene extends SceneAbst
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
 
+	// 뒤로가기 및 홈버튼
+	private ImageButton btnGoBack, btnGoHome;
+	
+	// 이벤트
+	private RecipeListener RecipeL;
 	
 	public void onShow() {
+		// 뒤로가기 버튼 및 홈버튼
+	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+	    btnGoBack.setLayout(null);
+	    btnGoBack.setContentAreaFilled(false);
+	    btnGoBack.setBorderPainted(false);
+	    btnGoBack.addActionListener(RecipeL);
+	    add(btnGoBack);
+	      
+	    btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+	    btnGoHome.setLayout(null);
+	    btnGoHome.setContentAreaFilled(false);
+	    btnGoHome.setBorderPainted(false);
+	    btnGoHome.addActionListener(RecipeL);
+	    add(btnGoHome);
+		
 		// 배경
-		imgBackground = new ImageIcon("./images/background.jpg");
+		imgBackground = new ImageIcon("./images/recipeListBackground.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
@@ -25,5 +45,18 @@ public class RecipeListScene extends SceneAbst
 		
 	public void onHide() {
 			
+	}
+	
+	private class RecipeListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event) {
+			Object obj = event.getSource();
+			
+			if (obj == btnGoBack) {
+				
+			} else if (obj == btnGoHome) {
+				
+			}
+		}
 	}
 }

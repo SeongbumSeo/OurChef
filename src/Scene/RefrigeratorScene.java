@@ -60,6 +60,7 @@ public class RefrigeratorScene extends SceneAbst
       add(linePanel1);
       
       
+      
       // 뒤로가기 버튼 및 홈버튼
       btnGoBack = new ImageButton("images/goBack.png", 7, 810);
       btnGoBack.setLayout(null);
