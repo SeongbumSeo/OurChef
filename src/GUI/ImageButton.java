@@ -35,6 +35,7 @@ public class ImageButton extends JButton
 		hoverImage = null;
 		constructor();
 	}
+	
 	/**
 	 * 이미지 버튼의 생성자입니다.
 	 * @param imageName 버튼 이미지
@@ -60,6 +61,7 @@ public class ImageButton extends JButton
 		hoverImage = new ImageIcon(hoverImageName);
 		constructor();
 	}
+	
 	
 	/**
 	 * 버튼의 생성 및 초기값 설정에 직접 관여하는 메소드입니다.

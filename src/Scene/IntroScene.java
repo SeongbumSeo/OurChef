@@ -14,8 +14,8 @@ public class IntroScene extends SceneAbst
 	private JLabel lblBackground;
 	
 	// 시작화면 버튼
-	private JButton btnStart;
-	private JButton btnAbout;
+	private ImageButton btnStart, btnStart2;
+	private ImageButton btnAbout;
 	
 	// 사용 설명 화면
 	private JPanel pnlAbout;
@@ -38,6 +38,9 @@ public class IntroScene extends SceneAbst
 		btnStart = new ImageButton("images/basket.png","images/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
+		btnStart2 = new ImageButton("images/basket.png","images/basket_h.png", 1180, 630);
+		btnStart2.addActionListener(introL);
+		add(btnStart2);
 		
 		// 배경 설정
 		imgBackground = new ImageIcon("images/imgBackground.jpg");
@@ -47,6 +50,7 @@ public class IntroScene extends SceneAbst
 		add(lblBackground);
 		
 		// 사용 방법 패널 생성
+		btnStart2.setVisible(false);
 		createAboutPanel();
 		btnGoBack.setVisible(false);
 	}
@@ -108,6 +112,7 @@ public class IntroScene extends SceneAbst
 				onStartHide();
 				pnlAbout.setVisible(true);
 				btnGoBack.setVisible(true);
+				btnStart2.setVisible(true);
 			} else if (obj == btnStart) {// 시작 버튼 클릭
 				Main.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) {
