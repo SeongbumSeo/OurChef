@@ -68,7 +68,7 @@ public class RefrigeratorScene extends SceneAbst
       btnGoBack.addActionListener(refL);
       add(btnGoBack);
       
-      btnGoHome = new ImageButton("images/goHome.png", 10, 75);
+      btnGoHome = new ImageButton("images/goHome.png", 40, 35);
       btnGoHome.setLayout(null);
       btnGoHome.setContentAreaFilled(false);
       btnGoHome.setBorderPainted(false);
@@ -175,6 +175,8 @@ public class RefrigeratorScene extends SceneAbst
          if (obj == btnCart) { // 시작 버튼 클릭
             Main.switchScene(new CartScene());
          } else if (obj == btnGoBack) {
+        	 
+         } else if (obj == btnGoHome) {
         	 
          }
       }
