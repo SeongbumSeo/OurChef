@@ -10,10 +10,10 @@ import Data.*;
 public class Main
 {
 	private static JFrame frame;
-	private static List<Ingredient> ingredients;
-	private static List<Ingredient> cart;
-	private static List<Recipe> recipes;
-	private static List<Recipe> favorites;
+	private static List<Ingredient> ingredients; // 전체 재료
+	private static List<Ingredient> cart; // 카트 내 재료
+	private static List<Recipe> recipes; // 전체 레시피
+	private static List<Recipe> favorites; // 즐겨찾기 레시피
 	
 	/**
 	 * 프로그램의 주 실행 콜백입니다.
