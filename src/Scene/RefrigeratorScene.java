@@ -61,14 +61,14 @@ public class RefrigeratorScene extends SceneAbst
       
       
       // 뒤로가기 버튼 및 홈버튼
-      btnGoBack = new ImageButton("images/goBack.png", 40, 780);
+      btnGoBack = new ImageButton("images/goBack.png", 7, 810);
       btnGoBack.setLayout(null);
       btnGoBack.setContentAreaFilled(false);
       btnGoBack.setBorderPainted(false);
       btnGoBack.addActionListener(refL);
       add(btnGoBack);
       
-      btnGoHome = new ImageButton("images/goHome.png", 40, 35);
+      btnGoHome = new ImageButton("images/goHome.png", 20, 25);
       btnGoHome.setLayout(null);
       btnGoHome.setContentAreaFilled(false);
       btnGoHome.setBorderPainted(false);
@@ -112,7 +112,7 @@ public class RefrigeratorScene extends SceneAbst
       add(linePanel6);
       
       // 배경
-      imgBackground = new ImageIcon("images/refBackground.jpg");
+      imgBackground = new ImageIcon("images/refBackground.png");
       lblBackground = new JLabel();
       lblBackground.setIcon(imgBackground);
       lblBackground.setBounds(0, 0, 1600, 900);

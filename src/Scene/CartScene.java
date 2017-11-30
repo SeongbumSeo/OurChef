@@ -20,6 +20,9 @@ public class CartScene extends SceneAbst
 	// 버튼
 	private JButton btnTrash, btnRecipe;
 	
+	// 뒤로가기 및 홈버튼
+	private ImageButton btnGoBack, btnGoHome;
+	
 	// 이벤트
 	private CartListener CartL;
 	
@@ -32,6 +35,21 @@ public class CartScene extends SceneAbst
 		ingredients.setLocation(1100, 50);
 		
 		add(ingredients);
+		
+		// 뒤로가기 버튼 및 홈버튼
+	    btnGoBack = new ImageButton("images/goBack.png", 40, 780);
+	    btnGoBack.setLayout(null);
+	    btnGoBack.setContentAreaFilled(false);
+	    btnGoBack.setBorderPainted(false);
+	    btnGoBack.addActionListener(CartL);
+	    add(btnGoBack);
+	      
+	    btnGoHome = new ImageButton("images/goHome.png", 40, 35);
+	    btnGoHome.setLayout(null);
+	    btnGoHome.setContentAreaFilled(false);
+	    btnGoHome.setBorderPainted(false);
+	    btnGoHome.addActionListener(CartL);
+	    add(btnGoHome);
 		
 		// trash button
 		btnTrash = new ImageButton("images/trash.png");
@@ -69,6 +87,10 @@ public class CartScene extends SceneAbst
 			} else if (obj == btnRecipe) { // 레시피 버튼 클릭
 				// RecipeListScene으로 이동
 				Main.switchScene(new RecipeListScene());
+			} else if (obj == btnGoBack) {
+				
+			} else if (obj == btnGoHome) {
+				
 			}
 		}
 	}
