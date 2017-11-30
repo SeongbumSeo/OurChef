@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.*;
+import java.util.*;
 import java.util.List;
 import javax.swing.*;
 import Scene.*;
@@ -10,7 +11,9 @@ public class Main
 {
 	private static JFrame frame;
 	private static List<Ingredient> ingredients;
+	private static List<Ingredient> cart;
 	private static List<Recipe> recipes;
+	private static List<Recipe> favorites;
 	
 	/**
 	 * 프로그램의 주 실행 콜백입니다.
@@ -28,6 +31,8 @@ public class Main
 	private static void loadData() {
 		ingredients = Data.Ingredient.load("data/ingredients.csv");
 		recipes = Data.Recipe.load("data/recipes.csv");
+		cart = new ArrayList<Ingredient>();
+		favorites = new ArrayList<Recipe>();
 	}
 	
 	/**
