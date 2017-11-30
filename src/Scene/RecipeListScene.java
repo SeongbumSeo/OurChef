@@ -9,13 +9,13 @@ import GUI.*;
 
 public class RecipeListScene extends SceneAbst
 {
-	// ¹è°æ
+	// ë°°ê²½
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
 
 	
 	public void onShow() {
-		// ¹è°æ
+		// ë°°ê²½
 		imgBackground = new ImageIcon("./images/background.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);

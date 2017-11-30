@@ -9,15 +9,15 @@ import GUI.*;
 
 public class IntroScene extends SceneAbst
 {
-	// ¹è°æ
+	// ë°°ê²½
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
 	
-	// ½ÃÀÛÈ­¸é ¹öÆ°
+	// ì‹œì‘í™”ë©´ ë²„íŠ¼
 	private JButton btnStart;
 	private JButton btnAbout;
 	
-	// »ç¿ë ¼³¸í È­¸é
+	// ì‚¬ìš© ì„¤ëª… í™”ë©´
 	private JPanel pnlAbout;
 	private JLabel lblAbout;
 	private JButton btnGoBack;
@@ -29,24 +29,24 @@ public class IntroScene extends SceneAbst
 	public void onShow() {
 		introL = new IntroListener();
 		
-		// »ç¿ë ¹æ¹ı ¹öÆ° Ãß°¡
+		// ì‚¬ìš© ë°©ë²• ë²„íŠ¼ ì¶”ê°€
 		btnAbout = new ImageButton("images/bottle.png", "images/bottle_h.png", 350, 395);
 		btnAbout.addActionListener(introL);
 		add(btnAbout);
 		
-		// ½ÃÀÛ ¹öÆ° Ãß°¡
+		// ì‹œì‘ ë²„íŠ¼ ì¶”ê°€
 		btnStart = new ImageButton("images/basket.png","images/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
 		
-		// ¹è°æ ¼³Á¤
+		// ë°°ê²½ ì„¤ì •
 		imgBackground = new ImageIcon("images/imgBackground.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
 		add(lblBackground);
 		
-		// »ç¿ë ¹æ¹ı ÆĞ³Î »ı¼º
+		// ì‚¬ìš© ë°©ë²• íŒ¨ë„ ìƒì„±
 		createAboutPanel();
 		btnGoBack.setVisible(false);
 	}
@@ -73,7 +73,7 @@ public class IntroScene extends SceneAbst
 	}
 	
 	/**
-	 * »ç¿ë ¹æ¹ı ÆĞ³ÎÀ» »ı¼ºÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
+	 * ì‚¬ìš© ë°©ë²• íŒ¨ë„ì„ ìƒì„±í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
 	 */
 	private void createAboutPanel() {
 		pnlAbout = new JPanel();
@@ -104,11 +104,11 @@ public class IntroScene extends SceneAbst
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
 			
-			if (obj == btnAbout) { // »ç¿ë ¹æ¹ı ¹öÆ° Å¬¸¯
+			if (obj == btnAbout) { // ì‚¬ìš© ë°©ë²• ë²„íŠ¼ í´ë¦­
 				onStartHide();
 				pnlAbout.setVisible(true);
 				btnGoBack.setVisible(true);
-			} else if (obj == btnStart) {// ½ÃÀÛ ¹öÆ° Å¬¸¯
+			} else if (obj == btnStart) {// ì‹œì‘ ë²„íŠ¼ í´ë¦­
 				Main.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) {
 				onAboutHide();

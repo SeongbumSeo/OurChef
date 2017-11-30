@@ -9,42 +9,42 @@ public class Main
 	private static JFrame frame;
 	
 	/**
-	 * ÇÁ·Î±×·¥ÀÇ ÁÖ ½ÇÇà Äİ¹éÀÔ´Ï´Ù.
-	 * @param args ½ÇÇà ÀÎÀÚ
+	 * í”„ë¡œê·¸ë¨ì˜ ì£¼ ì‹¤í–‰ ì½œë°±ì…ë‹ˆë‹¤.
+	 * @param args ì‹¤í–‰ ì¸ì
 	 */
 	public static void main(String[] args) {
-		showWindow("¿ì¸®Áı ¼ÎÇÁ´Ô", 1600, 900);
+		showWindow("ìš°ë¦¬ì§‘ ì…°í”„ë‹˜", 1600, 900);
 		switchScene(new IntroScene());
 	}
 	
 	/**
-	 * ¸ŞÀÎ ÇÁ·¹ÀÓÀ» »ı¼ºÇÏ°í À©µµ¿ì¸¦ °¡½ÃÈ­ÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
-	 * @param title À©µµ¿ìÀÇ Å¸ÀÌÆ²
-	 * @param width °¡·Î Å©±â
-	 * @param height ¼¼·Î Å©±â
+	 * ë©”ì¸ í”„ë ˆì„ì„ ìƒì„±í•˜ê³  ìœˆë„ìš°ë¥¼ ê°€ì‹œí™”í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
+	 * @param title ìœˆë„ìš°ì˜ íƒ€ì´í‹€
+	 * @param width ê°€ë¡œ í¬ê¸°
+	 * @param height ì„¸ë¡œ í¬ê¸°
 	 * @return
 	 */
 	private static void showWindow(String title, int width, int height) {
 		frame = new JFrame(title);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ÇÁ·¹ÀÓ À©µµ¿ì Á¾·á ½Ã ÇÁ·Î¼¼½º Á¤¸®
-		frame.setResizable(false); // »çÀÌÁî Á¶Á¤ ºÒ°¡
-		frame.setPreferredSize(new Dimension(width, height)); // ÇÁ·¹ÀÓ Å©±â ÁöÁ¤
-		frame.pack(); // À©µµ¿ì »çÀÌÁî¸¦ ÇÁ·¹ÀÓ¿¡ ¸ÂÃã
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // í”„ë ˆì„ ìœˆë„ìš° ì¢…ë£Œ ì‹œ í”„ë¡œì„¸ìŠ¤ ì •ë¦¬
+		frame.setResizable(false); // ì‚¬ì´ì¦ˆ ì¡°ì • ë¶ˆê°€
+		frame.setPreferredSize(new Dimension(width, height)); // í”„ë ˆì„ í¬ê¸° ì§€ì •
+		frame.pack(); // ìœˆë„ìš° ì‚¬ì´ì¦ˆë¥¼ í”„ë ˆì„ì— ë§ì¶¤
 	}
 	
 	/**
-	 * ¾ÀÀ» ÀüÈ¯ÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
-	 * @param scene ¾À °´Ã¼
+	 * ì”¬ì„ ì „í™˜í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
+	 * @param scene ì”¬ ê°ì²´
 	 */
 	public static void switchScene(Scene scene) {
-		// ±âÁ¸ ¾À(µé)ÀÇ onHide Äİ¹é È£Ãâ
+		// ê¸°ì¡´ ì”¬(ë“¤)ì˜ onHide ì½œë°± í˜¸ì¶œ
 		for (Component comp: frame.getContentPane().getComponents())
 			if (Scene.class.isInstance(comp))
 				Scene.class.cast(comp).onHide();
 		
-		frame.getContentPane().removeAll(); // ÇÁ·¹ÀÓ ³» ¸ğµç ÄÄÆ÷³ÍÆ®(¾À Æ÷ÇÔ) »èÁ¦
-		frame.getContentPane().add(JPanel.class.cast(scene)); // ÇÁ·¹ÀÓ¿¡ ¾À ÆĞ³Î Ãß°¡
-		frame.setVisible(true); // À©µµ¿ì °¡½ÃÈ­
+		frame.getContentPane().removeAll(); // í”„ë ˆì„ ë‚´ ëª¨ë“  ì»´í¬ë„ŒíŠ¸(ì”¬ í¬í•¨) ì‚­ì œ
+		frame.getContentPane().add(JPanel.class.cast(scene)); // í”„ë ˆì„ì— ì”¬ íŒ¨ë„ ì¶”ê°€
+		frame.setVisible(true); // ìœˆë„ìš° ê°€ì‹œí™”
 	}
 	
 	public static JFrame getFrame() { return frame; }

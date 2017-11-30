@@ -8,40 +8,40 @@ import Main.Main;
 public abstract class SceneAbst extends JPanel implements Scene
 {
 	/**
-	 * Ãß»óÅ¬·¡½º SceneAbstÀÇ »ı¼ºÀÚÀÔ´Ï´Ù.
+	 * ì¶”ìƒí´ë˜ìŠ¤ SceneAbstì˜ ìƒì„±ìì…ë‹ˆë‹¤.
 	 */
 	public SceneAbst() {
-		setPreferredSize(new Dimension(Main.getFrame().getWidth(), Main.getFrame().getHeight())); // ÇÁ·¹ÀÓ Å©±â¿¡ ¸ÂÃã
-		setBackground(Color.white); // ¹ÙÅÁ»ö ¼³Á¤
-		setLayout(null); // ¹èÄ¡°ü¸®ÀÚ Á¦°Å
+		setPreferredSize(new Dimension(Main.getFrame().getWidth(), Main.getFrame().getHeight())); // í”„ë ˆì„ í¬ê¸°ì— ë§ì¶¤
+		setBackground(Color.white); // ë°”íƒ•ìƒ‰ ì„¤ì •
+		setLayout(null); // ë°°ì¹˜ê´€ë¦¬ì ì œê±°
 		
 		onShow();
 		applyDefaultFont("JejuGothic");
 	}
 	
 	/**
-	 * ÆùÆ®°¡ Àû¿ëµÇÁö ¾ÊÀº ÄÄÆ÷³ÍÆ®¿¡ ±âº» ÆùÆ®¸¦ Àû¿ëÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
+	 * í°íŠ¸ê°€ ì ìš©ë˜ì§€ ì•Šì€ ì»´í¬ë„ŒíŠ¸ì— ê¸°ë³¸ í°íŠ¸ë¥¼ ì ìš©í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
 	 */
 	private void applyDefaultFont(String name) {
 		try {
-			// ÆùÆ® ÆÄÀÏ ·Îµå
+			// í°íŠ¸ íŒŒì¼ ë¡œë“œ
 			File file = new File("fonts/" + name + ".ttf");
 			Font fontBase = Font.createFont(Font.TRUETYPE_FONT, file);
 			Font fontReal = fontBase.deriveFont(Font.PLAIN, 12);
 			
-			// ÆùÆ® Àû¿ë
+			// í°íŠ¸ ì ìš©
 			applyDefaultFont(this, fontReal);
 		} catch (Exception e) { }
 	}
 	/**
-	 * ÀüÃ¼ ÄÄÆ÷³ÍÆ®¸¦ ÀüÀ§¼øÈ¸ÇÏ¸ç ±âº» ÆùÆ®¸¦ Àû¿ëÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
+	 * ì „ì²´ ì»´í¬ë„ŒíŠ¸ë¥¼ ì „ìœ„ìˆœíšŒí•˜ë©° ê¸°ë³¸ í°íŠ¸ë¥¼ ì ìš©í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
 	 */
 	private void applyDefaultFont(Component comp, Font font) {
-		// ÆùÆ®°¡ Àû¿ëµÇÁö ¾ÊÀº °æ¿ì
+		// í°íŠ¸ê°€ ì ìš©ë˜ì§€ ì•Šì€ ê²½ìš°
 		if (comp.getFont().getName() == "Dialog")
 			comp.setFont(font);
 		
-		// ¼øÈ¸
+		// ìˆœíšŒ
 		for (Component child: ((Container)comp).getComponents())
 			applyDefaultFont(child, font);
 	}

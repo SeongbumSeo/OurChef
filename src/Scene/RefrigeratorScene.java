@@ -9,24 +9,24 @@ import GUI.*;
 
 public class RefrigeratorScene extends SceneAbst
 {
-	// ¹è°æ
+	// ë°°ê²½
 	private ImageIcon imgBackground, imgRefrigerator;
 	private JLabel lblBackground, lblRefrigerator;
 	
-	// Ä«Æ®
+	// ì¹´íŠ¸
 	private JButton btnCart;
 	
-	//Ä­ ÆĞ³Î
+	//ì¹¸ íŒ¨ë„
 	JPanel linePanel1;
 	JPanel linePanel2;
 	JPanel linePanel3;
 	JPanel linePanel4;
 	JPanel linePanel5;
 	JPanel linePanel6;
-	//³ªÁß¿¡ ¹è¿­ °í·Á
+	//ë‚˜ì¤‘ì— ë°°ì—´ ê³ ë ¤
 	
 	
-	//Ä­º° ¹öÆ°
+	//ì¹¸ë³„ ë²„íŠ¼
 	private JButton[] btnIngredients_1;
 	private JButton[] btnIngredients_2;
 	private JButton[] btnIngredients_3;
@@ -34,21 +34,21 @@ public class RefrigeratorScene extends SceneAbst
 	private JButton[] btnIngredients_5;
 	private JButton[] btnIngredients_6;
 	
-	//Ä­º° ½ºÅ©·Ñ¹Ù
+	//ì¹¸ë³„ ìŠ¤í¬ë¡¤ë°”
 	Scrollbar bar1,bar2,bar3,bar4,bar5,bar6;
 	
-	// ÀÌº¥Æ®
+	// ì´ë²¤íŠ¸
 	private RefrigeratorListener refL;
 	
 	public void onShow() {
 		refL = new RefrigeratorListener();
 		
-		// CartSceneÀ¸·Î ³Ñ¾î°¡´Â ¹öÆ° Ãß°¡
+		// CartSceneìœ¼ë¡œ ë„˜ì–´ê°€ëŠ” ë²„íŠ¼ ì¶”ê°€
 		btnCart = new ImageButton("images/cart.png", 870, 380);
 		btnCart.addActionListener(refL);
 		add(btnCart);
 		
-		//³ÃÀå°í ÆĞ³Î
+		//ëƒ‰ì¥ê³  íŒ¨ë„
 		linePanel1=new JPanel();
 		linePanel1.setBounds(210,130,240,65);
 		linePanel1.setBackground(Color.black);
@@ -83,14 +83,14 @@ public class RefrigeratorScene extends SceneAbst
 		
 		
 		
-		// ¹è°æ_³ÃÀå°í
+		// ë°°ê²½_ëƒ‰ì¥ê³ 
 		imgRefrigerator = new ImageIcon("images/refrigerator.png");
 		lblRefrigerator = new JLabel();
 		lblRefrigerator.setIcon(imgRefrigerator);
 		lblRefrigerator.setBounds(150, 35, imgRefrigerator.getIconWidth(), imgRefrigerator.getIconHeight() );
 		add(lblRefrigerator);
 		
-		// ¹è°æ
+		// ë°°ê²½
 		imgBackground = new ImageIcon("images/background.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
@@ -101,32 +101,32 @@ public class RefrigeratorScene extends SceneAbst
 		
 		
 		
-		//³ÃÀå°í ¹öÆ°µé
+		//ëƒ‰ì¥ê³  ë²„íŠ¼ë“¤
 		btnIngredients_1=new JButton[4];
 		for(int i=0 ; i<4 ; i++) {
 			btnIngredients_1[i]=new JButton("1");
 			btnIngredients_1[i].setBackground(Color.white);
-			//¸¶Áø ÇØ¾ßÇÒ°ÅÀÓ
+			//ë§ˆì§„ í•´ì•¼í• ê±°ì„
 			
 			linePanel1.add(btnIngredients_1[i]);
-		}//1¶óÀÎ
+		}//1ë¼ì¸
 		
 		/*
 		for(int i=0 ; i<9 ; i++) {
 			btnIngredients_2[i]=new JButton();
-		}//2¶óÀÎ
+		}//2ë¼ì¸
 		for(int i=0 ; i<3 ; i++) {
 			btnIngredients_3[i]=new JButton();
-		}//3¶óÀÎ
+		}//3ë¼ì¸
 		for(int i=0 ; i<7 ; i++) {
 			btnIngredients_4[i]=new JButton();
-		}//4¶óÀÎ
+		}//4ë¼ì¸
 		for(int i=0 ; i<6 ; i++) {
 			btnIngredients_5[i]=new JButton();
-		}//5¶óÀÎ
+		}//5ë¼ì¸
 		for(int i=0 ; i<7 ; i++) {
 			btnIngredients_6[i]=new JButton();
-		}*///6¶óÀÎ
+		}*///6ë¼ì¸
 		
 		
 		
@@ -141,7 +141,7 @@ public class RefrigeratorScene extends SceneAbst
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
 			
-			if (obj == btnCart) { // ½ÃÀÛ ¹öÆ° Å¬¸¯
+			if (obj == btnCart) { // ì‹œì‘ ë²„íŠ¼ í´ë¦­
 				Main.switchScene(new CartScene());
 			}
 		}

@@ -6,15 +6,15 @@ import javax.swing.*;
 
 public class ImageButton extends JButton
 {
-	private ImageIcon image; // ¹öÆ° ÀÌ¹ÌÁö
-	private ImageIcon hoverImage; // ¸¶¿ì½º ¿À¹ö ½Ã ¹öÆ° ÀÌ¹ÌÁö
-	private int iX, iY; // ¹öÆ°ÀÇ À§Ä¡
+	private ImageIcon image; // ë²„íŠ¼ ì´ë¯¸ì§€
+	private ImageIcon hoverImage; // ë§ˆìš°ìŠ¤ ì˜¤ë²„ ì‹œ ë²„íŠ¼ ì´ë¯¸ì§€
+	private int iX, iY; // ë²„íŠ¼ì˜ ìœ„ì¹˜
 	
 	private ImageButtonListener imageButtonL;
 	
 	/**
-	 * ÀÌ¹ÌÁö ¹öÆ°ÀÇ »ı¼ºÀÚÀÔ´Ï´Ù.
-	 * @param imageName ¹öÆ° ÀÌ¹ÌÁö
+	 * ì´ë¯¸ì§€ ë²„íŠ¼ì˜ ìƒì„±ìì…ë‹ˆë‹¤.
+	 * @param imageName ë²„íŠ¼ ì´ë¯¸ì§€
 	 */
 	public ImageButton(String imageName) {
 		image = new ImageIcon(imageName);
@@ -22,10 +22,10 @@ public class ImageButton extends JButton
 		constructor();
 	}
 	/**
-	 * ÀÌ¹ÌÁö ¹öÆ°ÀÇ »ı¼ºÀÚÀÔ´Ï´Ù.
-	 * @param imageName ¹öÆ° ÀÌ¹ÌÁö
-	 * @param x ¹öÆ°ÀÇ À§Ä¡ X
-	 * @param y ¹öÆ°ÀÇ À§Ä¡ Y
+	 * ì´ë¯¸ì§€ ë²„íŠ¼ì˜ ìƒì„±ìì…ë‹ˆë‹¤.
+	 * @param imageName ë²„íŠ¼ ì´ë¯¸ì§€
+	 * @param x ë²„íŠ¼ì˜ ìœ„ì¹˜ X
+	 * @param y ë²„íŠ¼ì˜ ìœ„ì¹˜ Y
 	 */
 	public ImageButton(String imageName, int x, int y) {
 		iX = x;
@@ -36,9 +36,9 @@ public class ImageButton extends JButton
 		constructor();
 	}
 	/**
-	 * ÀÌ¹ÌÁö ¹öÆ°ÀÇ »ı¼ºÀÚÀÔ´Ï´Ù.
-	 * @param imageName ¹öÆ° ÀÌ¹ÌÁö
-	 * @param hoverImageName ¸¶¿ì½º ¿À¹ö ½Ã ¹öÆ° ÀÌ¹ÌÁö
+	 * ì´ë¯¸ì§€ ë²„íŠ¼ì˜ ìƒì„±ìì…ë‹ˆë‹¤.
+	 * @param imageName ë²„íŠ¼ ì´ë¯¸ì§€
+	 * @param hoverImageName ë§ˆìš°ìŠ¤ ì˜¤ë²„ ì‹œ ë²„íŠ¼ ì´ë¯¸ì§€
 	 */
 	public ImageButton(String imageName, String hoverImageName) {
 		image = new ImageIcon(imageName);
@@ -46,11 +46,11 @@ public class ImageButton extends JButton
 		constructor();
 	}
 	/**
-	 * ÀÌ¹ÌÁö ¹öÆ°ÀÇ »ı¼ºÀÚÀÔ´Ï´Ù.
-	 * @param imageName ¹öÆ° ÀÌ¹ÌÁö
-	 * @param hoverImageName ¸¶¿ì½º ¿À¹ö ½Ã ¹öÆ° ÀÌ¹ÌÁö
-	 * @param x ¹öÆ°ÀÇ À§Ä¡ X
-	 * @param y ¹öÆ°ÀÇ À§Ä¡ Y
+	 * ì´ë¯¸ì§€ ë²„íŠ¼ì˜ ìƒì„±ìì…ë‹ˆë‹¤.
+	 * @param imageName ë²„íŠ¼ ì´ë¯¸ì§€
+	 * @param hoverImageName ë§ˆìš°ìŠ¤ ì˜¤ë²„ ì‹œ ë²„íŠ¼ ì´ë¯¸ì§€
+	 * @param x ë²„íŠ¼ì˜ ìœ„ì¹˜ X
+	 * @param y ë²„íŠ¼ì˜ ìœ„ì¹˜ Y
 	 */
 	public ImageButton(String imageName, String hoverImageName, int x, int y) {
 		iX = x;
@@ -62,48 +62,48 @@ public class ImageButton extends JButton
 	}
 	
 	/**
-	 * ¹öÆ°ÀÇ »ı¼º ¹× ÃÊ±â°ª ¼³Á¤¿¡ Á÷Á¢ °ü¿©ÇÏ´Â ¸Ş¼ÒµåÀÔ´Ï´Ù.
+	 * ë²„íŠ¼ì˜ ìƒì„± ë° ì´ˆê¸°ê°’ ì„¤ì •ì— ì§ì ‘ ê´€ì—¬í•˜ëŠ” ë©”ì†Œë“œì…ë‹ˆë‹¤.
 	 */
 	private void constructor() {
 		imageButtonL = new ImageButtonListener();
 
-		this.setContentAreaFilled(false); // ¹öÆ° ¹ÙÅÁ»ö Á¦°Å
-		this.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® Á¦°Å
-		this.setIcon(image); // ÀÌ¹ÌÁö Àû¿ë
-		this.setSize(new Dimension(image.getIconWidth(), image.getIconHeight())); // Å©±â ¼³Á¤
-		this.setLocation(iX, iY); // À§Ä¡ ¼³Á¤
+		this.setContentAreaFilled(false); // ë²„íŠ¼ ë°”íƒ•ìƒ‰ ì œê±°
+		this.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì œê±°
+		this.setIcon(image); // ì´ë¯¸ì§€ ì ìš©
+		this.setSize(new Dimension(image.getIconWidth(), image.getIconHeight())); // í¬ê¸° ì„¤ì •
+		this.setLocation(iX, iY); // ìœ„ì¹˜ ì„¤ì •
 		this.addMouseListener(imageButtonL);
 	}
 	
 	/**
-	 * ÀÌ¹ÌÁö ¹öÆ°ÀÇ ¸¶¿ì½º ÀÌº¥Æ® ¸®½º³ÊÀÔ´Ï´Ù.
+	 * ì´ë¯¸ì§€ ë²„íŠ¼ì˜ ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆì…ë‹ˆë‹¤.
 	 */
 	private class ImageButtonListener implements MouseListener
 	{
 		public void mouseEntered(MouseEvent event) {
-			// ÀÌ¹ÌÁö º¯°æ
+			// ì´ë¯¸ì§€ ë³€ê²½
 			if (hoverImage == null)
 				return;
 			((JButton)event.getSource()).setIcon(hoverImage);
 			
-			// Å©±â Àç¼³Á¤
+			// í¬ê¸° ì¬ì„¤ì •
 			setSize(new Dimension(hoverImage.getIconWidth(), hoverImage.getIconHeight()));
 			
-			// À§Ä¡ Àç¼³Á¤
+			// ìœ„ì¹˜ ì¬ì„¤ì •
 			setLocation(iX - (hoverImage.getIconWidth() - image.getIconWidth())/2,
 						iY - (hoverImage.getIconHeight() - image.getIconHeight())/2);
 		}
 		
 		public void mouseExited(MouseEvent event) {
-			// ÀÌ¹ÌÁö º¯°æ
+			// ì´ë¯¸ì§€ ë³€ê²½
 			if (image == null)
 				return;
 			((JButton)event.getSource()).setIcon(image);
 			
-			// Å©±â Àç¼³Á¤
+			// í¬ê¸° ì¬ì„¤ì •
 			setSize(new Dimension(image.getIconWidth(), image.getIconHeight()));
 			
-			// À§Ä¡ Àç¼³Á¤
+			// ìœ„ì¹˜ ì¬ì„¤ì •
 			setLocation(iX, iY);
 		}
 		
