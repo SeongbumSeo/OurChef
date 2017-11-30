@@ -48,18 +48,51 @@ public class RefrigeratorScene extends SceneAbst
 		btnCart.addActionListener(refL);
 		add(btnCart);
 		
+		
+		
+		/*
+		GridBagLayout g=new GridBagLayout();
+		GridBagConstraints con=new GridBagConstraints();
+		con.fill=GridBagConstraints.BOTH;
+        con.weightx = 1.0;
+        con.gridwidth = GridBagConstraints.REMAINDER;
+        con.gridheight = 1;
+        con.weighty = 1;
+		
+        */
 		//냉장고 패널
-		linePanel1=new JPanel();
+		linePanel1=new JPanel();//main이라고 가정
 		linePanel1.setBounds(210,130,240,65);
 		linePanel1.setBackground(Color.black);
+		
+		JPanel newPanel = new JPanel();
+		
+		
 		//linePanel1.setLayout(null);
-		linePanel1.setLayout(new GridLayout(1,4,5,0));
+		//linePanel1.setLayout(g);
 		add(linePanel1);
 		
+		
+		ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
+		
+		scrollPanel.setBounds(210, 233, 240, 65);
+		scrollPanel.setBackground(Color.green);
+		//scrollPanel.setLayout(null);
+		
+		
 		linePanel2=new JPanel();
-		linePanel2.setBounds(210,233,240,65);
+		//linePanel2.setBounds(210,233,240,65);
+		//linePanel2.setBounds(0,0,240,65);
+		linePanel2.setLayout(new FlowLayout());
 		linePanel2.setBackground(Color.black);
-		add(linePanel2);
+		
+		scrollPanel.add(linePanel2);
+			
+		
+		add(scrollPanel);
+		
+		for (int i=0; i<10; i++) linePanel2.add(new JButton("test"));
+		
 		
 		linePanel3=new JPanel();
 		linePanel3.setBounds(210,333,240,65);
@@ -82,7 +115,6 @@ public class RefrigeratorScene extends SceneAbst
 		add(linePanel6);
 		
 		
-		
 		// 배경_냉장고
 		imgRefrigerator = new ImageIcon("images/refrigerator.png");
 		lblRefrigerator = new JLabel();
@@ -97,19 +129,50 @@ public class RefrigeratorScene extends SceneAbst
 		lblBackground.setBounds(0, 0, 1600, 900);
 		add(lblBackground);
 		
-		
-		
-		
+		//bar
+		//bar1=new Scrollbar(Scrollbar.HORIZONTAL,10,30,10,100);
 		
 		//냉장고 버튼들
+		
+		
 		btnIngredients_1=new JButton[4];
+		
 		for(int i=0 ; i<4 ; i++) {
 			btnIngredients_1[i]=new JButton("1");
 			btnIngredients_1[i].setBackground(Color.white);
-			//마진 해야할거임
+			btnIngredients_1[i].setPreferredSize(new Dimension(40,45));
+			//btnIngredients_1[i].setMargin(new Insets(20,20,0,0));//margin이 컨퍼넌트의 간격이 아닌지
+			
 			
 			linePanel1.add(btnIngredients_1[i]);
+			
+			//JScrollPane scrollPane=new JScrollPane(linePanel1);//실행시 사라짐 얘로 인해
+			//scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+			//add(scrollPane);
+			
+			
 		}//1라인
+		
+		/*
+		try {
+		JScrollPane scrollPane;
+		//scrollPane = new JScrollPane(linePanel1);
+		//scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane=new JScrollPane(linePanel1,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		
+		scrollPane.setBounds(0, 60, 100, 5);
+		linePanel1.add(scrollPane);
+		//linePanel1=scrollPane;
+		//linePanel1.add(contentPane);
+		}
+		catch(Exception e) {
+			System.err.println(e);
+		}
+		*/
+		
+		//bar1=new Scrollbar(Scrollbar.HORIZONTAL, 0, 30, 0, 300);
+		//linePanel1.add(bar1);
 		
 		/*
 		for(int i=0 ; i<9 ; i++) {
@@ -127,9 +190,6 @@ public class RefrigeratorScene extends SceneAbst
 		for(int i=0 ; i<7 ; i++) {
 			btnIngredients_6[i]=new JButton();
 		}*///6라인
-		
-		
-		
 	}
 	
 	public void onHide() {
