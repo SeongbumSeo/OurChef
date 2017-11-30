@@ -50,12 +50,16 @@ public class RefrigeratorScene extends SceneAbst
       
       //냉장고 패널
       linePanel1=new JPanel();//main이라고 가정
-      linePanel1.setBounds(210,130,240,65);
+      linePanel1.setLayout(null);
+      linePanel1.setBounds(290,130,410,80);
       linePanel1.setBackground(Color.black);
       add(linePanel1);
       
+      
+      
+      
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-      scrollPanel.setBounds(210, 233, 240, 65);
+      scrollPanel.setBounds(290, 260,410, 80);
       scrollPanel.setBackground(Color.green);
             
       linePanel2=new JPanel();
@@ -64,30 +68,30 @@ public class RefrigeratorScene extends SceneAbst
       scrollPanel.add(linePanel2);
       add(scrollPanel);
       
-      //for (int i=0; i<10; i++) linePanel2.add(new JButton("test"));
-      
-      /*
       linePanel3=new JPanel();
-      linePanel3.setBounds(210,333,240,65);
+      linePanel3.setLayout(null);
+      linePanel3.setBounds(290,370,410,80);
       linePanel3.setBackground(Color.black);
       add(linePanel3);
       
       linePanel4=new JPanel();
-      linePanel4.setBounds(210,420,240,65);
+      linePanel4.setLayout(null);
+      linePanel4.setBounds(290,490,410,80);
       linePanel4.setBackground(Color.black);
       add(linePanel4);
       
       linePanel5=new JPanel();
-      linePanel5.setBounds(210,520,240,65);
+      linePanel5.setLayout(null);
+      linePanel5.setBounds(290,610,410,80);
       linePanel5.setBackground(Color.black);
       add(linePanel5);
       
       linePanel6=new JPanel();
-      linePanel6.setBounds(210,690,240,65);
+      linePanel6.setLayout(null);
+      linePanel6.setBounds(290,760,410,80);
       linePanel6.setBackground(Color.black);
       add(linePanel6);
-      */
-		
+      
       // 배경
       imgBackground = new ImageIcon("images/refBackground.jpg");
       lblBackground = new JLabel();
@@ -98,30 +102,46 @@ public class RefrigeratorScene extends SceneAbst
       btnIngredients_1=new JButton[4];
       for(int i=0 ; i<4 ; i++) {
          btnIngredients_1[i]=new JButton("1");
-         btnIngredients_1[i].setBackground(Color.white);
-         btnIngredients_1[i].setPreferredSize(new Dimension(40,45));
+         btnIngredients_1[i].setBounds(30+100*i, 18, 45, 45);
          linePanel1.add(btnIngredients_1[i]);
       }//1라인
       
       btnIngredients_2=new JButton[9];
       for(int i=0 ; i<9 ; i++) {
          btnIngredients_2[i]=new JButton();
-         btnIngredients_2[i].setPreferredSize(new Dimension(30,30));
+         btnIngredients_2[i].setPreferredSize(new Dimension(45,45));
          linePanel2.add(btnIngredients_2[i]);
       }//2라인
-      /*
+      
+      
+      btnIngredients_3=new JButton[3];
       for(int i=0 ; i<3 ; i++) {
          btnIngredients_3[i]=new JButton();
+         btnIngredients_3[i].setBounds(30+150*i, 18, 45, 45);
+         linePanel3.add(btnIngredients_3[i]);
       }//3라인
+      
+      
+      btnIngredients_4=new JButton[7];
       for(int i=0 ; i<7 ; i++) {
          btnIngredients_4[i]=new JButton();
+         btnIngredients_4[i].setBounds(30+50*i, 18, 45, 45);
+         linePanel4.add(btnIngredients_4[i]);
       }//4라인
+      
+      btnIngredients_5=new JButton[6];
       for(int i=0 ; i<6 ; i++) {
          btnIngredients_5[i]=new JButton();
+         btnIngredients_5[i].setBounds(30+60*i, 18, 45, 45);
+         linePanel5.add(btnIngredients_5[i]);
       }//5라인
+      
+      btnIngredients_6=new JButton[7];
       for(int i=0 ; i<7 ; i++) {
          btnIngredients_6[i]=new JButton();
-      }*///6라인
+         btnIngredients_6[i].setBounds(30+50*i, 18, 45, 45);
+         linePanel6.add(btnIngredients_6[i]);
+      }//6라인
    }
    
    public void onHide() {
