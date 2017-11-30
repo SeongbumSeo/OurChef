@@ -19,6 +19,9 @@ public class RecipeListScene extends SceneAbst
 	// 이벤트
 	private RecipeListener RecipeL;
 	
+	// 아저씨
+    private ImageButton btnMan1, btnMan2;
+	
 	public void onShow() {
 		// 뒤로가기 버튼 및 홈버튼
 	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
@@ -35,6 +38,15 @@ public class RecipeListScene extends SceneAbst
 	    btnGoHome.addActionListener(RecipeL);
 	    add(btnGoHome);
 		
+	    // 아저씨
+	    btnMan1 = new ImageButton("images/man_1.png", 370, -100);
+	    btnMan1.setLocation(370, -100);
+	    btnMan1.setLayout(null);
+	    btnMan1.setContentAreaFilled(false);
+	    btnMan1.setBorderPainted(false);
+	    btnMan1.addActionListener(RecipeL);
+	    add(btnMan1);
+	    
 		// 배경
 		imgBackground = new ImageIcon("./images/recipeListBackground.png");
 		lblBackground = new JLabel();
