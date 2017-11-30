@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.*;
+import java.util.List;
 import javax.swing.*;
 import Scene.*;
 import Data.*;
@@ -8,7 +9,7 @@ import Data.*;
 public class Main
 {
 	private static JFrame frame;
-	private static IngredientList ingredients;
+	private static List<Ingredient> ingredients;
 	
 	/**
 	 * 프로그램의 주 실행 콜백입니다.
@@ -24,7 +25,7 @@ public class Main
 	 * 프로그램을 구동하는데 필요한 모든 데이터를 불러오는 메소드입니다.
 	 */
 	private static void loadData() {
-		ingredients = new IngredientList("data/ingredients.csv");
+		ingredients = Data.Ingredient.load("data/ingredients.csv");
 	}
 	
 	/**

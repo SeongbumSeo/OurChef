@@ -1,5 +1,9 @@
 package Data;
 
+import java.util.*;
+
+import Main.IOManager;
+
 public class Ingredient {
 	private int type;
 	private String name;
@@ -35,5 +39,24 @@ public class Ingredient {
 	}
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	/**
+	 * CSV 파일로부터 재료들을 로드합니다.
+	 * @param filename 대상 CSV 파일
+	 * @return 재료 리스트
+	 */
+	public static List<Ingredient> load(String filename) {
+		List<String[]> data = IOManager.readCSV(filename);
+		Iterator<String[]> itr = data.iterator();
+		String[] row;
+		List<Ingredient> ing = new ArrayList<Ingredient>();
+		
+		while (itr.hasNext()) {
+			row = itr.next();
+			ing.add(new Ingredient(Integer.parseInt(row[0]), row[1], row[2]));
+		}
+		
+		return ing;
 	}
 }
