@@ -10,8 +10,8 @@ import GUI.*;
 public class RefrigeratorScene extends SceneAbst
 {
    // 배경
-   private ImageIcon imgBackground, imgRefrigerator;
-   private JLabel lblBackground, lblRefrigerator;
+   private ImageIcon imgBackground;
+   private JLabel lblBackground;
    
    // 카트
    private JButton btnCart;
@@ -114,16 +114,8 @@ public class RefrigeratorScene extends SceneAbst
       linePanel6.setBackground(Color.black);
       add(linePanel6);
       
-      
-      // 배경_냉장고
-      imgRefrigerator = new ImageIcon("images/refrigerator.png");
-      lblRefrigerator = new JLabel();
-      lblRefrigerator.setIcon(imgRefrigerator);
-      lblRefrigerator.setBounds(150, 35, imgRefrigerator.getIconWidth(), imgRefrigerator.getIconHeight() );
-      add(lblRefrigerator);
-      
       // 배경
-      imgBackground = new ImageIcon("images/background.jpg");
+      imgBackground = new ImageIcon("images/refBackground.jpg");
       lblBackground = new JLabel();
       lblBackground.setIcon(imgBackground);
       lblBackground.setBounds(0, 0, 1600, 900);
