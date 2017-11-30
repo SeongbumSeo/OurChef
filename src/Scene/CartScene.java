@@ -52,14 +52,12 @@ public class CartScene extends SceneAbst
 	    add(btnGoHome);
 		
 		// trash button
-		btnTrash = new ImageButton("images/trash.png");
-		btnTrash.setBounds(1000, 550, 70, 70);
+		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h.png", 1000, 550);
 		btnTrash.addActionListener(CartL);
 		add(btnTrash);
 		
 		// recipe button
-		btnRecipe = new ImageButton("images/recipe.png");
-		btnRecipe.setBounds(1070, 550, 70, 70);
+		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h.png", 1070, 550);
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);
 		
