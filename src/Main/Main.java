@@ -3,18 +3,28 @@ package Main;
 import java.awt.*;
 import javax.swing.*;
 import Scene.*;
+import Data.*;
 
 public class Main
 {
 	private static JFrame frame;
+	private static IngredientList ingredients;
 	
 	/**
 	 * 프로그램의 주 실행 콜백입니다.
 	 * @param args 실행 인자
 	 */
 	public static void main(String[] args) {
+		loadData();
 		showWindow("우리집 셰프님", 1600, 900);
 		switchScene(new IntroScene());
+	}
+	
+	/**
+	 * 프로그램을 구동하는데 필요한 모든 데이터를 불러오는 메소드입니다.
+	 */
+	private static void loadData() {
+		ingredients = new IngredientList("data/ingredients.csv");
 	}
 	
 	/**

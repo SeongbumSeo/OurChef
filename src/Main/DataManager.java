@@ -13,8 +13,9 @@ public class DataManager
 			CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
 			
 			String[] str;
+			reader.readNext(); // 첫 행은 필드명이므로 스킵
 			while ((str = reader.readNext()) != null)
-				data.add(str);
+				data.add(str); // 리스트에 적재
 			
 			reader.close();
 		} catch (Exception e) {

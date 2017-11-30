@@ -9,6 +9,10 @@ public class IngredientList {
 	public IngredientList() {
 		ingredients = new ArrayList<Ingredient>();
 	}
+	public IngredientList(String filename) {
+		ingredients = new ArrayList<Ingredient>();
+		load(filename);
+	}
 	
 	public void load(String filename) {
 		List<String[]> data = DataManager.readCSV(filename);
