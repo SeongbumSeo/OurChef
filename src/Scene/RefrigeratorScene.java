@@ -78,7 +78,7 @@ public class RefrigeratorScene extends SceneAbst
       
       
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-      scrollPanel.setBounds(290, 260,410, 90);
+      scrollPanel.setBounds(265,260,450,80);
       //scrollPanel.setBackground(Color.green);
             
       linePanel2=new JPanel();
