@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import com.opencsv.*;
 
-public class DataManager
+public class IOManager
 {
 	public static List<String[]> readCSV(String filename) {
 		List<String[]> data = new ArrayList<String[]>();

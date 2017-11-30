@@ -15,7 +15,7 @@ public class IngredientList {
 	}
 	
 	public void load(String filename) {
-		List<String[]> data = DataManager.readCSV(filename);
+		List<String[]> data = IOManager.readCSV(filename);
 		Iterator<String[]> itr = data.iterator();
 		String[] row;
 		
