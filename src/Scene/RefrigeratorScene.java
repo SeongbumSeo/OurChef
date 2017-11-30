@@ -13,6 +13,10 @@ public class RefrigeratorScene extends SceneAbst
    private ImageIcon imgBackground;
    private JLabel lblBackground;
    
+   // 뒤로가기
+   private ImageButton btnGoBack;
+   private ImageIcon imgGoBack;
+   
    // 카트
    private JButton btnCart;
    
@@ -57,6 +61,14 @@ public class RefrigeratorScene extends SceneAbst
       add(linePanel1);
       
       
+      // 뒤로가기 버튼
+      imgGoBack = new ImageIcon("images/goBack.png");
+      btnGoBack = new ImageButton("images/goBack.png", 40, 780);
+      btnGoBack.setLayout(null);
+      btnGoBack.setContentAreaFilled(false);
+      btnGoBack.setBorderPainted(false);
+      btnGoBack.addActionListener(refL);
+      add(btnGoBack);
       
       
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
@@ -157,6 +169,8 @@ public class RefrigeratorScene extends SceneAbst
          
          if (obj == btnCart) { // 시작 버튼 클릭
             Main.switchScene(new CartScene());
+         } else if (obj == btnGoBack) {
+        	 
          }
       }
    }
