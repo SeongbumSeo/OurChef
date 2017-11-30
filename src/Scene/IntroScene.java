@@ -86,7 +86,7 @@ public class IntroScene extends SceneAbst
 		pnlAbout.setLayout(null);
 		
 		imgGoBack = new ImageIcon("images/goBack.png");
-		btnGoBack = new ImageButton("images/goBack.png", 40, 780);
+		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
 		btnGoBack.setLayout(null);
 		btnGoBack.setContentAreaFilled(false);
 		btnGoBack.setBorderPainted(false);
