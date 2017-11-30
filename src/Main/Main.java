@@ -10,6 +10,7 @@ public class Main
 {
 	private static JFrame frame;
 	private static List<Ingredient> ingredients;
+	private static List<Recipe> recipes;
 	
 	/**
 	 * 프로그램의 주 실행 콜백입니다.
@@ -26,6 +27,7 @@ public class Main
 	 */
 	private static void loadData() {
 		ingredients = Data.Ingredient.load("data/ingredients.csv");
+		recipes = Data.Recipe.load("data/recipes.csv");
 	}
 	
 	/**

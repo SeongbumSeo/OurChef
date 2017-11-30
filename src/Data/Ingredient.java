@@ -4,16 +4,12 @@ import java.util.*;
 
 import Main.IOManager;
 
-public class Ingredient {
+public class Ingredient
+{
 	private int type;
 	private String name;
 	private String icon;
 	
-	public Ingredient() {
-		type = 0;
-		name = "";
-		icon = "";
-	}
 	public Ingredient(int type, String name, String icon) {
 		this.type = type;
 		this.name = name;
