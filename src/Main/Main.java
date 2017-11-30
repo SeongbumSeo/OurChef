@@ -33,7 +33,6 @@ public class Main
 	 * @param title 윈도우의 타이틀
 	 * @param width 가로 크기
 	 * @param height 세로 크기
-	 * @return
 	 */
 	private static void showWindow(String title, int width, int height) {
 		frame = new JFrame(title);
