@@ -78,7 +78,7 @@ public class RefrigeratorScene extends SceneAbst
       
       
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-      scrollPanel.setBounds(290, 260,410, 80);
+      scrollPanel.setBounds(290, 260,410, 90);
       //scrollPanel.setBackground(Color.green);
             
       linePanel2=new JPanel();
@@ -129,7 +129,7 @@ public class RefrigeratorScene extends SceneAbst
       btnIngredients_2=new JButton[9];
       for(int i=0 ; i<9 ; i++) {
          btnIngredients_2[i]=new JButton();
-         btnIngredients_2[i].setPreferredSize(new Dimension(45,45));
+         btnIngredients_2[i].setPreferredSize(new Dimension(44,44));
          linePanel2.add(btnIngredients_2[i]);
       }//2라인
       
