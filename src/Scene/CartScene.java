@@ -9,18 +9,18 @@ import GUI.*;
 
 public class CartScene extends SceneAbst
 {
-	// ¹è°æ
+	// ë°°ê²½
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
 	
-	// Àç·á
+	// ì¬ë£Œ
 	private JPanel ingredients;
 	private ImageIcon imgContainer;
 	
-	// ¹öÆ°
+	// ë²„íŠ¼
 	private JButton btnTrash, btnRecipe;
 	
-	// ÀÌº¥Æ®
+	// ì´ë²¤íŠ¸
 	private CartListener CartL;
 	
 	public void onShow() {
@@ -45,7 +45,7 @@ public class CartScene extends SceneAbst
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);
 		
-		// ¹è°æ
+		// ë°°ê²½
 		imgBackground = new ImageIcon("./images/cartBackground.jpg");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
@@ -63,11 +63,11 @@ public class CartScene extends SceneAbst
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
 			
-			if (obj == btnTrash) { // ¾²·¹±âÅë ¹öÆ° Å¬¸¯
-				// ¼±ÅÃµÈ Àç·áµé »èÁ¦
+			if (obj == btnTrash) { // ì“°ë ˆê¸°í†µ ë²„íŠ¼ í´ë¦­
+				// ì„ íƒëœ ì¬ë£Œë“¤ ì‚­ì œ
 				
-			} else if (obj == btnRecipe) { // ·¹½ÃÇÇ ¹öÆ° Å¬¸¯
-				// RecipeListSceneÀ¸·Î ÀÌµ¿
+			} else if (obj == btnRecipe) { // ë ˆì‹œí”¼ ë²„íŠ¼ í´ë¦­
+				// RecipeListSceneìœ¼ë¡œ ì´ë™
 				Main.switchScene(new RecipeListScene());
 			}
 		}

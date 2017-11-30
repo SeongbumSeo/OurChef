@@ -9,201 +9,201 @@ import GUI.*;
 
 public class RefrigeratorScene extends SceneAbst
 {
-	// πË∞Ê
-	private ImageIcon imgBackground, imgRefrigerator;
-	private JLabel lblBackground, lblRefrigerator;
-	
-	// ƒ´∆Æ
-	private JButton btnCart;
-	
-	//ƒ≠ ∆–≥Œ
-	JPanel linePanel1;
-	JPanel linePanel2;
-	JPanel linePanel3;
-	JPanel linePanel4;
-	JPanel linePanel5;
-	JPanel linePanel6;
-	//≥™¡ﬂø° πËø≠ ∞Ì∑¡
-	
-	
-	//ƒ≠∫∞ πˆ∆∞
-	private JButton[] btnIngredients_1;
-	private JButton[] btnIngredients_2;
-	private JButton[] btnIngredients_3;
-	private JButton[] btnIngredients_4;
-	private JButton[] btnIngredients_5;
-	private JButton[] btnIngredients_6;
-	
-	//ƒ≠∫∞ Ω∫≈©∑—πŸ
-	Scrollbar bar1,bar2,bar3,bar4,bar5,bar6;
-	
-	// ¿Ã∫•∆Æ
-	private RefrigeratorListener refL;
-	
-	public void onShow() {
-		refL = new RefrigeratorListener();
-		
-		// CartScene¿∏∑Œ ≥—æÓ∞°¥¬ πˆ∆∞ √ﬂ∞°
-		btnCart = new ImageButton("images/cart.png", 870, 380);
-		btnCart.addActionListener(refL);
-		add(btnCart);
-		
-		
-		
-		/*
-		GridBagLayout g=new GridBagLayout();
-		GridBagConstraints con=new GridBagConstraints();
-		con.fill=GridBagConstraints.BOTH;
+   // Î∞∞Í≤Ω
+   private ImageIcon imgBackground, imgRefrigerator;
+   private JLabel lblBackground, lblRefrigerator;
+   
+   // Ïπ¥Ìä∏
+   private JButton btnCart;
+   
+   //Ïπ∏ Ìå®ÎÑê
+   JPanel linePanel1;
+   JPanel linePanel2;
+   JPanel linePanel3;
+   JPanel linePanel4;
+   JPanel linePanel5;
+   JPanel linePanel6;
+   //ÎÇòÏ§ëÏóê Î∞∞Ïó¥ Í≥†Î†§
+   
+   
+   //Ïπ∏Î≥Ñ Î≤ÑÌäº
+   private JButton[] btnIngredients_1;
+   private JButton[] btnIngredients_2;
+   private JButton[] btnIngredients_3;
+   private JButton[] btnIngredients_4;
+   private JButton[] btnIngredients_5;
+   private JButton[] btnIngredients_6;
+   
+   //Ïπ∏Î≥Ñ Ïä§ÌÅ¨Î°§Î∞î
+   Scrollbar bar1,bar2,bar3,bar4,bar5,bar6;
+   
+   // Ïù¥Î≤§Ìä∏
+   private RefrigeratorListener refL;
+   
+   public void onShow() {
+      refL = new RefrigeratorListener();
+      
+      // CartSceneÏúºÎ°ú ÎÑòÏñ¥Í∞ÄÎäî Î≤ÑÌäº Ï∂îÍ∞Ä
+      btnCart = new ImageButton("images/cart.png", 870, 380);
+      btnCart.addActionListener(refL);
+      add(btnCart);
+      
+      
+      
+      /*
+      GridBagLayout g=new GridBagLayout();
+      GridBagConstraints con=new GridBagConstraints();
+      con.fill=GridBagConstraints.BOTH;
         con.weightx = 1.0;
         con.gridwidth = GridBagConstraints.REMAINDER;
         con.gridheight = 1;
         con.weighty = 1;
-		
+      
         */
-		//≥√¿Â∞Ì ∆–≥Œ
-		linePanel1=new JPanel();//main¿Ã∂Û∞Ì ∞°¡§
-		linePanel1.setBounds(210,130,240,65);
-		linePanel1.setBackground(Color.black);
-		
-		JPanel newPanel = new JPanel();
-		
-		
-		//linePanel1.setLayout(null);
-		//linePanel1.setLayout(g);
-		add(linePanel1);
-		
-		
-		ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-		
-		scrollPanel.setBounds(210, 233, 240, 65);
-		scrollPanel.setBackground(Color.green);
-		//scrollPanel.setLayout(null);
-		
-		
-		linePanel2=new JPanel();
-		//linePanel2.setBounds(210,233,240,65);
-		//linePanel2.setBounds(0,0,240,65);
-		linePanel2.setLayout(new FlowLayout());
-		linePanel2.setBackground(Color.black);
-		
-		scrollPanel.add(linePanel2);
-			
-		
-		add(scrollPanel);
-		
-		for (int i=0; i<10; i++) linePanel2.add(new JButton("test"));
-		
-		
-		linePanel3=new JPanel();
-		linePanel3.setBounds(210,333,240,65);
-		linePanel3.setBackground(Color.black);
-		add(linePanel3);
-		
-		linePanel4=new JPanel();
-		linePanel4.setBounds(210,420,240,65);
-		linePanel4.setBackground(Color.black);
-		add(linePanel4);
-		
-		linePanel5=new JPanel();
-		linePanel5.setBounds(210,520,240,65);
-		linePanel5.setBackground(Color.black);
-		add(linePanel5);
-		
-		linePanel6=new JPanel();
-		linePanel6.setBounds(210,690,240,65);
-		linePanel6.setBackground(Color.black);
-		add(linePanel6);
-		
-		
-		// πË∞Ê_≥√¿Â∞Ì
-		imgRefrigerator = new ImageIcon("images/refrigerator.png");
-		lblRefrigerator = new JLabel();
-		lblRefrigerator.setIcon(imgRefrigerator);
-		lblRefrigerator.setBounds(150, 35, imgRefrigerator.getIconWidth(), imgRefrigerator.getIconHeight() );
-		add(lblRefrigerator);
-		
-		// πË∞Ê
-		imgBackground = new ImageIcon("images/background.jpg");
-		lblBackground = new JLabel();
-		lblBackground.setIcon(imgBackground);
-		lblBackground.setBounds(0, 0, 1600, 900);
-		add(lblBackground);
-		
-		//bar
-		//bar1=new Scrollbar(Scrollbar.HORIZONTAL,10,30,10,100);
-		
-		//≥√¿Â∞Ì πˆ∆∞µÈ
-		
-		
-		btnIngredients_1=new JButton[4];
-		
-		for(int i=0 ; i<4 ; i++) {
-			btnIngredients_1[i]=new JButton("1");
-			btnIngredients_1[i].setBackground(Color.white);
-			btnIngredients_1[i].setPreferredSize(new Dimension(40,45));
-			//btnIngredients_1[i].setMargin(new Insets(20,20,0,0));//margin¿Ã ƒ¡∆€≥Õ∆Æ¿« ∞£∞›¿Ã æ∆¥—¡ˆ
-			
-			
-			linePanel1.add(btnIngredients_1[i]);
-			
-			//JScrollPane scrollPane=new JScrollPane(linePanel1);//Ω««‡Ω√ ªÁ∂Û¡¸ æÍ∑Œ ¿Œ«ÿ
-			//scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-			//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-			//add(scrollPane);
-			
-			
-		}//1∂Û¿Œ
-		
-		/*
-		try {
-		JScrollPane scrollPane;
-		//scrollPane = new JScrollPane(linePanel1);
-		//scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane=new JScrollPane(linePanel1,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-		
-		scrollPane.setBounds(0, 60, 100, 5);
-		linePanel1.add(scrollPane);
-		//linePanel1=scrollPane;
-		//linePanel1.add(contentPane);
-		}
-		catch(Exception e) {
-			System.err.println(e);
-		}
-		*/
-		
-		//bar1=new Scrollbar(Scrollbar.HORIZONTAL, 0, 30, 0, 300);
-		//linePanel1.add(bar1);
-		
-		/*
-		for(int i=0 ; i<9 ; i++) {
-			btnIngredients_2[i]=new JButton();
-		}//2∂Û¿Œ
-		for(int i=0 ; i<3 ; i++) {
-			btnIngredients_3[i]=new JButton();
-		}//3∂Û¿Œ
-		for(int i=0 ; i<7 ; i++) {
-			btnIngredients_4[i]=new JButton();
-		}//4∂Û¿Œ
-		for(int i=0 ; i<6 ; i++) {
-			btnIngredients_5[i]=new JButton();
-		}//5∂Û¿Œ
-		for(int i=0 ; i<7 ; i++) {
-			btnIngredients_6[i]=new JButton();
-		}*///6∂Û¿Œ
-	}
-	
-	public void onHide() {
-		
-	}
-	
-	private class RefrigeratorListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event) {
-			Object obj = event.getSource();
-			
-			if (obj == btnCart) { // Ω√¿€ πˆ∆∞ ≈¨∏Ø
-				Main.switchScene(new CartScene());
-			}
-		}
-	}
+      //ÎÉâÏû•Í≥† Ìå®ÎÑê
+      linePanel1=new JPanel();//mainÏù¥ÎùºÍ≥† Í∞ÄÏ†ï
+      linePanel1.setBounds(210,130,240,65);
+      linePanel1.setBackground(Color.black);
+      
+      JPanel newPanel = new JPanel();
+      
+      
+      //linePanel1.setLayout(null);
+      //linePanel1.setLayout(g);
+      add(linePanel1);
+      
+      
+      ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_ALWAYS);
+      
+      scrollPanel.setBounds(210, 233, 240, 65);
+      scrollPanel.setBackground(Color.green);
+      //scrollPanel.setLayout(null);
+      
+      
+      linePanel2=new JPanel();
+      //linePanel2.setBounds(210,233,240,65);
+      //linePanel2.setBounds(0,0,240,65);
+      linePanel2.setLayout(new FlowLayout());
+      linePanel2.setBackground(Color.black);
+      
+      scrollPanel.add(linePanel2);
+         
+      
+      add(scrollPanel);
+      
+      for (int i=0; i<10; i++) linePanel2.add(new JButton("test"));
+      
+      
+      linePanel3=new JPanel();
+      linePanel3.setBounds(210,333,240,65);
+      linePanel3.setBackground(Color.black);
+      add(linePanel3);
+      
+      linePanel4=new JPanel();
+      linePanel4.setBounds(210,420,240,65);
+      linePanel4.setBackground(Color.black);
+      add(linePanel4);
+      
+      linePanel5=new JPanel();
+      linePanel5.setBounds(210,520,240,65);
+      linePanel5.setBackground(Color.black);
+      add(linePanel5);
+      
+      linePanel6=new JPanel();
+      linePanel6.setBounds(210,690,240,65);
+      linePanel6.setBackground(Color.black);
+      add(linePanel6);
+      
+      
+      // Î∞∞Í≤Ω_ÎÉâÏû•Í≥†
+      imgRefrigerator = new ImageIcon("images/refrigerator.png");
+      lblRefrigerator = new JLabel();
+      lblRefrigerator.setIcon(imgRefrigerator);
+      lblRefrigerator.setBounds(150, 35, imgRefrigerator.getIconWidth(), imgRefrigerator.getIconHeight() );
+      add(lblRefrigerator);
+      
+      // Î∞∞Í≤Ω
+      imgBackground = new ImageIcon("images/background.jpg");
+      lblBackground = new JLabel();
+      lblBackground.setIcon(imgBackground);
+      lblBackground.setBounds(0, 0, 1600, 900);
+      add(lblBackground);
+      
+      //bar
+      //bar1=new Scrollbar(Scrollbar.HORIZONTAL,10,30,10,100);
+      
+      //ÎÉâÏû•Í≥† Î≤ÑÌäºÎì§
+      
+      
+      btnIngredients_1=new JButton[4];
+      
+      for(int i=0 ; i<4 ; i++) {
+         btnIngredients_1[i]=new JButton("1");
+         btnIngredients_1[i].setBackground(Color.white);
+         btnIngredients_1[i].setPreferredSize(new Dimension(40,45));
+         //btnIngredients_1[i].setMargin(new Insets(20,20,0,0));//marginÏù¥ Ïª®ÌçºÎÑåÌä∏Ïùò Í∞ÑÍ≤©Ïù¥ ÏïÑÎãåÏßÄ
+         
+         
+         linePanel1.add(btnIngredients_1[i]);
+         
+         //JScrollPane scrollPane=new JScrollPane(linePanel1);//Ïã§ÌñâÏãú ÏÇ¨ÎùºÏßê ÏñòÎ°ú Ïù∏Ìï¥
+         //scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+         //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+         //add(scrollPane);
+         
+         
+      }//1ÎùºÏù∏
+      
+      /*
+      try {
+      JScrollPane scrollPane;
+      //scrollPane = new JScrollPane(linePanel1);
+      //scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+      scrollPane=new JScrollPane(linePanel1,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+      
+      scrollPane.setBounds(0, 60, 100, 5);
+      linePanel1.add(scrollPane);
+      //linePanel1=scrollPane;
+      //linePanel1.add(contentPane);
+      }
+      catch(Exception e) {
+         System.err.println(e);
+      }
+      */
+      
+      //bar1=new Scrollbar(Scrollbar.HORIZONTAL, 0, 30, 0, 300);
+      //linePanel1.add(bar1);
+      
+      /*
+      for(int i=0 ; i<9 ; i++) {
+         btnIngredients_2[i]=new JButton();
+      }//2ÎùºÏù∏
+      for(int i=0 ; i<3 ; i++) {
+         btnIngredients_3[i]=new JButton();
+      }//3ÎùºÏù∏
+      for(int i=0 ; i<7 ; i++) {
+         btnIngredients_4[i]=new JButton();
+      }//4ÎùºÏù∏
+      for(int i=0 ; i<6 ; i++) {
+         btnIngredients_5[i]=new JButton();
+      }//5ÎùºÏù∏
+      for(int i=0 ; i<7 ; i++) {
+         btnIngredients_6[i]=new JButton();
+      }*///6ÎùºÏù∏
+   }
+   
+   public void onHide() {
+      
+   }
+   
+   private class RefrigeratorListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent event) {
+         Object obj = event.getSource();
+         
+         if (obj == btnCart) { // ÏãúÏûë Î≤ÑÌäº ÌÅ¥Î¶≠
+            Main.switchScene(new CartScene());
+         }
+      }
+   }
 }
