@@ -21,13 +21,14 @@ public class IntroScene extends SceneAbst
 	private JPanel pnlAbout;
 	private JLabel lblAbout;
 	private ImageButton btnGoBack;
-	private ImageIcon imgPnlBackground, imgGoBack;
-	
 	
 	private IntroListener introL;	
 	
 	public void onShow() {
 		introL = new IntroListener();
+		
+		// 사용 방법 패널 생성
+		createAboutPanel();
 		
 		// 사용 방법 버튼 추가
 		btnAbout = new ImageButton("images/bottle.png", "images/bottle_h.png", 350, 395);
@@ -38,9 +39,6 @@ public class IntroScene extends SceneAbst
 		btnStart = new ImageButton("images/basket.png","images/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
-		btnStart2 = new ImageButton("images/basket.png","images/basket_h.png", 1180, 630);
-		btnStart2.addActionListener(introL);
-		add(btnStart2);
 		
 		// 배경 설정
 		imgBackground = new ImageIcon("images/imgBackground.jpg");
@@ -48,33 +46,10 @@ public class IntroScene extends SceneAbst
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
 		add(lblBackground);
-		
-		// 사용 방법 패널 생성
-		btnStart2.setVisible(false);
-		createAboutPanel();
-		btnGoBack.setVisible(false);
 	}
 	
 	public void onHide() {
 		
-	}
-	
-	public void onStartHide() {
-		btnAbout.setVisible(false);
-		btnStart.setVisible(false);
-		lblBackground.setVisible(false);
-	}
-	
-	public void onStartShow() {
-		btnAbout.setVisible(true);
-		btnStart.setVisible(true);
-		lblBackground.setVisible(true);
-	}
-	
-	public void onAboutHide() {
-		pnlAbout.setVisible(false);
-		btnGoBack.setVisible(false);
-		btnStart2.setVisible(false);
 	}
 	
 	/**
@@ -84,8 +59,12 @@ public class IntroScene extends SceneAbst
 		pnlAbout = new JPanel();
 		pnlAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.setLayout(null);
+		pnlAbout.setVisible(false);
+
+		btnStart2 = new ImageButton("images/basket.png","images/basket_h.png", 1180, 630);
+		btnStart2.addActionListener(introL);
+		pnlAbout.add(btnStart2);
 		
-		imgGoBack = new ImageIcon("images/goBack.png");
 		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
 		btnGoBack.setLayout(null);
 		btnGoBack.setContentAreaFilled(false);
@@ -93,14 +72,13 @@ public class IntroScene extends SceneAbst
 		btnGoBack.addActionListener(introL);
 		pnlAbout.add(btnGoBack);
 		
-		imgPnlBackground = new ImageIcon("images/imgPnlBackground.png");
 		lblAbout = new JLabel();
-		lblAbout.setIcon(imgPnlBackground);
+		lblAbout.setIcon(new ImageIcon("images/imgPnlBackground.png"));
 		lblAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.add(lblAbout);
 		
-		add(pnlAbout);		
-	} // createAboutPanel()
+		add(pnlAbout);
+	}
 	
 	private class IntroListener implements ActionListener
 	{
@@ -108,15 +86,11 @@ public class IntroScene extends SceneAbst
 			Object obj = event.getSource();
 			
 			if (obj == btnAbout) { // 사용 방법 버튼 클릭
-				onStartHide();
 				pnlAbout.setVisible(true);
-				btnGoBack.setVisible(true);
-				btnStart2.setVisible(true);
-			} else if (obj == btnStart) {// 시작 버튼 클릭
+			} else if (obj == btnStart) { // 시작 버튼 클릭
 				Main.switchScene(new RefrigeratorScene());
-			} else if (obj == btnGoBack) {
-				onAboutHide();
-				onStartShow();
+			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
+				pnlAbout.setVisible(false);
 			}
 		}
 	}
