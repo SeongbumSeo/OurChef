@@ -7,6 +7,7 @@ import javax.swing.*;
 public class Animation
 {
 	private Component comp;
+	private AnimationListener listener;
 	private int speed;
 	private int destX, destY;
 	private int startX, startY;
@@ -16,8 +17,9 @@ public class Animation
 	private double angle;
 	private Timer timer;
 	
-	public Animation(Component comp) {
+	public Animation(Component comp, AnimationListener listener) {
 		this.comp = comp; // 애니메이션 대상 컴포넌트
+		this.listener = listener; // 애니메이션 리스너 객체
 	}
 	
 	public void move(int destX, int destY, int speed) {
@@ -53,6 +55,9 @@ public class Animation
 				// 타이머 정지
 				timer.stop();
 				timer = null;
+				
+				// 리스너의 완료 콜백 호출
+				listener.onCompleted();
 			} else {
 				comp.setLocation(x, y);
 			}
