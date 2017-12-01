@@ -87,7 +87,7 @@ public class IntroScene extends SceneAbst
 			
 			if (obj == btnAbout) { // 사용 방법 버튼 클릭
 				pnlAbout.setVisible(true);
-			} else if (obj == btnStart) { // 시작 버튼 클릭
+			} else if (obj == btnStart || obj == btnStart2) { // 시작 버튼 클릭
 				Main.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				pnlAbout.setVisible(false);
