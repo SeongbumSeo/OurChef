@@ -6,26 +6,40 @@ import javax.swing.*;
 
 public class Animation
 {
+	// 공통으로 사용되는 인스턴스 데이터
 	private Component comp;
 	private AnimationListener listener;
 	private int speed;
+	private long startTime;
+	private Timer timer;
+	
+	// 이동 애니메이션에 사용
 	private int destX, destY;
 	private int startX, startY;
 	private int directionX, directionY;
-	private long startTime;
 	private double distance;
 	private double angle;
-	private Timer timer;
 	
+	/**
+	 * 애니메이션의 생성자입니다.
+	 * @param comp 애니메이션 대상 컴포넌트
+	 * @param listener 애니메이션 리스너 객체
+	 */
 	public Animation(Component comp, AnimationListener listener) {
 		this.comp = comp; // 애니메이션 대상 컴포넌트
 		this.listener = listener; // 애니메이션 리스너 객체
 	}
 	
+	/**
+	 * 이동 애니메이션을 실행하는 메소드입니다.
+	 * @param destX 목적 좌표 X
+	 * @param destY 목적 좌표 Y
+	 * @param speed 이동 속도
+	 */
 	public void move(int destX, int destY, int speed) {
 		this.destX = destX; // 목적 좌표 X
 		this.destY = destY; // 목적 좌표 Y
-		this.speed = speed; // 속도
+		this.speed = speed; // 이동 속도
 		
 		startX = comp.getX(); // 출발 좌표 X
 		startY = comp.getY(); // 출발 좌표 Y
@@ -40,6 +54,9 @@ public class Animation
 		timer.start();
 	}
 	
+	/**
+	 * 타이머의 이벤트 리스너입니다.
+	 */
 	private class TimerListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) {
