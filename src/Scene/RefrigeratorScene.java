@@ -17,7 +17,7 @@ public class RefrigeratorScene extends SceneAbst
    private ImageButton btnGoBack, btnGoHome;
    
    // 카트
-   private JButton btnCart;
+   private ImageButton btnCart;
    
    //칸 패널
    JPanel linePanel1;

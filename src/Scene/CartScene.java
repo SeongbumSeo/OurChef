@@ -18,7 +18,7 @@ public class CartScene extends SceneAbst
 	private ImageIcon imgContainer;
 	
 	// 버튼
-	private JButton btnTrash, btnRecipe;
+	private ImageButton btnTrash, btnRecipe;
 	
 	// 뒤로가기 및 홈버튼
 	private ImageButton btnGoBack, btnGoHome;
