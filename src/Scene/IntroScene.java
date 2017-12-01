@@ -36,7 +36,7 @@ public class IntroScene extends SceneAbst
 		add(btnAbout);
 		
 		// 시작 버튼 추가
-		btnStart = new ImageButton("images/basket.png","images/basket_h.png", 1090, 558);
+		btnStart = new ImageButton("images/basket.png", "images/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
 		
@@ -61,7 +61,7 @@ public class IntroScene extends SceneAbst
 		pnlAbout.setLayout(null);
 		pnlAbout.setVisible(false);
 
-		btnStart2 = new ImageButton("images/basket.png","images/basket_h.png", 1180, 630);
+		btnStart2 = new ImageButton("images/basket.png", "images/basket_h.png", 1180, 630);
 		btnStart2.addActionListener(introL);
 		pnlAbout.add(btnStart2);
 		
