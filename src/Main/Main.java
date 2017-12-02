@@ -46,6 +46,7 @@ public class Main
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 윈도우 종료 시 프로세스 정리
 		frame.setResizable(false); // 사이즈 조정 불가
 		frame.setPreferredSize(new Dimension(width, height)); // 프레임 크기 지정
+		frame.setBackground(Color.black); // 기본 배경색 지정
 		frame.pack(); // 윈도우 사이즈를 프레임에 맞춤
 	}
 	
