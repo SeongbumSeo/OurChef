@@ -1,9 +1,11 @@
 package Scene;
 
 import java.awt.event.*;
+import java.util.Iterator;
 import java.awt.*;
 import javax.swing.*;
-import Main.Main;
+import Data.*;
+import Main.*;
 import Scene.*;
 import GUI.*;
 
@@ -22,13 +24,13 @@ public class RecipeListScene extends SceneAbst
    // 아저씨
     private ImageButton fish;
    
-    //JScrollPane scrollPane;
-    JPanel panel;
+    private JScrollPane pnlRecipesScroll;
+    private JPanel pnlRecipes;
     
     //JButton b1,b2,b3,b4,b5,b6;
     
     // 레시피
-    private JPanel pnlRecipe;
+    private JPanel pnlItem;
     private ImageIcon IconDish, IconDish2;
     private ImageIcon IconStar, IconStar2;
     private JLabel lblDish, lblName, lblStar;
@@ -39,64 +41,68 @@ public class RecipeListScene extends SceneAbst
     
    public void onShow() {
       RecipeL = new RecipeListener();
+
+      pnlRecipes = new JPanel();
+      pnlRecipes.setLayout(new GridLayout(0, 1));
+      pnlRecipes.setOpaque(false);
+      pnlRecipesScroll = new JScrollPane(pnlRecipes);
+      pnlRecipesScroll.setBounds(133, 150, 1360, 250);
+      pnlRecipesScroll.getViewport().setOpaque(false);
+      pnlRecipesScroll.setOpaque(false);
+      pnlRecipesScroll.setBorder(null);
+      add(pnlRecipesScroll);
       
-      //test
-      ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-      scrollPanel.setBounds(133, 150, 1360, 250);
-      //scrollPanel.setBackground(Color.green);
-      
-      // 레시피 패널
-      pnlRecipe = new JPanel();
-      pnlRecipe.setLayout(null);
-      pnlRecipe.setBounds(155,500, 500, 180);
-      pnlRecipe.setBorder(BorderFactory.createLineBorder(new Color(166,166,166)));
-      pnlRecipe.setOpaque(false);
-      
-      IconDish = new ImageIcon("./images/recipe/ahi poke/image.png");
-      Image imgDish = IconDish.getImage();
-      imgDish = imgDish.getScaledInstance(240, 135, java.awt.Image.SCALE_SMOOTH);
-      IconDish2 = new ImageIcon(imgDish);
-      
-      lblDish = new JLabel();
-      lblDish.setIcon(IconDish2);
-      lblDish.setLayout(null);
-      lblDish.setBounds(20, 23, 240, 135);
-      lblDish.setOpaque(false);
-      
-      lblName = new JLabel("Ahi poke");
-      lblName.setHorizontalAlignment(SwingConstants.CENTER);
-      lblName.setLayout(null);
-      lblName.setBounds(270,30,210,40);
-      
-      IconStar = new ImageIcon("./images/star/one.png");
-      Image imgStar = IconStar.getImage();
-      imgStar = imgStar.getScaledInstance(210, 38, java.awt.Image.SCALE_SMOOTH);
-      IconStar2 = new ImageIcon(imgStar);
-      
-      lblStar = new JLabel();
-      lblStar.setIcon(IconStar2);
-      lblStar.setLayout(null);
-      lblStar.setBounds(285, 100, 210, 40);
-      
-      pnlRecipe.add(lblStar);
-      pnlRecipe.add(lblName);
-      pnlRecipe.add(lblDish);
-      
-      add(pnlRecipe);
-      
-      
-      
-      
-      panel=new JPanel();
-      panel.setLayout(new FlowLayout());
-      panel.setOpaque(false);
-      scrollPanel.add(panel);
-      add(scrollPanel);
+      // 레시피 버튼 추가
+      btnRecipe = new JButton[Main.getRecipes().size()];
+      Iterator<Recipe> itr = Main.getRecipes().iterator();
+      for (int i = 0; itr.hasNext(); i++) {
+    	  Recipe item = itr.next();
+    	  
+    	  btnRecipe[i] = new JButton();
+    	  btnRecipe[i].setPreferredSize(new Dimension(530,200));//안먹음
+    	  btnRecipe[i].setContentAreaFilled(false); // 버튼 바탕색 제거
+    	  btnRecipe[i].setBorderPainted(false); // 버튼 테두리 제거
+    	  pnlRecipes.add(btnRecipe[i]);
+
+          // 레시피 버튼 내부의 패널
+          pnlItem = new JPanel();
+          pnlItem.setLayout(null);
+          pnlItem.setBounds(155, 500, 500, 180);
+          pnlItem.setBorder(BorderFactory.createLineBorder(new Color(166,166,166)));
+          pnlItem.setOpaque(false);
+          
+          IconDish = new ImageIcon(item.getIcon()); // 아이콘
+          Image imgDish = IconDish.getImage();
+          imgDish = imgDish.getScaledInstance(240, 135, java.awt.Image.SCALE_SMOOTH);
+          IconDish2 = new ImageIcon(imgDish);
+          
+          lblDish = new JLabel();
+          lblDish.setIcon(IconDish2);
+          lblDish.setLayout(null);
+          lblDish.setBounds(20, 23, 240, 135);
+          lblDish.setOpaque(false);
+          
+          lblName = new JLabel(item.getName()); // 이름
+          lblName.setHorizontalAlignment(SwingConstants.CENTER);
+          lblName.setLayout(null);
+          lblName.setBounds(270,30,210,40);
+          
+          IconStar = new ImageIcon("./images/star/" + item.getLevel() + ".png"); // 난이도 별(star) 이미지
+          Image imgStar = IconStar.getImage();
+          imgStar = imgStar.getScaledInstance(210, 38, java.awt.Image.SCALE_SMOOTH);
+          IconStar2 = new ImageIcon(imgStar);
+          
+          lblStar = new JLabel();
+          lblStar.setIcon(IconStar2);
+          lblStar.setLayout(null);
+          lblStar.setBounds(285, 100, 210, 40);
+          
+          pnlItem.add(lblStar);
+          pnlItem.add(lblName);
+          pnlItem.add(lblDish);
+          btnRecipe[i].add(pnlItem);
+      }
        
-      
-      
-      
-      
       // 뒤로가기 버튼 및 홈버튼
       btnGoBack = new ImageButton("images/goBack.png", 7, 810);
       btnGoBack.setLayout(null);
@@ -126,50 +132,9 @@ public class RecipeListScene extends SceneAbst
       lblBackground = new JLabel();
       lblBackground.setIcon(imgBackground);
       lblBackground.setBounds(0, 0, 1600, 900);
-      
       lblBackground.setLayout(null);
-      
       add(lblBackground);
-      
-      
-      //
-      //panel = new JPanel();
-      //panel.setLayout(new GridLayout(5,1,0,200));
-      /*
-      GridBagLayout gridbag = new GridBagLayout();
-       panel.setLayout(gridbag);*/
-      //panel.setLayout(null);
-       
-       
-       
-       
-       
-       /*
-        scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBounds(120, 100, 530, 700);
-        lblBackground.add(scrollPane);
-       
-      
-       GridBagConstraints constraint = new GridBagConstraints();
-       
-       constraint.fill=GridBagConstraints.BOTH;
-       constraint.gridwidth = GridBagConstraints.REMAINDER;
-       constraint.gridheight = 1;
-       constraint.weightx = 1;
-       constraint.weighty = 1;
-       //constraint.ipady=1;
-       */
-       
-
-       btnRecipe=new JButton[10];
-       
-       for(int i=0 ; i<10 ; i++) {
-          btnRecipe[i]=new JButton("1");
-          btnRecipe[i].setPreferredSize(new Dimension(530,200));//안먹음
-          //gridbag.setConstraints(btnRecipe[i], constraint);
-          panel.add(btnRecipe[i]);
-         }// 수정하셔야 해요 일정 갯수 넣어놓음
-       }
+   }
       
    public void onHide() {
          
