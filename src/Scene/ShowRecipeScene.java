@@ -12,9 +12,26 @@ public class ShowRecipeScene extends SceneAbst
 	// 배경
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
+	
+	// 뒤로가기 및 홈버튼
+	private ImageButton btnGoBack, btnGoHome;
 
 	public void onShow() {
 	
+		// 뒤로가기 버튼 및 홈버튼
+	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+	    btnGoBack.setLayout(null);
+	    btnGoBack.setContentAreaFilled(false);
+	    btnGoBack.setBorderPainted(false);
+	    btnGoBack.addActionListener(RecipeL);
+	    add(btnGoBack);
+	        
+	    btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+	    btnGoHome.setLayout(null);
+	    btnGoHome.setContentAreaFilled(false);
+	    btnGoHome.setBorderPainted(false);
+	    btnGoHome.addActionListener(RecipeL);
+	    add(btnGoHome);
 		
 		// 배경
 	    imgBackground = new ImageIcon("./images/showRecipeBackground.png");
