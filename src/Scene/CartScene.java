@@ -61,7 +61,7 @@ public class CartScene extends SceneAbst
 			
 			// 재료 버튼
 			btnIngredients[i] = new JButton();
-			btnIngredients[i].setPreferredSize(new Dimension(100, 70));
+			btnIngredients[i].setPreferredSize(new Dimension(100, 100));
 			btnIngredients[i].setContentAreaFilled(false); // 버튼 바탕색 제거
 			btnIngredients[i].setBorderPainted(false); // 버튼 테두리 제거
 			pnlIngredients.add(btnIngredients[i]);
