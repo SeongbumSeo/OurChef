@@ -26,8 +26,33 @@ public class CartScene extends SceneAbst
 	// 이벤트
 	private CartListener CartL;
 	
+	// 패널 임시
+	private JPanel ing;
+	   
+	// 현재 레시피
+	private JButton[] btnIngredients;
+	
 	public void onShow() {
 		CartL = new CartListener();
+		
+		// 카트 안에 들어있는 목록들   
+        ing = new JPanel();
+        ing.setLayout(new GridLayout(12,1));
+        ing.setOpaque(false);
+                
+        btnIngredients=new JButton[12];
+        for(int i=0 ; i<12 ; i++) {
+              btnIngredients[i]=new JButton("1");
+              btnIngredients[i].setBounds(30+30*i, 18, 45, 45);
+              ing.add(btnIngredients[i]);
+          }//1라인
+                
+        JScrollPane scrollPanel = new JScrollPane(ing);
+        scrollPanel.setBounds(1200, 200, 100, 400);
+        scrollPanel.getViewport().setOpaque(false);
+        scrollPanel.setOpaque(false);
+        scrollPanel.setBorder(null);
+        add(scrollPanel);
 		
 		// ingredients
 		ingredients = new JPanel();
