@@ -16,6 +16,10 @@ public class ShowRecipeScene extends SceneAbst
 	// 뒤로가기 및 홈버튼
 	private ImageButton btnGoBack, btnGoHome;
 	
+	// 레시피 패널
+	private JPanel pnlShowRecipe;
+	private ImageButton btnPrev, btnNext;
+	
 	// 이벤트
 	private ShowListener ShowL;
 
