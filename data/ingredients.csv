@@ -1,37 +1,37 @@
-type,name,icon
-1,bread,./images/ingredients/BREAD.png
-1,flour,./images/ingredients/FLOUR.png
-1,pasta,./images/ingredients/PASTA.png
-1,tortilla,./images/ingredients/TORTILLA.png
-2,beef,./images/ingredients/BEEF.png
-2,chrizo,./images/ingredients/CHORIZO.png
-2,crab,./images/ingredients/CRAB.png
-2,duck,./images/ingredients/DUCK.png
-2,fish,./images/ingredients/FISH.png
-2,ham,./images/ingredients/HAM.png
-2,salmon,./images/ingredients/SALMON.png
-2,shrimp ,./images/ingredients/SHRIMP.png
-2,tuna,./images/ingredients/TUNA.png
-3,rum,./images/ingredients/RUM.png
-3,whiskey ,./images/ingredients/WHISKEY.png
-3,wine,./images/ingredients/WINE.png
-4,apple,./images/ingredients/apple.png
-4,avocado,./images/ingredients/AVOCADO.png
-4,banana,./images/ingredients/BANANA.png
-4,blueberry,./images/ingredients/BLUEBERRY.png
-4,lemon,./images/ingredients/LEMON.png
-4,passionfruit,./images/ingredients/PASSION FRUIT.png
-4,peach,./images/ingredients/PEACH.png
-5,artichoke,./images/ingredients/artichoke.png
-5,asparagus,./images/ingredients/ASPARAGUS.png
-5,cauliflower,./images/ingredients/CAULIFLOWER.png
-5,onion,./images/ingredients/ONION.png
-5,potato,./images/ingredients/POTATO.png
-5,tomato,./images/ingredients/TOMATO.png
-6,almond ,./images/ingredients/almond.png
-6,bean,./images/ingredients/BEAN.png
-6,cream ,./images/ingredients/CREAM.png
-6,egg,./images/ingredients/EGG.png
-6,lentil,./images/ingredients/LENTIL.png
-6,nut,./images/ingredients/NUT.png
-6,pumpkin ,./images/ingredients/PUMKIN.png
+type,name,icon,icon_black,icon_light
+1,bread,./images/ingredients/BREAD.png,./images/ingredients_black/BREAD.png,./images/ingredients_light/BREAD.png
+1,flour,./images/ingredients/FLOUR.png,./images/ingredients_black/FLOUR.png,./images/ingredients_light/FLOUR.png
+1,pasta,./images/ingredients/PASTA.png,./images/ingredients_black/PASTA.png,./images/ingredients_light/PASTA.png
+1,tortilla,./images/ingredients/TORTILLA.png,./images/ingredients_black/TORTILLA.png,./images/ingredients_light/TORTILLA.png
+2,beef,./images/ingredients/BEEF.png,./images/ingredients_black/BEEF.png,./images/ingredients_light/BEEF.png
+2,chrizo,./images/ingredients/CHORIZO.png,./images/ingredients_black/CHORIZO.png,./images/ingredients_light/CHORIZO.png
+2,crab,./images/ingredients/CRAB.png,./images/ingredients_black/CRAB.png,./images/ingredients_light/CRAB.png
+2,duck,./images/ingredients/DUCK.png,./images/ingredients_black/DUCK.png,./images/ingredients_light/DUCK.png
+2,fish,./images/ingredients/FISH.png,./images/ingredients_black/FISH.png,./images/ingredients_light/FISH.png
+2,ham,./images/ingredients/HAM.png,./images/ingredients_black/HAM.png,./images/ingredients_light/HAM.png
+2,salmon,./images/ingredients/SALMON.png,./images/ingredients_black/SALMON.png,./images/ingredients_light/SALMON.png
+2,shrimp ,./images/ingredients/SHRIMP.png,./images/ingredients_black/SHRIMP.png,./images/ingredients_light/SHRIMP.png
+2,tuna,./images/ingredients/TUNA.png,./images/ingredients_black/TUNA.png,./images/ingredients_light/TUNA.png
+3,rum,./images/ingredients/RUM.png,./images/ingredients_black/RUM.png,./images/ingredients_light/RUM.png
+3,whiskey ,./images/ingredients/WHISKEY.png,./images/ingredients_black/WHISKEY.png,./images/ingredients_light/WHISKEY.png
+3,wine,./images/ingredients/WINE.png,./images/ingredients_black/WINE.png,./images/ingredients_light/WINE.png
+4,apple,./images/ingredients/apple.png,./images/ingredients_black/apple.png,./images/ingredients_light/apple.png
+4,avocado,./images/ingredients/AVOCADO.png,./images/ingredients_black/AVOCADO.png,./images/ingredients_light/AVOCADO.png
+4,banana,./images/ingredients/BANANA.png,./images/ingredients_black/BANANA.png,./images/ingredients_light/BANANA.png
+4,blueberry,./images/ingredients/BLUEBERRY.png,./images/ingredients_black/BLUEBERRY.png,./images/ingredients_light/BLUEBERRY.png
+4,lemon,./images/ingredients/LEMON.png,./images/ingredients_black/LEMON.png,./images/ingredients_light/LEMON.png
+4,passionfruit,./images/ingredients/PASSION FRUIT.png,./images/ingredients_black/PASSION FRUIT.png,./images/ingredients_light/PASSION FRUIT.png
+4,peach,./images/ingredients/PEACH.png,./images/ingredients_black/PEACH.png,./images/ingredients_light/PEACH.png
+5,artichoke,./images/ingredients/artichoke.png,./images/ingredients_black/artichoke.png,./images/ingredients_light/artichoke.png
+5,asparagus,./images/ingredients/ASPARAGUS.png,./images/ingredients_black/ASPARAGUS.png,./images/ingredients_light/ASPARAGUS.png
+5,cauliflower,./images/ingredients/CAULIFLOWER.png,./images/ingredients_black/CAULIFLOWER.png,./images/ingredients_light/CAULIFLOWER.png
+5,onion,./images/ingredients/ONION.png,./images/ingredients_black/ONION.png,./images/ingredients_light/ONION.png
+5,potato,./images/ingredients/POTATO.png,./images/ingredients_black/POTATO.png,./images/ingredients_light/POTATO.png
+5,tomato,./images/ingredients/TOMATO.png,./images/ingredients_black/TOMATO.png,./images/ingredients_light/TOMATO.png
+6,almond ,./images/ingredients/almond.png,./images/ingredients_black/almond.png,./images/ingredients_light/almond.png
+6,bean,./images/ingredients/BEAN.png,./images/ingredients_black/BEAN.png,./images/ingredients_light/BEAN.png
+6,cream ,./images/ingredients/CREAM.png,./images/ingredients_black/CREAM.png,./images/ingredients_light/CREAM.png
+6,egg,./images/ingredients/EGG.png,./images/ingredients_black/EGG.png,./images/ingredients_light/EGG.png
+6,lentil,./images/ingredients/LENTIL.png,./images/ingredients_black/LENTIL.png,./images/ingredients_light/LENTIL.png
+6,nut,./images/ingredients/NUT.png,./images/ingredients_black/NUT.png,./images/ingredients_light/NUT.png
+6,pumpkin ,./images/ingredients/PUMKIN.png,./images/ingredients_black/PUMKIN.png,./images/ingredients_light/PUMKIN.png
