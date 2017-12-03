@@ -104,7 +104,7 @@ public class RefrigeratorScene extends SceneAbst
 		add(btnGoHome);
 		
 		// 배경
-		imgBackground = new ImageIcon("images/refBackground.png");
+		imgBackground = new ImageIcon("images/refBackground2.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
