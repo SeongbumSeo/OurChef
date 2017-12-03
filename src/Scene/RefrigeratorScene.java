@@ -190,7 +190,7 @@ public class RefrigeratorScene extends SceneAbst
         	 Main.switchScene(new IntroScene());
          } else if (obj == btnGoHome) {
         	 Main.switchScene(new IntroScene());
-         } else if (obj == txtInput || btnSearch) {
+         } else if (obj == txtInput || obj == btnSearch) {
         	 
          }
       }
