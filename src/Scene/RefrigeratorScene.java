@@ -42,20 +42,22 @@ public class RefrigeratorScene extends SceneAbst
 	// 각 라인의 스크롤 페인
 	private JScrollPane[] pnlLineScroll;
 	
+	// 재료 버튼
+	private HashMap<JButton, Ingredient> ingButtonMap;
+	
 	// 애니메이션
 	private Animation animCartMove;
 
 	// 이벤트
 	private RefrigeratorListener refL;
-	
-	// 재료
-	private static List<Ingredient> ingredients;
+	private IngredientButtonListener ingButtonL;
 
 	public void onShow() {
-		refL = new RefrigeratorListener();
-		
 		// 재료 정보 가져오기
-		ingredients = Main.getIngredients();
+		List<Ingredient> ingredients = Main.getIngredients();
+		
+		refL = new RefrigeratorListener();
+		ingButtonL = new IngredientButtonListener();
 
 		pnlLine = new JPanel[MAX_LINES];
 		pnlLineScroll = new JScrollPane[MAX_LINES];
@@ -75,22 +77,24 @@ public class RefrigeratorScene extends SceneAbst
 		}
 		
 		// 재료 버튼 추가
-		Iterator<Ingredient> itr = Main.getIngredients().iterator();
-		while (itr.hasNext()) {
-			Ingredient item = itr.next();
-			JButton tmp = new JButton();
+		ingButtonMap = new HashMap<JButton, Ingredient>();
+		for (Ingredient ing : ingredients) {
+			// 아이콘
+			ImageIcon icon = new ImageIcon(ing.getIcon());
+			Image image = icon.getImage();			
+			image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+			icon = new ImageIcon(image);
+
+			// 재료 버튼
+			JButton btn = new JButton();
+			btn.setIcon(icon);
+			btn.setPreferredSize(new Dimension(ITEM_SIZE[0], ITEM_SIZE[1]));
+			btn.setContentAreaFilled(false); // 버튼 바탕색 제거
+			btn.setBorderPainted(false); // 버튼 테두리 제거
+			btn.addActionListener(ingButtonL);
+			pnlLine[ing.getType()].add(btn);
 			
-			ImageIcon imgTmp = new ImageIcon(item.getIcon());
-			Image temp = imgTmp.getImage();			
-			temp = temp.getScaledInstance((int)((float)imgTmp.getIconWidth()/imgTmp.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-			ImageIcon imgTmp2 = new ImageIcon(temp);
-				
-			
-			tmp.setIcon(imgTmp2);
-			tmp.setPreferredSize(new Dimension(ITEM_SIZE[0], ITEM_SIZE[1]));
-			tmp.setContentAreaFilled(false); // 버튼 바탕색 제거
-			tmp.setBorderPainted(false); // 버튼 테두리 제거
-			pnlLine[item.getType()].add(tmp);
+			ingButtonMap.put(btn, ing);
 		}
 
 		// CartScene으로 넘어가는 버튼 추가
@@ -149,6 +153,20 @@ public class RefrigeratorScene extends SceneAbst
 			} else if (obj == txtInput || obj == btnSearch) {
 
 			}
+		}
+	}
+	
+	private class IngredientButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event) {
+			Object obj = event.getSource();
+			
+			// 선택한 재료를 카트에 추가
+			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			cart.add(ing); // 카트에 재료 추가
+			
+			System.out.println("카트에 추가됨: " + ing.getName());
 		}
 	}
 	

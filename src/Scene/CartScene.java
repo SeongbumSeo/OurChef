@@ -1,7 +1,7 @@
 package Scene;
 
 import java.awt.event.*;
-import java.util.Iterator;
+import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -36,9 +36,8 @@ public class CartScene extends SceneAbst
 	private static final int[] ITEM_SIZE = { 100, 100 };
 	private JPanel pnlIngredients;
 	private JScrollPane pnlIngredientsScroll;
-	private JButton[] btnIngredients;
-	private ImageIcon IconIngre;
 	private JLabel lblIngre;
+	private HashMap<JButton, Ingredient> ingButtonMap;
 	
 	public void onShow() {
 		CartL = new CartListener();
@@ -54,33 +53,30 @@ public class CartScene extends SceneAbst
 		add(pnlIngredientsScroll);
 		
 		// 카트 버튼들 추가
-		btnIngredients = new JButton[Main.getIngredients().size()];
-		Iterator<Ingredient> itr = Main.getIngredients().iterator();
-		for (int i = 0; itr.hasNext(); i++) {
-			Ingredient item = itr.next();
-			
-			// 재료 버튼
-			btnIngredients[i] = new JButton();
-			btnIngredients[i].setPreferredSize(new Dimension(100, 100));
-			btnIngredients[i].setContentAreaFilled(false); // 버튼 바탕색 제거
-			btnIngredients[i].setBorderPainted(false); // 버튼 테두리 제거
-			pnlIngredients.add(btnIngredients[i]);
-			
-			
+		ingButtonMap = new HashMap<JButton, Ingredient>();
+		for (Ingredient item : Main.getCart()) {
 			// 아이콘
-			ImageIcon imgTmp = new ImageIcon(item.getIcon());
-			Image temp = imgTmp.getImage();
-			temp = temp.getScaledInstance((int)((float)imgTmp.getIconWidth()/imgTmp.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-			ImageIcon imgTmp2 = new ImageIcon(temp);
+			ImageIcon icon = new ImageIcon(item.getIcon());
+			Image image = icon.getImage();
+			image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+			icon = new ImageIcon(image);
 			
 			lblIngre = new JLabel();
-			lblIngre.setIcon(imgTmp2);
+			lblIngre.setIcon(icon);
 			lblIngre.setLayout(null);
-			lblIngre.setBounds(0,0,imgTmp2.getIconWidth(),imgTmp2.getIconHeight());
+			lblIngre.setBounds(0,0,icon.getIconWidth(),icon.getIconHeight());
 			lblIngre.setHorizontalAlignment(SwingConstants.CENTER);
 			lblIngre.setOpaque(false);
-			
 			pnlIngredients.add(lblIngre);
+			
+			// 재료 버튼
+			JButton btn = new JButton();
+			btn.setPreferredSize(new Dimension(100, 100));
+			btn.setContentAreaFilled(false); // 버튼 바탕색 제거
+			btn.setBorderPainted(false); // 버튼 테두리 제거
+			pnlIngredients.add(btn);
+			
+			ingButtonMap.put(btn, item);
 		}
 		
 		
