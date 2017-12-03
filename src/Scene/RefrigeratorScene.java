@@ -21,6 +21,7 @@ public class RefrigeratorScene extends SceneAbst
    
    // 검색
    private JTextField txtInput;
+   private ImageButton btnSearch;
    
    //칸 패널
    JPanel linePanel1;
@@ -65,7 +66,11 @@ public class RefrigeratorScene extends SceneAbst
       // 검색
       txtInput = new JTextField();
       txtInput.setBounds(950, 70, 430, 55);
+      txtInput.addActionListener(refL);
       add(txtInput);
+      btnSearch = new ImageButton("images/searchIcon.png", 1390, 70);
+      btnSearch.addActionListener(refL);
+      add(btnSearch);
       
       // 뒤로가기 버튼 및 홈버튼
       btnGoBack = new ImageButton("images/goBack.png", 7, 810);
@@ -185,6 +190,8 @@ public class RefrigeratorScene extends SceneAbst
         	 Main.switchScene(new IntroScene());
          } else if (obj == btnGoHome) {
         	 Main.switchScene(new IntroScene());
+         } else if (obj == txtInput || btnSearch) {
+        	 
          }
       }
    }
