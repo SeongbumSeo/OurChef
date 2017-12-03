@@ -64,7 +64,7 @@ public class RefrigeratorScene extends SceneAbst
       
       // 검색
       txtInput = new JTextField();
-      txtInput.setBounds(950, 70, 400, 55);
+      txtInput.setBounds(950, 70, 430, 55);
       add(txtInput);
       
       // 뒤로가기 버튼 및 홈버튼
