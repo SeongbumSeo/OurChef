@@ -21,7 +21,7 @@ public class RefrigeratorScene extends SceneAbst
 			{ 330, 620, 430, 95 },
 			{ 340, 770, 410, 95 }
 	};
-	private static final int[] ITEM_SIZE = { 65, 65 };
+	private static final int[] ITEM_SIZE = { 77, 65 };
 
 	// 배경
 	private ImageIcon imgBackground;
@@ -79,11 +79,13 @@ public class RefrigeratorScene extends SceneAbst
 			
 			ImageIcon imgTmp = new ImageIcon(item.getIcon());
 			Image temp = imgTmp.getImage();
-			temp = temp.getScaledInstance(65, 65, java.awt.Image.SCALE_SMOOTH);
+			temp = temp.getScaledInstance(ITEM_SIZE[0]-20, ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 			ImageIcon imgTmp2 = new ImageIcon(temp);
 			
 			tmp.setIcon(imgTmp2);
 			tmp.setPreferredSize(new Dimension(ITEM_SIZE[0], ITEM_SIZE[1]));
+			tmp.setContentAreaFilled(false); // 버튼 바탕색 제거
+			tmp.setBorderPainted(false); // 버튼 테두리 제거
 			pnlLine[item.getType()].add(tmp);
 		}
 
