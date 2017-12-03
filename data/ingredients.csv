@@ -1,37 +1,37 @@
-﻿type,name,icon
-1,flour,
-1,pasta,
-1,tortilla,
-1,bread,
-2,beef,
-2,shrimp,
-2,fish,
-2,salmon,
-2,tuna,
-2,crab,
-2,duck,
-2,chrizo,
-2,ham,
-3,whiskey,
-3,wine,
-3,rum,
-4,apple,
-4,avocado,
-4,banana,
-4,blueberry,
-4,lemon,
-4,passionfruit,
-4,peach,
-5,artichoke,
-5,asparagus,
-5,cauliflower,
-5,onion,
-5,potato,
-5,tomato,
-6,almond,
-6,bean,
-6,cream,
-6,egg,
-6,lentil,
-6,nut,
-6,pumpkin,
+type,name,icon
+1,bread,./images/ingredients/BREAD.png
+1,flour,./images/ingredients/FLOUR.png
+1,pasta,./images/ingredients/PASTA.png
+1,tortilla,./images/ingredients/TORTILLA.png
+2,beef,./images/ingredients/BEEF.png
+2,chrizo,./images/ingredients/CHORIZO.png
+2,crab,./images/ingredients/CRAB.png
+2,duck,./images/ingredients/DUCK.png
+2,fish,./images/ingredients/FISH.png
+2,ham,./images/ingredients/HAM.png
+2,salmon,./images/ingredients/SALMON.png
+2,shrimp ,./images/ingredients/SHRIMP.png
+2,tuna,./images/ingredients/TUNA.png
+3,rum,./images/ingredients/RUM.png
+3,whiskey ,./images/ingredients/WHISKEY.png
+3,wine,./images/ingredients/WINE.png
+4,apple,./images/ingredients/apple.png
+4,avocado,./images/ingredients/AVOCADO.png
+4,banana,./images/ingredients/BANANA.png
+4,blueberry,./images/ingredients/BLUEBERRY.png
+4,lemon,./images/ingredients/LEMON.png
+4,passionfruit,./images/ingredients/PASSION FRUIT.png
+4,peach,./images/ingredients/PEACH.png
+5,artichoke,./images/ingredients/artichoke.png
+5,asparagus,./images/ingredients/ASPARAGUS.png
+5,cauliflower,./images/ingredients/CAULIFLOWER.png
+5,onion,./images/ingredients/ONION.png
+5,potato,./images/ingredients/POTATO.png
+5,tomato,./images/ingredients/TOMATO.png
+6,almond ,./images/ingredients/almond.png
+6,bean,./images/ingredients/BEAN.png
+6,cream ,./images/ingredients/CREAM.png
+6,egg,./images/ingredients/EGG.png
+6,lentil,./images/ingredients/LENTIL.png
+6,nut,./images/ingredients/NUT.png
+6,pumpkin ,./images/ingredients/PUMKIN.png

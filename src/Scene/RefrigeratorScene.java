@@ -1,6 +1,7 @@
 package Scene;
 
 import java.util.*;
+import java.util.List;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -43,9 +44,15 @@ public class RefrigeratorScene extends SceneAbst
 
 	// 이벤트
 	private RefrigeratorListener refL;
+	
+	// 재료
+	private static List<Ingredient> ingredients;
 
 	public void onShow() {
 		refL = new RefrigeratorListener();
+		
+		// 재료 정보 가져오기
+		ingredients = Main.getIngredients();
 
 		pnlLine = new JPanel[MAX_LINES];
 		pnlLineScroll = new JScrollPane[MAX_LINES];
@@ -69,7 +76,13 @@ public class RefrigeratorScene extends SceneAbst
 		while (itr.hasNext()) {
 			Ingredient item = itr.next();
 			JButton tmp = new JButton();
-			tmp.setText(item.getName());
+			
+			ImageIcon imgTmp = new ImageIcon(item.getIcon());
+			Image temp = imgTmp.getImage();
+			temp = temp.getScaledInstance(65, 65, java.awt.Image.SCALE_SMOOTH);
+			ImageIcon imgTmp2 = new ImageIcon(temp);
+			
+			tmp.setIcon(imgTmp2);
 			tmp.setPreferredSize(new Dimension(ITEM_SIZE[0], ITEM_SIZE[1]));
 			pnlLine[item.getType()].add(tmp);
 		}
