@@ -1,14 +1,21 @@
 package Scene;
 
 import java.awt.event.*;
+import java.util.Iterator;
 import java.awt.*;
 import javax.swing.*;
-import Main.Main;
+
+import Data.Recipe;
+import Main.*;
 import Scene.*;
 import GUI.*;
+import Data.*;
 
 public class CartScene extends SceneAbst
-{
+{	
+	// 패널 임시
+	private JPanel ing;
+	
 	// 배경
 	private ImageIcon imgBackground;
 	private JLabel lblBackground;
@@ -26,40 +33,82 @@ public class CartScene extends SceneAbst
 	// 이벤트
 	private CartListener CartL;
 	
-	// 패널 임시
-	private JPanel ing;
-	   
-	// 현재 레시피
+	private static final int[] ITEM_SIZE = { 100, 100 };
+	private JPanel pnlIngredients;
+	private JScrollPane pnlIngredientsScroll;
 	private JButton[] btnIngredients;
+	private ImageIcon IconIngre;
+	private JLabel lblIngre;
 	
 	public void onShow() {
 		CartL = new CartListener();
 		
-		// 카트 안에 들어있는 목록들   
+		pnlIngredients = new JPanel();
+		pnlIngredients.setLayout(new GridLayout(0, 1));
+		pnlIngredients.setOpaque(false);
+		pnlIngredientsScroll = new JScrollPane(pnlIngredients);
+		pnlIngredientsScroll.setBounds(1150, 210, 200, 400);
+		pnlIngredientsScroll.getViewport().setOpaque(false);
+		pnlIngredientsScroll.setOpaque(false);
+		pnlIngredientsScroll.setBorder(null);
+		add(pnlIngredientsScroll);
+		
+		// 카트 버튼들 추가
+		btnIngredients = new JButton[Main.getIngredients().size()];
+		Iterator<Ingredient> itr = Main.getIngredients().iterator();
+		for (int i = 0; itr.hasNext(); i++) {
+			Ingredient item = itr.next();
+			
+			// 재료 버튼
+			btnIngredients[i] = new JButton();
+			btnIngredients[i].setPreferredSize(new Dimension(100, 70));
+			btnIngredients[i].setContentAreaFilled(false); // 버튼 바탕색 제거
+			btnIngredients[i].setBorderPainted(false); // 버튼 테두리 제거
+			pnlIngredients.add(btnIngredients[i]);
+			
+			
+			// 아이콘
+			ImageIcon imgTmp = new ImageIcon(item.getIcon());
+			Image temp = imgTmp.getImage();
+			temp = temp.getScaledInstance((int)((float)imgTmp.getIconWidth()/imgTmp.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+			ImageIcon imgTmp2 = new ImageIcon(temp);
+			
+			lblIngre = new JLabel();
+			lblIngre.setIcon(imgTmp2);
+			lblIngre.setLayout(null);
+			lblIngre.setBounds(0,0,imgTmp2.getIconWidth(),imgTmp2.getIconHeight());
+			lblIngre.setHorizontalAlignment(SwingConstants.CENTER);
+			lblIngre.setOpaque(false);
+			
+			pnlIngredients.add(lblIngre);
+		}
+		
+		
+		/*// 카트 안에 들어있는 목록들   
         ing = new JPanel();
         ing.setLayout(new GridLayout(12,1));
         ing.setOpaque(false);
                 
         btnIngredients=new JButton[12];
         for(int i=0 ; i<12 ; i++) {
-              btnIngredients[i]=new JButton("1");
-              btnIngredients[i].setBounds(30+30*i, 18, 45, 45);
-              ing.add(btnIngredients[i]);
-          }//1라인
+        	btnIngredients[i]=new JButton("1");
+            btnIngredients[i].setBounds(30+30*i, 18, 45, 45);
+            ing.add(btnIngredients[i]);
+        }//1라인
                 
         JScrollPane scrollPanel = new JScrollPane(ing);
         scrollPanel.setBounds(1200, 200, 100, 400);
         scrollPanel.getViewport().setOpaque(false);
         scrollPanel.setOpaque(false);
         scrollPanel.setBorder(null);
-        add(scrollPanel);
+        add(scrollPanel); 
 		
 		// ingredients
 		ingredients = new JPanel();
 		ingredients.setOpaque(false);
 		ingredients.setLocation(1100, 50);
 		
-		add(ingredients);
+		add(ingredients);*/
 		
 		// 뒤로가기 버튼 및 홈버튼
 	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
@@ -75,7 +124,7 @@ public class CartScene extends SceneAbst
 	    btnGoHome.setBorderPainted(false);
 	    btnGoHome.addActionListener(CartL);
 	    add(btnGoHome);
-		// 1080 660 1175 685
+		
 		// trash button
 		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h2.png", 1080, 660);
 		btnTrash.addActionListener(CartL);
