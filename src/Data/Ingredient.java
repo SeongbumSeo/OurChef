@@ -50,7 +50,7 @@ public class Ingredient
 		
 		while (itr.hasNext()) {
 			row = itr.next();
-			ing.add(new Ingredient(Integer.parseInt(row[0]), row[1], row[2]));
+			ing.add(new Ingredient(Integer.parseInt(row[0])-1, row[1], row[2]));
 		}
 		
 		return ing;

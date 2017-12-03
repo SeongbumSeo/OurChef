@@ -66,4 +66,9 @@ public class Main
 	}
 	
 	public static JFrame getFrame() { return frame; }
+	
+	public static List<Ingredient> getIngredients() { return ingredients; }
+	public static List<Ingredient> getCart() { return cart; }
+	public static List<Recipe> getRecipes() { return recipes; }
+	public static List<Recipe> getFavorites() { return favorites; }
 }
