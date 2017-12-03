@@ -122,7 +122,7 @@ public class RecipeListScene extends SceneAbst
       add(fish);
        
       // 배경
-      imgBackground = new ImageIcon("./images/recipeListBackground.png");
+      imgBackground = new ImageIcon("./images/recipeListBackground2.png");
       lblBackground = new JLabel();
       lblBackground.setIcon(imgBackground);
       lblBackground.setBounds(0, 0, 1600, 900);
