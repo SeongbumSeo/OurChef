@@ -27,6 +27,12 @@ public class RecipeListScene extends SceneAbst
     
     //JButton b1,b2,b3,b4,b5,b6;
     
+    // 레시피
+    private JPanel pnlRecipe;
+    private ImageIcon IconDish, IconDish2;
+    private ImageIcon IconStar, IconStar2;
+    private JLabel lblDish, lblName, lblStar;
+    
 
     private JButton[] btnRecipe;
      
@@ -36,16 +42,57 @@ public class RecipeListScene extends SceneAbst
       
       //test
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-       scrollPanel.setBounds(133, 150, 1360, 250);
-       //scrollPanel.setBackground(Color.green);
-              
-       panel=new JPanel();
-       panel.setLayout(new FlowLayout());
-       panel.setOpaque(false);
-       scrollPanel.add(panel);
-       add(scrollPanel);
-       
+      scrollPanel.setBounds(133, 150, 1360, 250);
+      //scrollPanel.setBackground(Color.green);
       
+      // 레시피 패널
+      pnlRecipe = new JPanel();
+      pnlRecipe.setLayout(null);
+      pnlRecipe.setBounds(155,500, 500, 180);
+      pnlRecipe.setBorder(BorderFactory.createLineBorder(new Color(166,166,166)));
+      pnlRecipe.setOpaque(false);
+      
+      IconDish = new ImageIcon("./images/recipe/ahi poke/image.png");
+      Image imgDish = IconDish.getImage();
+      imgDish = imgDish.getScaledInstance(240, 135, java.awt.Image.SCALE_SMOOTH);
+      IconDish2 = new ImageIcon(imgDish);
+      
+      lblDish = new JLabel();
+      lblDish.setIcon(IconDish2);
+      lblDish.setLayout(null);
+      lblDish.setBounds(20, 23, 240, 135);
+      lblDish.setOpaque(false);
+      
+      lblName = new JLabel("Ahi poke");
+      lblName.setHorizontalAlignment(SwingConstants.CENTER);
+      lblName.setLayout(null);
+      lblName.setBounds(270,30,210,40);
+      
+      IconStar = new ImageIcon("./images/star/one.png");
+      Image imgStar = IconStar.getImage();
+      imgStar = imgStar.getScaledInstance(210, 38, java.awt.Image.SCALE_SMOOTH);
+      IconStar2 = new ImageIcon(imgStar);
+      
+      lblStar = new JLabel();
+      lblStar.setIcon(IconStar2);
+      lblStar.setLayout(null);
+      lblStar.setBounds(285, 100, 210, 40);
+      
+      pnlRecipe.add(lblStar);
+      pnlRecipe.add(lblName);
+      pnlRecipe.add(lblDish);
+      
+      add(pnlRecipe);
+      
+      
+      
+      
+      panel=new JPanel();
+      panel.setLayout(new FlowLayout());
+      panel.setOpaque(false);
+      scrollPanel.add(panel);
+      add(scrollPanel);
+       
       
       
       
@@ -65,14 +112,14 @@ public class RecipeListScene extends SceneAbst
       btnGoHome.addActionListener(RecipeL);
       add(btnGoHome);
       
-       // 물꼬기
-       fish = new ImageButton("images/fish.png","images/fish.png", 680, 500);
-       fish.setLocation(1000, 500);
-       fish.setLayout(null);
-       fish.setContentAreaFilled(false);
-       fish.setBorderPainted(false);
-       fish.addActionListener(RecipeL);
-       add(fish);
+      // 물꼬기
+      fish = new ImageButton("images/fish.png","images/fish.png", 680, 500);
+      fish.setLocation(1000, 500);
+      fish.setLayout(null);
+      fish.setContentAreaFilled(false);
+      fish.setBorderPainted(false);
+      fish.addActionListener(RecipeL);
+      add(fish);
        
       // 배경
       imgBackground = new ImageIcon("./images/recipeListBackground.png");

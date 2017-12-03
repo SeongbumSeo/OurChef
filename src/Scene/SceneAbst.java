@@ -27,7 +27,7 @@ public abstract class SceneAbst extends JPanel implements Scene
 			// 폰트 파일 로드
 			File file = new File("fonts/" + name + ".ttf");
 			Font fontBase = Font.createFont(Font.TRUETYPE_FONT, file);
-			Font fontReal = fontBase.deriveFont(Font.PLAIN, 25);
+			Font fontReal = fontBase.deriveFont(Font.PLAIN, 40);
 			
 			// 폰트 적용
 			applyDefaultFont(this, fontReal);
