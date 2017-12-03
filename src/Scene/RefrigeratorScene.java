@@ -68,7 +68,7 @@ public class RefrigeratorScene extends SceneAbst
       txtInput.setBounds(950, 70, 430, 55);
       txtInput.addActionListener(refL);
       add(txtInput);
-      btnSearch = new ImageButton("images/searchIcon.png", 1390, 70);
+      btnSearch = new ImageButton("images/searchIcon.png","images/searchIcon_h.png", 1390, 70);
       btnSearch.addActionListener(refL);
       add(btnSearch);
       
