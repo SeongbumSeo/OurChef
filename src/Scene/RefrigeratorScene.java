@@ -16,7 +16,7 @@ public class RefrigeratorScene extends SceneAbst
 	private static final int[][] LINE_BOUNDS = {
 			{ 300, 65, 450, 95 },
 			{ 300, 215, 450, 95 },
-			{ 330, 335, 410, 95 },
+			{ 330, 345, 410, 95 },
 			{ 310, 490, 450, 95 },
 			{ 330, 620, 430, 95 },
 			{ 340, 770, 410, 95 }
@@ -78,9 +78,10 @@ public class RefrigeratorScene extends SceneAbst
 			JButton tmp = new JButton();
 			
 			ImageIcon imgTmp = new ImageIcon(item.getIcon());
-			Image temp = imgTmp.getImage();
-			temp = temp.getScaledInstance(ITEM_SIZE[0]-20, ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+			Image temp = imgTmp.getImage();			
+			temp = temp.getScaledInstance((int)((float)imgTmp.getIconWidth()/imgTmp.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 			ImageIcon imgTmp2 = new ImageIcon(temp);
+				
 			
 			tmp.setIcon(imgTmp2);
 			tmp.setPreferredSize(new Dimension(ITEM_SIZE[0], ITEM_SIZE[1]));
