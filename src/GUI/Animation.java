@@ -1,19 +1,22 @@
 package GUI;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import Main.*;
-import Scene.*;
 
 public class Animation
 {
+	// 상수
+	public static final long DELAY_MOVE = 1;
+	public static final long DELAY_FADE = 10;
+	
 	// 공통으로 사용되는 인스턴스 데이터
 	private Component comp;
 	private AnimationListener listener;
+	private boolean wait;
 	private int speed;
 	private long startTime;
-	private Timer timer;
+	private long delay;
+	private Thread thread;
 	
 	// 이동 애니메이션에 사용
 	private int destX, destY;
@@ -29,12 +32,22 @@ public class Animation
 	/**
 	 * 애니메이션의 생성자입니다.
 	 * @param comp 애니메이션 대상 컴포넌트
+	 * @param wait 애니메이션 완료까지 대기 여부
+	 */
+	public Animation(Component comp, boolean wait) {
+		this(comp, wait, null);
+	}
+	/**
+	 * 애니메이션의 생성자입니다.
+	 * @param comp 애니메이션 대상 컴포넌트
+	 * @param wait 애니메이션 완료까지 대기 여부
 	 * @param listener 애니메이션 리스너 객체
 	 */
-	public Animation(Component comp, AnimationListener listener) {
+	public Animation(Component comp, boolean wait, AnimationListener listener) {
 		this.comp = comp; // 애니메이션 대상 컴포넌트
+		this.wait = wait; // 애니메이션 완료까지 대기 여부
 		this.listener = listener; // 애니메이션 리스너 객체
-		this.timer = null; // 타이머 초기화
+		this.thread = null; // 애니메이션 쓰레드 초기화
 	}
 	
 	/**
@@ -56,8 +69,8 @@ public class Animation
 		distance = Math.sqrt(Math.pow(startX-destX, 2) + Math.pow(startY-destY, 2)); // 거리
 		angle = Math.toRadians(Math.toDegrees(Math.atan2(startY-destY, startX-destX))); // 이동 각도
 		
-		// 타이머 실행
-		startTimer(1, new MoveTimerListener());
+		// 애니메이션 쓰레드 실행
+		startThread(DELAY_MOVE, new MoveThread());
 	}
 	
 	/**
@@ -65,68 +78,113 @@ public class Animation
 	 * @param speed 페이드인 속도
 	 */
 	public void fadeIn(int speed) {
+		this.speed = speed;
+		
 		background = comp.getBackground();
 		opacity = 0;
 		comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), opacity));
+		JPanel.class.cast(comp).setOpaque(false);
 		
-		// 타이머 실행
-		startTimer(10, new FadeInTimerListener());
+		// 애니메이션 쓰레드 실행
+		startThread(DELAY_FADE, new FadeInThread());
 	}
 	
-	private void startTimer(int delay, ActionListener listener) {
-		if (timer != null) // 실행중인 타이머 정지
-			stopTimer();
+	/**
+	 * 애니메이션 쓰레드를 실행하는 메소드입니다.
+	 * @param delay 애니메이션 작업의 실행 주기
+	 * @param thread 애니메이션 쓰레드 객체
+	 */
+	private void startThread(long delay, Thread thread) {
+		stopThread(); // 실행중인 애니메이션 중단
+		thread.start(); // 애니메이션 쓰레드 실행
 		
-		timer = new Timer(delay, listener);
-		timer.start();
+		if (wait) { // 애니메이션 완료까지 메인 쓰레드 대기
+			try {
+				thread.join();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		this.delay = delay;
+		this.thread = thread;
 	}
 	
-	private void stopTimer() {
-		timer.stop();
-		timer = null;
+	/**
+	 * 현재 실행중인 애니메이션 쓰레드를 중단하는 메소드입니다.
+	 */
+	private void stopThread() {
+		if (thread != null)
+			thread.interrupt();
+		thread = null;
 	}
 	
 	/**
 	 * 이동 애니메이션 타이머의 이벤트 리스너입니다.
 	 */
-	private class MoveTimerListener implements ActionListener
+	private class MoveThread extends Thread
 	{
-		public void actionPerformed(ActionEvent e) {
-			double duration = (System.nanoTime() - startTime) / 1e6; // 출발 이후 경과 시간
-			double distanceSoFar = Math.min(speed * duration / 1000d, distance); // 현재 거리
-			int x = startX - (int)(distanceSoFar * Math.cos(angle)); // 이동 좌표 X
-			int y = startY - (int)(distanceSoFar * Math.sin(angle)); // 이동 좌표 Y
-
-			if ((directionX > 0 && x >= destX) || (directionX < 0 && x <= destX)
-					|| (directionY > 0 && y >= destY) || (directionY < 0 && y <= destY)) { // 도착 시
-				comp.setLocation(destX, destY);
+		public void run() {
+			double duration;
+			double distanceSoFar;
+			int x;
+			int y;
+			boolean conditionX = false;
+			boolean conditionY = false;
+			
+			// 애니메이션 작업
+			while (!this.isInterrupted() && !conditionX && !conditionY) {
+				duration = (System.nanoTime() - startTime) / 1e6; // 출발 이후 경과 시간
+				distanceSoFar = Math.min(speed * duration / 1000d, distance); // 현재 거리
+				x = startX - (int)(distanceSoFar * Math.cos(angle)); // 이동 좌표 X
+				y = startY - (int)(distanceSoFar * Math.sin(angle)); // 이동 좌표 Y
+				conditionX = (directionX > 0 && x >= destX) || (directionX < 0 && x <= destX); // X 완료 조건
+				conditionY = (directionY > 0 && y >= destY) || (directionY < 0 && y <= destY); // Y 완료 조건
 				
-				// 타이머 정지
-				stopTimer();
+				comp.setLocation(x, y); // 이동
 				
-				// 리스너의 완료 콜백 호출
-				listener.onCompleted();
-			} else {
-				comp.setLocation(x, y);
+				try { // 딜레이 적용
+					Thread.sleep(delay);
+				} catch (Exception e) {
+					e.printStackTrace();
+					this.interrupt();
+				}
 			}
+			
+			// 도착 시
+			comp.setLocation(destX, destY);
+			if (listener != null) // 리스너의 완료 콜백 호출
+				listener.onCompleted();
 		}
 	}
 	
 	/**
 	 * 페이드인 애니메이션 타이머의 이벤트 리스너입니다.
 	 */
-	private class FadeInTimerListener implements ActionListener
+	private class FadeInThread extends Thread
 	{
-		public void actionPerformed(ActionEvent e) {
-			opacity += speed;
-			
-			if (opacity >= 255) {
-				comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), 255));
-				stopTimer();
-				listener.onCompleted();
-			} else {
-				comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), opacity));
+		public void run() {
+			// 애니메이션 작업
+			while (!this.isInterrupted()) {
+				opacity += speed;
+				
+				if (opacity >= 255) // 종료 조건
+					break;
+				
+				comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), opacity)); // 투명도 설정
+				
+				try { // 딜레이 적용
+					Thread.sleep(delay);
+				} catch (Exception e) {
+					e.printStackTrace();
+					this.interrupt();
+				}
 			}
+			
+			// 완료 시
+			comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), 255));
+			if (listener != null) // 리스너의 완료 콜백 호출
+				listener.onCompleted();
 		}
 	}
 }
