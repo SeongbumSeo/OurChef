@@ -95,6 +95,9 @@ public class Animation
 	 * @param thread 애니메이션 쓰레드 객체
 	 */
 	private void startThread(long delay, Thread thread) {
+		this.delay = delay;
+		this.thread = thread;
+		
 		stopThread(); // 실행중인 애니메이션 중단
 		thread.start(); // 애니메이션 쓰레드 실행
 		
@@ -105,9 +108,6 @@ public class Animation
 				e.printStackTrace();
 			}
 		}
-
-		this.delay = delay;
-		this.thread = thread;
 	}
 	
 	/**
