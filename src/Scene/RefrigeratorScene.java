@@ -19,6 +19,9 @@ public class RefrigeratorScene extends SceneAbst
    // 카트
    private ImageButton btnCart;
    
+   // 검색
+   private JTextField txtInput;
+   
    //칸 패널
    JPanel linePanel1;
    JPanel linePanel2;
@@ -59,7 +62,10 @@ public class RefrigeratorScene extends SceneAbst
       //linePanel1.setBackground(Color.black);
       add(linePanel1);
       
-      
+      // 검색
+      txtInput = new JTextField();
+      txtInput.setBounds(950, 70, 400, 55);
+      add(txtInput);
       
       // 뒤로가기 버튼 및 홈버튼
       btnGoBack = new ImageButton("images/goBack.png", 7, 810);
