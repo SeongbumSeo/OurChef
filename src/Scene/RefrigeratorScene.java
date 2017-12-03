@@ -142,7 +142,7 @@ public class RefrigeratorScene extends SceneAbst
       
       btnIngredients_1=new JButton[4];
       for(int i=0 ; i<4 ; i++) {
-         btnIngredients_1[i]=new JButton("1");
+         btnIngredients_1[i]=new JButton();
          btnIngredients_1[i].setBounds(30+100*i, 18, 65, 65);
          linePanel1.add(btnIngredients_1[i]);
       }//1라인
