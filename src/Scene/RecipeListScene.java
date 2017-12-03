@@ -51,19 +51,19 @@ public class RecipeListScene extends SceneAbst
       
       
       // 뒤로가기 버튼 및 홈버튼
-       btnGoBack = new ImageButton("images/goBack.png", 7, 810);
-       btnGoBack.setLayout(null);
-       btnGoBack.setContentAreaFilled(false);
-       btnGoBack.setBorderPainted(false);
-       btnGoBack.addActionListener(RecipeL);
-       add(btnGoBack);
-         
-       btnGoHome = new ImageButton("images/goHome.png", 20, 25);
-       btnGoHome.setLayout(null);
-       btnGoHome.setContentAreaFilled(false);
-       btnGoHome.setBorderPainted(false);
-       btnGoHome.addActionListener(RecipeL);
-       add(btnGoHome);
+      btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+      btnGoBack.setLayout(null);
+      btnGoBack.setContentAreaFilled(false);
+      btnGoBack.setBorderPainted(false);
+      btnGoBack.addActionListener(RecipeL);
+      add(btnGoBack);
+        
+      btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+      btnGoHome.setLayout(null);
+      btnGoHome.setContentAreaFilled(false);
+      btnGoHome.setBorderPainted(false);
+      btnGoHome.addActionListener(RecipeL);
+      add(btnGoHome);
       
        // 물꼬기
        fish = new ImageButton("images/fish.png","images/fish.png", 680, 500);

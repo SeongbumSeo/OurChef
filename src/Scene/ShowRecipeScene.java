@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import Main.Main;
 import Scene.*;
+import Scene.RecipeListScene.RecipeListener;
 import GUI.*;
 
 public class ShowRecipeScene extends SceneAbst
@@ -15,6 +16,9 @@ public class ShowRecipeScene extends SceneAbst
 	
 	// 뒤로가기 및 홈버튼
 	private ImageButton btnGoBack, btnGoHome;
+	
+	// 이벤트
+	private ShowListener ShowL;
 
 	public void onShow() {
 	
@@ -23,14 +27,14 @@ public class ShowRecipeScene extends SceneAbst
 	    btnGoBack.setLayout(null);
 	    btnGoBack.setContentAreaFilled(false);
 	    btnGoBack.setBorderPainted(false);
-	    btnGoBack.addActionListener(RecipeL);
+	    btnGoBack.addActionListener(ShowL);
 	    add(btnGoBack);
 	        
 	    btnGoHome = new ImageButton("images/goHome.png", 20, 25);
 	    btnGoHome.setLayout(null);
 	    btnGoHome.setContentAreaFilled(false);
 	    btnGoHome.setBorderPainted(false);
-	    btnGoHome.addActionListener(RecipeL);
+	    btnGoHome.addActionListener(ShowL);
 	    add(btnGoHome);
 		
 		// 배경
@@ -47,6 +51,19 @@ public class ShowRecipeScene extends SceneAbst
 	
 	public void onHide() {
         
+	}
+	
+	private class ShowListener implements ActionListener
+	{
+	   public void actionPerformed(ActionEvent event) {
+	      Object obj = event.getSource();
+	       
+	      if (obj == btnGoBack) {
+	         Main.switchScene(new RecipeListScene());
+	      } else if (obj == btnGoHome) {
+	         Main.switchScene(new RecipeListScene());
+	      }
+	   }
 	}
 	
 }
