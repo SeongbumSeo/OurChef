@@ -20,7 +20,7 @@ public class RecipeListScene extends SceneAbst
    private RecipeListener RecipeL;
    
    // 아저씨
-    private ImageButton btnMan1, btnMan2;
+    private ImageButton fish;
    
     //JScrollPane scrollPane;
     JPanel panel;
@@ -36,7 +36,7 @@ public class RecipeListScene extends SceneAbst
       
       //test
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-       scrollPanel.setBounds(120, 100, 1360, 250);
+       scrollPanel.setBounds(133, 150, 1360, 250);
        //scrollPanel.setBackground(Color.green);
               
        panel=new JPanel();
@@ -65,14 +65,14 @@ public class RecipeListScene extends SceneAbst
        btnGoHome.addActionListener(RecipeL);
        add(btnGoHome);
       
-       // 아저씨
-       btnMan1 = new ImageButton("images/man_1.png", 370, -100);
-       btnMan1.setLocation(370, -100);
-       btnMan1.setLayout(null);
-       btnMan1.setContentAreaFilled(false);
-       btnMan1.setBorderPainted(false);
-       btnMan1.addActionListener(RecipeL);
-       add(btnMan1);
+       // 물꼬기
+       fish = new ImageButton("images/fish.png","images/fish.png", 680, 500);
+       fish.setLocation(1000, 500);
+       fish.setLayout(null);
+       fish.setContentAreaFilled(false);
+       fish.setBorderPainted(false);
+       fish.addActionListener(RecipeL);
+       add(fish);
        
       // 배경
       imgBackground = new ImageIcon("./images/recipeListBackground.png");
