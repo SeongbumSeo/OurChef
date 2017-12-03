@@ -44,7 +44,7 @@ public class RecipeListScene extends SceneAbst
 		pnlRecipes.setLayout(new GridLayout(0, 1));
 		pnlRecipes.setOpaque(false);
 		pnlRecipesScroll = new JScrollPane(pnlRecipes);
-		pnlRecipesScroll.setBounds(133, 150, 1360, 250);
+		pnlRecipesScroll.setBounds(133, 150, 500, 640);
 		pnlRecipesScroll.getViewport().setOpaque(false);
 		pnlRecipesScroll.setOpaque(false);
 		pnlRecipesScroll.setBorder(null);
@@ -58,7 +58,7 @@ public class RecipeListScene extends SceneAbst
 
 			// 레시피 버튼
 			btnRecipe[i] = new JButton();
-			btnRecipe[i].setPreferredSize(new Dimension(530, 200));// 안먹음
+			btnRecipe[i].setPreferredSize(new Dimension(480, 160));
 			btnRecipe[i].setContentAreaFilled(false); // 버튼 바탕색 제거
 			btnRecipe[i].setBorderPainted(false); // 버튼 테두리 제거
 			pnlRecipes.add(btnRecipe[i]);
@@ -66,26 +66,27 @@ public class RecipeListScene extends SceneAbst
 			// 레시피 버튼 내부의 패널
 			pnlItem = new JPanel();
 			pnlItem.setLayout(null);
-			pnlItem.setBounds(155, 500, 500, 180);
+			pnlItem.setBounds(155, 500, 500, 160);
 			pnlItem.setBorder(BorderFactory.createLineBorder(new Color(166, 166, 166)));
 			pnlItem.setOpaque(false);
 
 			// 아이콘
 			IconDish = new ImageIcon(item.getIcon());
 			Image imgDish = IconDish.getImage();
-			imgDish = imgDish.getScaledInstance(240, 135, java.awt.Image.SCALE_SMOOTH);
+			imgDish = imgDish.getScaledInstance(170, 100, java.awt.Image.SCALE_SMOOTH);
 			IconDish2 = new ImageIcon(imgDish);
 			lblDish = new JLabel();
 			lblDish.setIcon(IconDish2);
 			lblDish.setLayout(null);
-			lblDish.setBounds(20, 23, 240, 135);
+			lblDish.setBounds(20, 10, 240, 135);
 			lblDish.setOpaque(false);
 
 			// 이름
-			lblName = new JLabel(item.getName());
-			lblName.setHorizontalAlignment(SwingConstants.CENTER);
+			lblName = new JLabel("<html>" + item.getName() + "</html>");
+			lblName.setBounds(200, 15, 250, 50);
+			lblName.setFont(new Font(lblName.getFont().getFontName(), lblName.getFont().getStyle(), 20));
+			lblName.setVerticalAlignment(SwingConstants.TOP);
 			lblName.setLayout(null);
-			lblName.setBounds(270, 30, 210, 40);
 
 			// 난이도 별(star) 이미지
 			IconStar = new ImageIcon("./images/star/" + item.getLevel() + ".png");
@@ -95,7 +96,7 @@ public class RecipeListScene extends SceneAbst
 			lblStar = new JLabel();
 			lblStar.setIcon(IconStar2);
 			lblStar.setLayout(null);
-			lblStar.setBounds(285, 100, 210, 40);
+			lblStar.setBounds(200, 70, 210, 40);
 
 			pnlItem.add(lblStar);
 			pnlItem.add(lblName);
