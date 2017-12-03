@@ -18,7 +18,7 @@ public class CartScene extends SceneAbst
 	private ImageIcon imgContainer;
 	
 	// 버튼
-	private ImageButton btnTrash, btnRecipe;
+	private ImageButton btnTrash, btnRecipe, btnFavorite;
 	
 	// 뒤로가기 및 홈버튼
 	private ImageButton btnGoBack, btnGoHome;
@@ -50,14 +50,19 @@ public class CartScene extends SceneAbst
 	    btnGoHome.setBorderPainted(false);
 	    btnGoHome.addActionListener(CartL);
 	    add(btnGoHome);
-		
+		// 1080 660 1175 685
 		// trash button
-		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h.png", 1090, 660);
+		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h2.png", 1080, 660);
 		btnTrash.addActionListener(CartL);
 		add(btnTrash);
 		
+		// favorite button
+		btnFavorite = new ImageButton("images/knife.png","images/knife_h.png",1180,665);
+		btnFavorite.addActionListener(CartL);
+		add(btnFavorite);
+		
 		// recipe button
-		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h.png", 1220, 660);
+		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h2.png", 1270, 685);
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);
 		
