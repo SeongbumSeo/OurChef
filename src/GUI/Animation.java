@@ -2,12 +2,13 @@ package GUI;
 
 import java.awt.*;
 import javax.swing.*;
+import Main.*;
 
 public class Animation
 {
 	// 상수
-	public static final long DELAY_MOVE = 1;
-	public static final long DELAY_FADE = 10;
+	public static final long DELAY_MOVE = 10;
+	public static final long DELAY_FADE = 25;
 	
 	// 공통으로 사용되는 인스턴스 데이터
 	private Component comp;
@@ -26,7 +27,9 @@ public class Animation
 	private double angle;
 	
 	// 페이드인/아웃 애니메이션에 사용
-	private Color background;
+	private JPanel screenFader;
+	private int fadeMode;
+	private Color color;
 	private int opacity;
 	
 	/**
@@ -75,18 +78,40 @@ public class Animation
 	
 	/**
 	 * 페이드인 애니메이션을 실행하는 메소드입니다.
-	 * @param speed 페이드인 속도
+	 * @param speed 페이드 속도
 	 */
-	public void fadeIn(int speed) {
+	public void fadeIn(Color color, int speed) {
+		this.color = color;
 		this.speed = speed;
-		
-		background = comp.getBackground();
+
+		fadeMode = 1;
 		opacity = 0;
-		comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), opacity));
-		JPanel.class.cast(comp).setOpaque(false);
+		screenFader = new JPanel();
+		screenFader.setBounds(0, 0, Main.getFrame().getWidth(), Main.getFrame().getHeight());
+		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
+		Main.getFrame().getContentPane().add(screenFader);
 		
 		// 애니메이션 쓰레드 실행
-		startThread(DELAY_FADE, new FadeInThread());
+		startThread(DELAY_FADE, new FadeThread());
+	}
+	
+	/**
+	 * 페이드아웃 애니메이션을 실행하는 메소드입니다.
+	 * @param speed 페이드 속도
+	 */
+	public void fadeOut(Color color, int speed) {
+		this.color = color;
+		this.speed = speed;
+
+		fadeMode = -1;
+		opacity = 64;
+		screenFader = new JPanel();
+		screenFader.setBounds(0, 0, Main.getFrame().getWidth(), Main.getFrame().getHeight());
+		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
+		Main.getFrame().getContentPane().add(screenFader);
+		
+		// 애니메이션 쓰레드 실행
+		startThread(DELAY_FADE, new FadeThread());
 	}
 	
 	/**
@@ -159,19 +184,22 @@ public class Animation
 	}
 	
 	/**
-	 * 페이드인 애니메이션 타이머의 이벤트 리스너입니다.
+	 * 페이드 애니메이션 타이머의 이벤트 리스너입니다.
 	 */
-	private class FadeInThread extends Thread
+	private class FadeThread extends Thread
 	{
 		public void run() {
+			int lastOpacity = (fadeMode == 1) ? 64 : 0;
+			
 			// 애니메이션 작업
 			while (!this.isInterrupted()) {
-				opacity += speed;
-				
-				if (opacity >= 255) // 종료 조건
+				opacity += speed * fadeMode;
+				System.out.println(opacity);
+				if ((fadeMode == 1 && opacity >= lastOpacity) || (fadeMode == -1 && opacity <= lastOpacity)) // 종료 조건
 					break;
 				
-				comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), opacity)); // 투명도 설정
+				screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity)); // 투명도 설정
+				Main.getFrame().setVisible(true);
 				
 				try { // 딜레이 적용
 					Thread.sleep(delay);
@@ -182,7 +210,8 @@ public class Animation
 			}
 			
 			// 완료 시
-			comp.setBackground(new Color(background.getRed(), background.getGreen(), background.getBlue(), 255));
+			System.out.println("--- " + lastOpacity);
+			Main.getFrame().getContentPane().remove(screenFader);
 			if (listener != null) // 리스너의 완료 콜백 호출
 				listener.onCompleted();
 		}
