@@ -44,7 +44,7 @@ public class RecipeListScene extends SceneAbst
 		pnlRecipes.setLayout(new GridLayout(0, 1));
 		pnlRecipes.setOpaque(false);
 		pnlRecipesScroll = new JScrollPane(pnlRecipes);
-		pnlRecipesScroll.setBounds(133, 150, 500, 640);
+		pnlRecipesScroll.setBounds(133, 107, 500, 685);
 		pnlRecipesScroll.getViewport().setOpaque(false);
 		pnlRecipesScroll.setOpaque(false);
 		pnlRecipesScroll.setBorder(null);
