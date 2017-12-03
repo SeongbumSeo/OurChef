@@ -58,7 +58,7 @@ public class RefrigeratorScene extends SceneAbst
       //냉장고 패널
       linePanel1=new JPanel();//main이라고 가정
       linePanel1.setLayout(null);
-      linePanel1.setBounds(290,130,410,80);
+      linePanel1.setBounds(300,65,450,100);
       linePanel1.setOpaque(false);
       //linePanel1.setBackground(Color.black);
       add(linePanel1);
@@ -89,11 +89,13 @@ public class RefrigeratorScene extends SceneAbst
       
       
       ScrollPane scrollPanel = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
-      scrollPanel.setBounds(265,260,450,80);
+      scrollPanel.setBounds(300,215,450,120);
       //scrollPanel.setBackground(Color.green);
             
       linePanel2=new JPanel();
       linePanel2.setLayout(new FlowLayout());
+      // linePanel2.setLayout(null);
+      //linePanel2.setBounds(290, 250, 410, 80);
       //linePanel2.setBackground(Color.black);
       linePanel2.setOpaque(false);
       scrollPanel.add(linePanel2);
@@ -101,7 +103,7 @@ public class RefrigeratorScene extends SceneAbst
       
       linePanel3=new JPanel();
       linePanel3.setLayout(null);
-      linePanel3.setBounds(290,370,410,80);
+      linePanel3.setBounds(290,300,410,80);
       //linePanel3.setBackground(Color.black);
       add(linePanel3);
       
@@ -133,14 +135,14 @@ public class RefrigeratorScene extends SceneAbst
       btnIngredients_1=new JButton[4];
       for(int i=0 ; i<4 ; i++) {
          btnIngredients_1[i]=new JButton("1");
-         btnIngredients_1[i].setBounds(30+100*i, 18, 45, 45);
+         btnIngredients_1[i].setBounds(30+100*i, 18, 65, 65);
          linePanel1.add(btnIngredients_1[i]);
       }//1라인
       
       btnIngredients_2=new JButton[9];
       for(int i=0 ; i<9 ; i++) {
          btnIngredients_2[i]=new JButton();
-         btnIngredients_2[i].setPreferredSize(new Dimension(44,44));
+         btnIngredients_2[i].setPreferredSize(new Dimension(65,65));
          linePanel2.add(btnIngredients_2[i]);
       }//2라인
       
