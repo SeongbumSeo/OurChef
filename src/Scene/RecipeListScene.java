@@ -23,6 +23,8 @@ public class RecipeListScene extends SceneAbst
     private ImageButton btnMan1, btnMan2;
 	
 	public void onShow() {
+		RecipeL = new RecipeListener();
+		
 		// 뒤로가기 버튼 및 홈버튼
 	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
 	    btnGoBack.setLayout(null);
@@ -65,9 +67,9 @@ public class RecipeListScene extends SceneAbst
 			Object obj = event.getSource();
 			
 			if (obj == btnGoBack) {
-				
+				Main.switchScene(new CartScene());
 			} else if (obj == btnGoHome) {
-				
+				Main.switchScene(new IntroScene());
 			}
 		}
 	}

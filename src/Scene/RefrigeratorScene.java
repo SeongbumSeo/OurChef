@@ -176,9 +176,9 @@ public class RefrigeratorScene extends SceneAbst
          if (obj == btnCart) { // 시작 버튼 클릭
             Main.switchScene(new CartScene());
          } else if (obj == btnGoBack) {
-        	 
+        	 Main.switchScene(new IntroScene());
          } else if (obj == btnGoHome) {
-        	 
+        	 Main.switchScene(new IntroScene());
          }
       }
    }

@@ -86,9 +86,9 @@ public class CartScene extends SceneAbst
 				// RecipeListScene으로 이동
 				Main.switchScene(new RecipeListScene());
 			} else if (obj == btnGoBack) {
-				
+				Main.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoHome) {
-				
+				Main.switchScene(new IntroScene());
 			}
 		}
 	}
