@@ -44,15 +44,25 @@ public class Ingredient
 	 */
 	public static List<Ingredient> load(String filename) {
 		List<String[]> data = IOManager.readCSV(filename);
-		Iterator<String[]> itr = data.iterator();
-		String[] row;
 		List<Ingredient> ing = new ArrayList<Ingredient>();
 		
-		while (itr.hasNext()) {
-			row = itr.next();
+		for (String[] row : data)
 			ing.add(new Ingredient(Integer.parseInt(row[0])-1, row[1], row[2]));
-		}
 		
 		return ing;
+	}
+	
+	/**
+	 * 재료 리스트를 해시맵으로 변환합니다.
+	 * @param ingredients 재료 리스트
+	 * @return 재료 해시맵
+	 */
+	public static HashMap<String, Ingredient> parseHashMap(List<Ingredient> ingredients) {
+		HashMap<String, Ingredient> map = new HashMap<String, Ingredient>();
+		
+		for (Ingredient ing : ingredients)
+			map.put(ing.getName(), ing);
+		
+		return map;
 	}
 }

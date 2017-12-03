@@ -1,7 +1,8 @@
 package Scene;
 
 import java.awt.event.*;
-import java.util.Iterator;
+import java.util.*;
+import java.util.List;
 import java.awt.*;
 import javax.swing.*;
 import Data.*;
@@ -38,6 +39,9 @@ public class RecipeListScene extends SceneAbst
 	private JButton[] btnRecipe;
 
 	public void onShow() {
+		// 카트의 재료들로 만들 수 있는 레시피들 탐색
+		List<Recipe> recipes = Recipe.searchRecipes(Main.getRecipes(), Main.getCart());
+		
 		RecipeL = new RecipeListener();
 
 		pnlRecipes = new JPanel();
@@ -51,8 +55,8 @@ public class RecipeListScene extends SceneAbst
 		add(pnlRecipesScroll);
 
 		// 레시피 버튼들 추가
-		btnRecipe = new JButton[Main.getRecipes().size()];
-		Iterator<Recipe> itr = Main.getRecipes().iterator();
+		btnRecipe = new JButton[recipes.size()];
+		Iterator<Recipe> itr = recipes.iterator();
 		for (int i = 0; itr.hasNext(); i++) {
 			Recipe item = itr.next();
 
