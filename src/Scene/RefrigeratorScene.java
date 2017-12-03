@@ -41,6 +41,9 @@ public class RefrigeratorScene extends SceneAbst
 	private JPanel[] pnlLine;
 	// 각 라인의 스크롤 페인
 	private JScrollPane[] pnlLineScroll;
+	
+	// 애니메이션
+	private Animation animCartMove;
 
 	// 이벤트
 	private RefrigeratorListener refL;
@@ -136,15 +139,23 @@ public class RefrigeratorScene extends SceneAbst
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
 
-			if (obj == btnCart) { // 시작 버튼 클릭
-				Main.switchScene(new CartScene());
-			} else if (obj == btnGoBack) {
+			if (obj == btnCart) { // 카트 버튼 클릭
+				animCartMove = new Animation(btnCart, false, new MoveListener());
+				animCartMove.move(1500, 250, 500);
+			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				Main.switchScene(new IntroScene());
-			} else if (obj == btnGoHome) {
+			} else if (obj == btnGoHome) { // 홈 버튼 클릭
 				Main.switchScene(new IntroScene());
 			} else if (obj == txtInput || obj == btnSearch) {
 
 			}
+		}
+	}
+	
+	private class MoveListener implements AnimationListener
+	{
+		public void onCompleted() {
+			Main.switchScene(new CartScene());
 		}
 	}
 }

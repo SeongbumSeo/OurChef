@@ -98,7 +98,7 @@ public class ImageButton extends JButton
 		
 		public void mouseExited(MouseEvent event) {
 			// 이미지 변경
-			if (image == null)
+			if (image == null || hoverImage == null)
 				return;
 			((JButton)event.getSource()).setIcon(image);
 			
