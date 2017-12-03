@@ -7,13 +7,15 @@ import Main.IOManager;
 public class Recipe
 {
 	private String name;
+	private String icon;
 	private String[] ingredients;
 	private int level;
 	private String video;
 	private String origin;
 	
-	public Recipe(String name, String ingredients, int level, String video, String origin) {
+	public Recipe(String name, String icon, String ingredients, int level, String video, String origin) {
 		this.name = name;
+		this.icon = icon;
 		this.ingredients = ingredients.split(",");
 		this.level = level;
 		this.video = video;
@@ -25,6 +27,13 @@ public class Recipe
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	
 	public String[] getIngredients() {
@@ -71,7 +80,7 @@ public class Recipe
 		
 		while (itr.hasNext()) {
 			row = itr.next();
-			rec.add(new Recipe(row[0], row[1], Integer.parseInt(row[2]), row[3], row[4]));
+			rec.add(new Recipe(row[0], row[1], row[2], Integer.parseInt(row[3]), row[4], row[5]));
 		}
 		
 		return rec;
