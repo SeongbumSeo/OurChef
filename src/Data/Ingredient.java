@@ -8,12 +8,24 @@ public class Ingredient
 	private int type;
 	private String name;
 	private String icon;
+	private String iconBlack;
+	private String iconLight;
 	
 	public Ingredient(int type, String name, String icon) {
 		this.type = type;
 		this.name = name;
 		this.icon = icon;
+	
 	}
+	
+	public Ingredient(int type, String name, String icon, String iconBlack, String iconLight) {
+		this.type = type;
+		this.name = name;
+		this.icon = icon;
+		this.iconBlack = iconBlack;
+		this.iconLight = iconLight;
+	}
+	
 	
 	public int getType() {
 		return type;
@@ -32,9 +44,16 @@ public class Ingredient
 	public String getIcon() {
 		return icon;
 	}
+	public String getIconBlack( ) {
+		return iconBlack; 
+	}
+	public String getIconLight() {
+		return iconLight;
+	}
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
+	
 
 	/**
 	 * CSV 파일로부터 재료들을 로드합니다.
