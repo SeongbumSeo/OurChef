@@ -12,7 +12,10 @@ import GUI.*;
 import Data.*;
 
 public class CartScene extends SceneAbst
-{	
+{
+	// 상수
+	private static final int[] ITEM_SIZE = { 100, 100 };
+	
 	// 패널 임시
 	private JPanel ing;
 	
@@ -34,7 +37,6 @@ public class CartScene extends SceneAbst
 	private CartListener CartL;
 	private IngredientButtonListener ingButtonL;
 	
-	private static final int[] ITEM_SIZE = { 100, 100 };
 	private JPanel pnlIngredients;
 	private JScrollPane pnlIngredientsScroll;
 	private JLabel lblIngre;

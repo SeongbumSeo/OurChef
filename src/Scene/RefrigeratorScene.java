@@ -12,6 +12,7 @@ import Data.*;
 
 public class RefrigeratorScene extends SceneAbst
 {
+	// 상수
 	private static final int MAX_LINES = 6;
 	private static final int[][] LINE_BOUNDS = {
 			{ 300, 65, 450, 95 },
