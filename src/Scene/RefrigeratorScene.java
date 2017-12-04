@@ -142,12 +142,6 @@ public class RefrigeratorScene extends SceneAbst
 
 	}
 	
-	public JButton getMyButton(Ingredient ing) {
-		int type = ing.getType();
-		
-		
-	}
-	
 	public void changeBlack(Ingredient ing) {
 		// 아이콘
 		ImageIcon icon = new ImageIcon(ing.getIconBlack());
