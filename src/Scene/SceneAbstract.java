@@ -5,12 +5,12 @@ import java.awt.*;
 import javax.swing.*;
 import Main.*;
 
-public abstract class SceneAbst extends JPanel implements Scene
+public abstract class SceneAbstract extends JPanel implements Scene
 {
 	/**
 	 * 추상클래스 SceneAbst의 생성자입니다.
 	 */
-	public SceneAbst() {
+	public SceneAbstract() {
 		setPreferredSize(new Dimension(SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight())); // 프레임 크기에 맞춤
 		setBackground(Color.white); // 바탕색 설정
 		setLayout(null); // 배치관리자 제거
