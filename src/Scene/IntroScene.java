@@ -105,6 +105,9 @@ public class IntroScene extends SceneAbstract
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				pnlAbout.setVisible(false);
 				btnStart.setVisible(true);
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 			} else if (obj == btnSoundOn){
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);

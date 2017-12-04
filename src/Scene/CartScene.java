@@ -172,8 +172,15 @@ public class CartScene extends SceneAbstract
 				// RecipeListScene으로 이동
 				SceneManager.switchScene(new RecipeScene());
 			} else if (obj == btnGoBack) {
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new RefrigeratorScene());
+				
 			} else if (obj == btnGoHome) {
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new IntroScene());
 			}
 		}

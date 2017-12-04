@@ -273,8 +273,14 @@ public class RefrigeratorScene extends SceneAbstract
 				animCartMove = new Animation(btnCart, false, new MoveListener());
 				animCartMove.move(1500, 250, 500);
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new IntroScene());
 			} else if (obj == btnGoHome) { // 홈 버튼 클릭
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new IntroScene());
 			} else if (obj == txtSearch || obj == btnSearch) {
 				search(txtSearch.getText());

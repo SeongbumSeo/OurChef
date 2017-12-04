@@ -230,8 +230,14 @@ public class RecipeScene extends SceneAbstract
 			Object obj = event.getSource();
 
 			if (obj == btnGoBack) {
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new CartScene());
 			} else if (obj == btnGoHome) {
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
+				onButton.start();
 				SceneManager.switchScene(new IntroScene());
 			} else if (obj == btnPrevious) {
 				int index = currentRecipe.getSlides().indexOf(currentSlide);
