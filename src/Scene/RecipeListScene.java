@@ -107,6 +107,13 @@ public class RecipeListScene extends SceneAbstract
 			pnlItem.add(lblDish);
 			btnRecipe[i].add(pnlItem);
 		}
+		
+		// 레시피가 없는 경우
+		if (recipes.size() == 0) {
+			JLabel lblNone = new JLabel("<html><center>There are no recipes with the selected ingredients!</center></html>");
+			lblNone.setPreferredSize(new Dimension(480, 0));
+			pnlRecipes.add(lblNone);
+		}
 
 		// 뒤로가기 버튼 및 홈버튼
 		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
