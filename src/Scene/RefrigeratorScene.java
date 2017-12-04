@@ -143,15 +143,27 @@ public class RefrigeratorScene extends SceneAbst
 	}
 	
 	public void changeBlack(Ingredient ing) {
-		
+		// 아이콘
+		ImageIcon icon = new ImageIcon(ing.getIconBlack());
+		Image image = icon.getImage();			
+		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(image);
 	}
 	
 	public void changeLight(Ingredient ing) {
-		
+		// 아이콘
+		ImageIcon icon = new ImageIcon(ing.getIconLight());
+		Image image = icon.getImage();			
+		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(image);
 	}
 	
 	public void changeOriginal(Ingredient ing) {
-		
+		// 아이콘
+		ImageIcon icon = new ImageIcon(ing.getIcon());
+		Image image = icon.getImage();			
+		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+		icon = new ImageIcon(image);
 	}
 
 	private class RefrigeratorListener implements ActionListener
