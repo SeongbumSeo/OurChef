@@ -16,6 +16,7 @@ public class IntroScene extends SceneAbst
 	// 시작화면 버튼
 	private ImageButton btnStart, btnStart2;
 	private ImageButton btnAbout;
+	private ImageButton btnSoundOn, btnSoundOff;
 	
 	// 사용 설명 화면
 	private JPanel pnlAbout;
@@ -29,6 +30,15 @@ public class IntroScene extends SceneAbst
 		
 		// 사용 방법 패널 생성
 		createAboutPanel();
+		
+		// 소리 버튼 추가
+		btnSoundOn = new ImageButton("images/soundOn.png", 1395, 50);
+		btnSoundOn.addActionListener(introL);
+		btnSoundOff = new ImageButton("images/soundOff.png", 1395, 50);
+		btnSoundOff.addActionListener(introL);
+		btnSoundOff.setVisible(false);
+		add(btnSoundOn);
+		add(btnSoundOff);
 		
 		// 사용 방법 버튼 추가
 		btnAbout = new ImageButton("images/bottle.png", "images/bottle_h.png", 350, 395);
@@ -91,6 +101,12 @@ public class IntroScene extends SceneAbst
 				SceneManager.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				pnlAbout.setVisible(false);
+			} else if (obj == btnSoundOn){
+				btnSoundOn.setVisible(false);
+				btnSoundOff.setVisible(true);
+			} else if (obj == btnSoundOff) {
+				btnSoundOff.setVisible(false);
+				btnSoundOn.setVisible(true);
 			}
 		}
 	}
