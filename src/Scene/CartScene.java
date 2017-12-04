@@ -36,6 +36,7 @@ public class CartScene extends SceneAbst
 	// 이벤트
 	private CartListener CartL;
 	private IngredientButtonListener ingButtonL;
+	private ImageListener imgL;
 	
 	private JPanel pnlIngredients;
 	private JScrollPane pnlIngredientsScroll;
@@ -51,6 +52,7 @@ public class CartScene extends SceneAbst
 		
 		CartL = new CartListener();
 		ingButtonL = new IngredientButtonListener();
+		imgL = new ImageListener();
 		
 		pnlIngredients = new JPanel();
 		pnlIngredients.setLayout(new GridLayout(0, 1));
@@ -66,10 +68,7 @@ public class CartScene extends SceneAbst
 		ingButtonMap = new HashMap<JButton, Ingredient>();
 		for (Ingredient item : cart) {
 			// 아이콘
-			ImageIcon icon = new ImageIcon(item.getIcon());
-			Image image = icon.getImage();
-			image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-			icon = new ImageIcon(image);
+			ImageIcon icon = getIngredientIcon(item.getIcon());
 			
 			// 재료 버튼
 			JButton btn = new JButton();
@@ -78,6 +77,7 @@ public class CartScene extends SceneAbst
 			btn.setContentAreaFilled(false); // 버튼 바탕색 제거
 			btn.setBorderPainted(false); // 버튼 테두리 제거
 			btn.addActionListener(ingButtonL);
+			btn.addMouseListener(imgL);
 			pnlIngredients.add(btn);
 			
 			ingButtonMap.put(btn, item);
@@ -125,6 +125,34 @@ public class CartScene extends SceneAbst
 			
 	}
 	
+	private ImageIcon getIngredientIcon(String iconPath) {
+		ImageIcon icon = new ImageIcon(iconPath);
+		Image image = icon.getImage();			
+		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
+		return new ImageIcon(image);
+	}
+	
+	private void changeBlack(JButton button, Ingredient ing) {
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIconBlack());
+		// 아이콘 적용
+		button.setIcon(icon);
+	}
+	
+	private void changeLight(JButton button, Ingredient ing) {
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIconLight());
+		// 아이콘 적용
+		button.setIcon(icon);
+		
+	}
+	
+	private void changeOriginal(JButton button, Ingredient ing) {
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIcon());
+		// 아이콘 적용
+		button.setIcon(icon);
+	}
 	
 	private class CartListener implements ActionListener
 	{
@@ -158,12 +186,41 @@ public class CartScene extends SceneAbst
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!selected.contains(ing)) {
+				// 카트 내 재료 선택
 				selected.add(ing);
-				System.out.println("카트 내 재료 선택: " + ing.getName());
+				changeBlack((JButton)obj, ing);
 			} else {
+				// 카트 내 재료 선택 취소
 				selected.remove(ing);
-				System.out.println("카트 내 재료 선택 취소: " + ing.getName());
+				changeOriginal((JButton)obj, ing);
 			}
 		}
+	}
+	
+	private class ImageListener implements MouseListener
+	{
+		// 마우스가 컴포넌트 안으로 들어온 상태
+		public void mouseEntered(MouseEvent event) {
+			Object obj = event.getSource();
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!selected.contains(ing)) { // 선택되지 않은 상태라면
+				changeLight((JButton)obj, ing);
+			}
+		}
+				
+		// 마우스가 컴포넌트 밖으로 나간 상태
+		public void mouseExited(MouseEvent event) {
+			Object obj = event.getSource();
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!selected.contains(ing)) { // 선택되지 않은 상태라면
+				changeOriginal((JButton)obj, ing);
+			}
+		}
+
+		public void mouseClicked(MouseEvent event) { } 
+		public void mousePressed(MouseEvent event) { }
+		public void mouseReleased(MouseEvent event) { }
 	}
 }

@@ -194,14 +194,14 @@ public class RefrigeratorScene extends SceneAbst
 			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
-			if (!cart.contains(ing)) { // 선택한 재료를 카트에 추가
+			if (!cart.contains(ing)) {
+				// 선택한 재료를 카트에 추가
 				cart.add(ing);
 				changeBlack((JButton)obj, ing);
-				System.out.println("카트에 추가됨: " + ing.getName());
 			} else {
+				// 카트에서 제거
 				cart.remove(ing);
 				changeOriginal((JButton)obj, ing);
-				System.out.println("카트에서 제거됨: " + ing.getName());
 			}
 		}
 	}
