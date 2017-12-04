@@ -51,6 +51,7 @@ public class RefrigeratorScene extends SceneAbst
 	// 이벤트
 	private RefrigeratorListener refL;
 	private IngredientButtonListener ingButtonL;
+	private ImageListener imgL;
 
 	public void onShow() {
 		// 재료 정보 가져오기
@@ -58,6 +59,7 @@ public class RefrigeratorScene extends SceneAbst
 		
 		refL = new RefrigeratorListener();
 		ingButtonL = new IngredientButtonListener();
+		imgL = new ImageListener();
 
 		pnlLine = new JPanel[MAX_LINES];
 		pnlLineScroll = new JScrollPane[MAX_LINES];
@@ -76,6 +78,7 @@ public class RefrigeratorScene extends SceneAbst
 			add(pnlLineScroll[i]);
 		}
 		
+		
 		// 재료 버튼 추가
 		ingButtonMap = new HashMap<JButton, Ingredient>();
 		for (Ingredient ing : ingredients) {
@@ -92,6 +95,7 @@ public class RefrigeratorScene extends SceneAbst
 			btn.setContentAreaFilled(false); // 버튼 바탕색 제거
 			btn.setBorderPainted(false); // 버튼 테두리 제거
 			btn.addActionListener(ingButtonL);
+			btn.addMouseListener(imgL);
 			pnlLine[ing.getType()].add(btn);
 			
 			ingButtonMap.put(btn, ing);
@@ -137,6 +141,18 @@ public class RefrigeratorScene extends SceneAbst
 	public void onHide() {
 
 	}
+	
+	public void changeBlack(Ingredient ing) {
+		
+	}
+	
+	public void changeLight(Ingredient ing) {
+		
+	}
+	
+	public void changeOriginal(Ingredient ing) {
+		
+	}
 
 	private class RefrigeratorListener implements ActionListener
 	{
@@ -178,5 +194,38 @@ public class RefrigeratorScene extends SceneAbst
 		public void onCompleted() {
 			Main.switchScene(new CartScene());
 		}
+	}
+	
+	private class ImageListener implements MouseListener
+	{		
+		// 마우스 클릭이 완료된 상태
+		public void mouseClicked(MouseEvent event) {
+			Object obj = event.getSource();
+			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
+				
+			} else { // 선택된 상태라면
+				
+			}
+		} 
+		
+		// 마우스 눌린 상태
+		public void mousePressed(MouseEvent event) {
+				
+			
+		}
+		
+		// 마우스가 눌려서 풀린 상태
+		public void mouseReleased(MouseEvent event) {
+			
+		}
+		
+		// 마우스가 컴포넌트 안으로 들어온 상태
+		public void mouseEntered(MouseEvent event) {}
+		
+		// 마우스가 컴포넌트 밖으로 나간 상태
+		public void mouseExited(MouseEvent event) {}
 	}
 }
