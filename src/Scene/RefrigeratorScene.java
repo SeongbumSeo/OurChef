@@ -3,6 +3,7 @@ package Scene;
 import java.util.*;
 import java.util.List;
 import java.awt.event.*;
+import java.io.File;
 import java.awt.*;
 import javax.swing.*;
 import Main.*;
@@ -36,15 +37,9 @@ public class RefrigeratorScene extends SceneAbstract
 
 	//검색된 버튼
 	JButton[] btnSearchedIngredient; 
-	
-	//test
-	private JButton b1,b2,b3,b4,b5,b6;
-	private JButton b7,b8,b9,b10,b11,b12;
-	private JButton b13,b14,b15,b16,b17,b18;
-		
-	
+
 	// 검색
-	private JTextField txtInput;
+	private JTextField txtSearch;
 	private ImageButton btnSearch;
 	//검색으로 인한 패널
 	private JPanel pnlSearch;
@@ -59,6 +54,7 @@ public class RefrigeratorScene extends SceneAbstract
 	
 	// 재료 버튼
 	private HashMap<JButton, Ingredient> ingButtonMap;
+	private HashMap<JButton, Ingredient> ingSearchMap;
 	
 	// 애니메이션
 	private Animation animCartMove;
@@ -66,6 +62,7 @@ public class RefrigeratorScene extends SceneAbstract
 	// 이벤트
 	private RefrigeratorListener refL;
 	private IngredientButtonListener ingButtonL;
+	private SearchResultListener searchResultL;
 	private ImageListener imgL;
 
 	
@@ -75,73 +72,106 @@ public class RefrigeratorScene extends SceneAbstract
 		
 		refL = new RefrigeratorListener();
 		ingButtonL = new IngredientButtonListener();
+		searchResultL = new SearchResultListener();
 		imgL = new ImageListener();
 		
+		createSearchBar(ingredients); // 검색UI 생성
+		createLinePanels(ingredients); // 라인 패널들 생성
+
+		// CartScene으로 넘어가는 버튼 추가
+		btnCart = new ImageButton("images/cart.png", 900, 350);
+		btnCart.addActionListener(refL);
+		add(btnCart);
+
+		// 뒤로가기 버튼 및 홈버튼
+		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+		btnGoBack.setLayout(null);
+		btnGoBack.setContentAreaFilled(false);
+		btnGoBack.setBorderPainted(false);
+		btnGoBack.addActionListener(refL);
+		add(btnGoBack);
+
+		btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+		btnGoHome.setLayout(null);
+		btnGoHome.setContentAreaFilled(false);
+		btnGoHome.setBorderPainted(false);
+		btnGoHome.addActionListener(refL);
+		add(btnGoHome);
 		
+		// 배경
+		imgBackground = new ImageIcon("images/refBackground2.png");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		add(lblBackground);
+	}
+
+	public void onHide() {
+
+	}
+	
+	private void createSearchBar(List<Ingredient> ingredients) {
+		// 검색 입력 & 버튼
+		txtSearch = new JTextField();
+		txtSearch.setBounds(950, 70, 430, 55);
+		txtSearch.addActionListener(refL);
+		add(txtSearch);
+		btnSearch = new ImageButton("images/searchIcon.png", "images/searchIcon_h.png", 1390, 70);
+		btnSearch.addActionListener(refL);
+		add(btnSearch);
 		
 		//검색 스크롤패인 생성
 		pnlSearch=new JPanel();
 		pnlSearch.setOpaque(false);
 		pnlSearch.setLayout(new GridLayout(0, 1));
-		pnlSearchScroll=new JScrollPane(pnlSearch,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pnlSearchScroll=new JScrollPane(pnlSearch);
 		pnlSearchScroll.getViewport().setOpaque(false);
 		pnlSearchScroll.setOpaque(false);
 		pnlSearchScroll.setBorder(null);
-		pnlSearchScroll.setBounds(950, 125, 430, 200);
+		pnlSearchScroll.setBounds(950, 125, 430, ITEM_SIZE[1]+10); // (ITEM_SIZE[1]+10)*n
+		pnlSearchScroll.setVisible(false); // 숨김
 		add(pnlSearchScroll);
-		
-		btnSearchedIngredient=new JButton[40];
-		
-		for(int i=0 ; i<40 ; i++) {
-			btnSearchedIngredient[i]=new JButton("2");
-			btnSearchedIngredient[i].setContentAreaFilled(false); // 버튼 바탕색 제거
-			btnSearchedIngredient[i].setBorderPainted(false);
-			pnlSearch.add(btnSearchedIngredient[i]);
-		}
-		
-		
-		//test
-		
-		b1=new JButton("1");
-		pnlSearch.add(b1);
-		b2=new JButton("1");
-		pnlSearch.add(b2);
-		b3=new JButton("1");
-		pnlSearch.add(b3);
-		b4=new JButton("1");
-		pnlSearch.add(b4);
-		b5=new JButton("1");
-		pnlSearch.add(b5);
-		b6=new JButton("1");
-		pnlSearch.add(b6);
-		b7=new JButton("1");
-		pnlSearch.add(b7);
-		b8=new JButton("1");
-		pnlSearch.add(b8);
-		b9=new JButton("1");
-		pnlSearch.add(b9);
-		b10=new JButton("1");
-		pnlSearch.add(b10);
-		b11=new JButton("1");
-		pnlSearch.add(b11);
-		b12=new JButton("1");
-		pnlSearch.add(b12);
-		
-		b13=new JButton();
-		pnlSearch.add(b13);
-		b14=new JButton();
-		pnlSearch.add(b14);
-		b15=new JButton();
-		pnlSearch.add(b15);
-		b16=new JButton();
-		pnlSearch.add(b16);
-		b17=new JButton();
-		pnlSearch.add(b17);
-		b18=new JButton();
-		pnlSearch.add(b18);
-				
-		
 
+		ingSearchMap = new HashMap<JButton, Ingredient>();
+	}
+	
+	private JButton addSearchResultButton(Ingredient ing) {
+		// 재료 버튼
+		JButton btn = new JButton() { // 반투명 버튼
+			protected void paintComponent(Graphics g)
+			{
+				g.setColor(getBackground());
+				g.fillRect(0, 0, getWidth(), getHeight());
+				super.paintComponent(g);
+			}
+		};
+		btn.setHorizontalAlignment(SwingConstants.LEFT);
+		btn.setPreferredSize(new Dimension(410, ITEM_SIZE[1]+10));
+		btn.setLayout(null);
+		btn.setOpaque(false);
+		btn.setBackground(new Color(1f, 1f, 1f, .5f));
+		btn.setBorderPainted(false); // 버튼 테두리 제거
+		btn.addActionListener(searchResultL);
+		pnlSearch.add(btn);
+
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIcon());
+		JLabel lblIcon = new JLabel(icon);
+		lblIcon.setBounds(0, 0, ITEM_SIZE[0]+50, ITEM_SIZE[1]+10);
+		btn.add(lblIcon);
+		
+		// 이름
+		JLabel lblName = new JLabel(ing.getName());
+		lblName.setBounds(ITEM_SIZE[0]+60, 0, 350-ITEM_SIZE[0], ITEM_SIZE[1]+10);
+		lblName.setFont(getDefaultFont());
+		btn.add(lblName);
+		
+		ingSearchMap.put(btn, ing);
+		
+		return btn;
+	}
+	
+	private void createLinePanels(List<Ingredient> ingredients) {
 		pnlLine = new JPanel[MAX_LINES];
 		pnlLineScroll = new JScrollPane[MAX_LINES];
 		for (int i = 0; i < MAX_LINES; i++) {
@@ -180,46 +210,6 @@ public class RefrigeratorScene extends SceneAbstract
 			
 			ingButtonMap.put(btn, ing);
 		}
-
-		// CartScene으로 넘어가는 버튼 추가
-		btnCart = new ImageButton("images/cart.png", 900, 350);
-		btnCart.addActionListener(refL);
-		add(btnCart);
-
-		// 검색
-		txtInput = new JTextField();
-		txtInput.setBounds(950, 70, 430, 55);
-		txtInput.addActionListener(refL);
-		add(txtInput);
-		btnSearch = new ImageButton("images/searchIcon.png", "images/searchIcon_h.png", 1390, 70);
-		btnSearch.addActionListener(refL);
-		add(btnSearch);
-
-		// 뒤로가기 버튼 및 홈버튼
-		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
-		btnGoBack.setLayout(null);
-		btnGoBack.setContentAreaFilled(false);
-		btnGoBack.setBorderPainted(false);
-		btnGoBack.addActionListener(refL);
-		add(btnGoBack);
-
-		btnGoHome = new ImageButton("images/goHome.png", 20, 25);
-		btnGoHome.setLayout(null);
-		btnGoHome.setContentAreaFilled(false);
-		btnGoHome.setBorderPainted(false);
-		btnGoHome.addActionListener(refL);
-		add(btnGoHome);
-		
-		// 배경
-		imgBackground = new ImageIcon("images/refBackground2.png");
-		lblBackground = new JLabel();
-		lblBackground.setIcon(imgBackground);
-		lblBackground.setBounds(0, 0, 1600, 900);
-		add(lblBackground);
-	}
-
-	public void onHide() {
-
 	}
 	
 	private ImageIcon getIngredientIcon(String iconPath) {
@@ -250,6 +240,27 @@ public class RefrigeratorScene extends SceneAbstract
 		// 아이콘 적용
 		button.setIcon(icon);
 	}
+	
+	private void search(String keyword) {
+		int results = 0;
+		
+		pnlSearch.removeAll();
+		ingSearchMap.clear();
+		for (Ingredient ing : DataManager.getIngredients())
+			if (ing.getName().toLowerCase().contains(keyword.toLowerCase())) {
+				addSearchResultButton(ing);
+				results++;
+			}
+		pnlSearch.revalidate();
+		pnlSearch.repaint();
+		
+		if (results == 0) { // 검색 결과가 없는 경우
+			pnlSearchScroll.setVisible(false);
+		} else {
+			pnlSearchScroll.setSize(new Dimension(pnlSearchScroll.getWidth(), (ITEM_SIZE[1]+10)*((results > 3) ? 3 : results)));
+			pnlSearchScroll.setVisible(true);
+		}
+	}
 
 	private class RefrigeratorListener implements ActionListener
 	{
@@ -263,8 +274,8 @@ public class RefrigeratorScene extends SceneAbstract
 				SceneManager.switchScene(new IntroScene());
 			} else if (obj == btnGoHome) { // 홈 버튼 클릭
 				SceneManager.switchScene(new IntroScene());
-			} else if (obj == txtInput || obj == btnSearch) {
-
+			} else if (obj == txtSearch || obj == btnSearch) {
+				search(txtSearch.getText());
 			}
 		}
 	}
@@ -285,6 +296,27 @@ public class RefrigeratorScene extends SceneAbstract
 				cart.remove(ing);
 				changeOriginal((JButton)obj, ing);
 			}
+		}
+	}
+	
+	private class SearchResultListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event) {
+			Object obj = event.getSource();
+			List<Ingredient> cart = DataManager.getCart(); // 카트 리스트 객체
+			Ingredient ing = ingSearchMap.get(obj); // 선택한 재료
+			
+			for (Map.Entry<JButton, Ingredient> item : ingButtonMap.entrySet())
+				if (item.getValue() == ing)
+					if (!cart.contains(ing)) {
+						// 선택한 재료를 카트에 추가
+						cart.add(ing);
+						changeBlack(item.getKey(), ing);
+					} else {
+						// 카트에서 제거
+						cart.remove(ing);
+						changeOriginal(item.getKey(), ing);
+					}
 		}
 	}
 	

@@ -7,6 +7,8 @@ import Main.*;
 
 public abstract class SceneAbstract extends JPanel implements Scene
 {
+	Font defaultFont;
+	
 	/**
 	 * 추상클래스 SceneAbst의 생성자입니다.
 	 */
@@ -20,6 +22,13 @@ public abstract class SceneAbstract extends JPanel implements Scene
 	}
 	
 	/**
+	 * 현재 기본 폰트를 반환합니다.
+	 * @return 기본 폰트
+	 */
+	public Font getDefaultFont() {
+		return defaultFont;
+	}
+	/**
 	 * 폰트가 적용되지 않은 컴포넌트에 기본 폰트를 적용하는 메소드입니다.
 	 */
 	private void applyDefaultFont(String name) {
@@ -27,10 +36,10 @@ public abstract class SceneAbstract extends JPanel implements Scene
 			// 폰트 파일 로드
 			File file = new File("fonts/" + name + ".ttf");
 			Font fontBase = Font.createFont(Font.TRUETYPE_FONT, file);
-			Font fontReal = fontBase.deriveFont(Font.PLAIN, 40);
+			defaultFont = fontBase.deriveFont(Font.PLAIN, 40);
 			
 			// 폰트 적용
-			applyDefaultFont(this, fontReal);
+			applyDefaultFont(this, defaultFont);
 		} catch (Exception e) { }
 	}
 	/**
