@@ -165,6 +165,8 @@ public class RefrigeratorScene extends SceneAbstract
 		for (Ingredient ing : ingredients) {
 			// 아이콘
 			ImageIcon icon = getIngredientIcon(ing.getIcon());
+			if (DataManager.getCart().contains(ing))
+				icon = getIngredientIcon(ing.getIconBlack());
 
 			// 재료 버튼
 			JButton btn = new JButton();
