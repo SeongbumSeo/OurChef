@@ -83,10 +83,7 @@ public class RefrigeratorScene extends SceneAbst
 		ingButtonMap = new HashMap<JButton, Ingredient>();
 		for (Ingredient ing : ingredients) {
 			// 아이콘
-			ImageIcon icon = new ImageIcon(ing.getIcon());
-			Image image = icon.getImage();			
-			image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-			icon = new ImageIcon(image);
+			ImageIcon icon = getIngredientIcon(ing.getIcon());
 
 			// 재료 버튼
 			JButton btn = new JButton();
@@ -142,37 +139,33 @@ public class RefrigeratorScene extends SceneAbst
 
 	}
 	
-	public void changeBlack(Ingredient ing) {
-		// 아이콘
-		ImageIcon icon = new ImageIcon(ing.getIconBlack());
+	private ImageIcon getIngredientIcon(String iconPath) {
+		ImageIcon icon = new ImageIcon(iconPath);
 		Image image = icon.getImage();			
 		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-		icon = new ImageIcon(image);
-		
-		// 버튼 불러오고 아이콘 적용
+		return new ImageIcon(image);
+	}
+	
+	private void changeBlack(JButton button, Ingredient ing) {
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIconBlack());
+		// 아이콘 적용
+		button.setIcon(icon);
+	}
+	
+	private void changeLight(JButton button, Ingredient ing) {
+		// 아이콘
+		ImageIcon icon = getIngredientIcon(ing.getIconLight());
+		// 아이콘 적용
+		button.setIcon(icon);
 		
 	}
 	
-	public void changeLight(Ingredient ing) {
+	private void changeOriginal(JButton button, Ingredient ing) {
 		// 아이콘
-		ImageIcon icon = new ImageIcon(ing.getIconLight());
-		Image image = icon.getImage();			
-		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-		icon = new ImageIcon(image);
-		
-		// 버튼 불러오고 아이콘 적용
-		
-	}
-	
-	public void changeOriginal(Ingredient ing) {
-		// 아이콘
-		ImageIcon icon = new ImageIcon(ing.getIcon());
-		Image image = icon.getImage();			
-		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
-		icon = new ImageIcon(image);
-		
-		// 버튼 불러오고 아이콘 적용
-		
+		ImageIcon icon = getIngredientIcon(ing.getIcon());
+		// 아이콘 적용
+		button.setIcon(icon);
 	}
 
 	private class RefrigeratorListener implements ActionListener
@@ -202,9 +195,11 @@ public class RefrigeratorScene extends SceneAbst
 			
 			if (!cart.contains(ing)) { // 선택한 재료를 카트에 추가
 				cart.add(ing);
+				changeBlack((JButton)obj, ing);
 				System.out.println("카트에 추가됨: " + ing.getName());
 			} else {
 				cart.remove(ing);
+				changeOriginal((JButton)obj, ing);
 				System.out.println("카트에서 제거됨: " + ing.getName());
 			}
 		}
@@ -218,20 +213,7 @@ public class RefrigeratorScene extends SceneAbst
 	}
 	
 	private class ImageListener implements MouseListener
-	{		
-		// 마우스 클릭이 완료된 상태
-		public void mouseClicked(MouseEvent event) {
-			Object obj = event.getSource();
-			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
-			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
-			
-			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
-				changeBlack(ing);
-			} else { // 선택된 상태라면
-				changeOriginal(ing);
-			}
-		} 
-		
+	{
 		// 마우스가 컴포넌트 안으로 들어온 상태
 		public void mouseEntered(MouseEvent event) {
 			Object obj = event.getSource();
@@ -239,7 +221,7 @@ public class RefrigeratorScene extends SceneAbst
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
-				changeLight(ing);
+				changeLight((JButton)obj, ing);
 			}
 		}
 				
@@ -250,11 +232,12 @@ public class RefrigeratorScene extends SceneAbst
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
-				changeOriginal(ing);
+				changeOriginal((JButton)obj, ing);
 			}
 		}
-		
-		public void mousePressed(MouseEvent event) {}
-		public void mouseReleased(MouseEvent event) {}
+
+		public void mouseClicked(MouseEvent event) { } 
+		public void mousePressed(MouseEvent event) { }
+		public void mouseReleased(MouseEvent event) { }
 	}
 }

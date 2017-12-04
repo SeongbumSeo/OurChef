@@ -11,13 +11,6 @@ public class Ingredient
 	private String iconBlack;
 	private String iconLight;
 	
-	public Ingredient(int type, String name, String icon) {
-		this.type = type;
-		this.name = name;
-		this.icon = icon;
-	
-	}
-	
 	public Ingredient(int type, String name, String icon, String iconBlack, String iconLight) {
 		this.type = type;
 		this.name = name;
@@ -65,7 +58,7 @@ public class Ingredient
 		List<Ingredient> ing = new ArrayList<Ingredient>();
 		
 		for (String[] row : data)
-			ing.add(new Ingredient(Integer.parseInt(row[0])-1, row[1], row[2]));
+			ing.add(new Ingredient(Integer.parseInt(row[0])-1, row[1], row[2], row[3], row[4]));
 		
 		return ing;
 	}
