@@ -21,6 +21,7 @@ public class RecipeListScene extends SceneAbstract
 
 	// 이벤트
 	private RecipeListener RecipeL;
+	private RecipeButtonListener recButtonL;
 
 	// 아저씨
 	private ImageButton fish;
@@ -28,21 +29,20 @@ public class RecipeListScene extends SceneAbstract
 	private JScrollPane pnlRecipesScroll;
 	private JPanel pnlRecipes;
 
-	// JButton b1,b2,b3,b4,b5,b6;
-
 	// 레시피
 	private JPanel pnlItem;
 	private ImageIcon IconDish, IconDish2;
 	private ImageIcon IconStar, IconStar2;
 	private JLabel lblDish, lblName, lblStar;
 
-	private JButton[] btnRecipe;
+	private HashMap<JButton, Recipe> recButtonMap;
 
 	public void onShow() {
 		// 카트의 재료들로 만들 수 있는 레시피들 탐색
 		List<Recipe> recipes = Recipe.searchRecipes(DataManager.getRecipes(), DataManager.getCart());
 		
 		RecipeL = new RecipeListener();
+		recButtonL = new RecipeButtonListener();
 
 		pnlRecipes = new JPanel();
 		pnlRecipes.setLayout(new GridLayout(0, 1));
@@ -55,17 +55,15 @@ public class RecipeListScene extends SceneAbstract
 		add(pnlRecipesScroll);
 
 		// 레시피 버튼들 추가
-		btnRecipe = new JButton[recipes.size()];
-		Iterator<Recipe> itr = recipes.iterator();
-		for (int i = 0; itr.hasNext(); i++) {
-			Recipe item = itr.next();
-
+		recButtonMap = new HashMap<JButton, Recipe>();
+		for (Recipe item : recipes) {
 			// 레시피 버튼
-			btnRecipe[i] = new JButton();
-			btnRecipe[i].setPreferredSize(new Dimension(480, 160));
-			btnRecipe[i].setContentAreaFilled(false); // 버튼 바탕색 제거
-			btnRecipe[i].setBorderPainted(false); // 버튼 테두리 제거
-			pnlRecipes.add(btnRecipe[i]);
+			JButton button = new JButton();
+			button.setPreferredSize(new Dimension(480, 160));
+			button.setContentAreaFilled(false); // 버튼 바탕색 제거
+			button.setBorderPainted(false); // 버튼 테두리 제거
+			button.addActionListener(recButtonL);
+			pnlRecipes.add(button);
 
 			// 레시피 버튼 내부의 패널
 			pnlItem = new JPanel();
@@ -105,7 +103,9 @@ public class RecipeListScene extends SceneAbstract
 			pnlItem.add(lblStar);
 			pnlItem.add(lblName);
 			pnlItem.add(lblDish);
-			btnRecipe[i].add(pnlItem);
+			button.add(pnlItem);
+			
+			recButtonMap.put(button, item);
 		}
 		
 		// 레시피가 없는 경우
@@ -162,6 +162,16 @@ public class RecipeListScene extends SceneAbstract
 			} else if (obj == btnGoHome) {
 				SceneManager.switchScene(new IntroScene());
 			}
+		}
+	}
+	
+	private class RecipeButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event) {
+			Object obj = event.getSource();
+			Recipe rec = recButtonMap.get(obj);
+			
+			System.out.println(rec.getName());
 		}
 	}
 }
