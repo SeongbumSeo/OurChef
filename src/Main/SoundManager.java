@@ -15,6 +15,7 @@ public class SoundManager extends Thread {
 	private FileInputStream fis;
 	private BufferedInputStream bis;
 	private static SoundManager introMusic;
+	private boolean isMute;
 	
 	public SoundManager(String name, boolean isLoop) {
 		try {
@@ -31,12 +32,14 @@ public class SoundManager extends Thread {
 	public static void playBackground() {
 		introMusic = new SoundManager("./sounds/background.mp3", true);
 		introMusic.start();
+		introMusic.isMute = false;
 	}
 	
 	public static void stopBackground() {
 		introMusic.setIsLoop(false);
 		introMusic.close();
 		introMusic.interrupt();
+		introMusic.isMute = true;
 	}
 	
 	public void setIsLoop(boolean bool) {
@@ -53,10 +56,12 @@ public class SoundManager extends Thread {
 	public void run() {
 		try {
 			do {
-				player.play();//실행
-				fis = new FileInputStream(file);
-				bis = new BufferedInputStream(fis);
-				player = new Player(bis);
+				if (introMusic.isMute == false) {
+					player.play();//실행
+					fis = new FileInputStream(file);
+					bis = new BufferedInputStream(fis);
+					player = new Player(bis);
+				}
 			} while (isLoop); // 무한반복
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
