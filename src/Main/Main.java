@@ -12,9 +12,6 @@ public class Main
 		DataManager.loadData();
 		SceneManager.showWindow("Our Chef", 1600, 900);
 		SceneManager.switchScene(new IntroScene());
-		//SoundManager.playBackground();
-		
-		SoundManager introMusic = new SoundManager("background.mp3", true);
-		introMusic.start();
+		SoundManager.playBackground();
 	}
 }

@@ -3,6 +3,7 @@ package GUI;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import Main.*;
 
 public class ImageButton extends JButton
 {
@@ -87,6 +88,10 @@ public class ImageButton extends JButton
 			if (hoverImage == null)
 				return;
 			((JButton)event.getSource()).setIcon(hoverImage);
+			
+			// 효과음
+			SoundManager onButton = new SoundManager("./sounds/onButton.mp3", false);
+			onButton.start();
 			
 			// 크기 재설정
 			setSize(new Dimension(hoverImage.getIconWidth(), hoverImage.getIconHeight()));

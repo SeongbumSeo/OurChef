@@ -14,11 +14,12 @@ public class SoundManager extends Thread {
 	private File file;
 	private FileInputStream fis;
 	private BufferedInputStream bis;
+	private static SoundManager introMusic;
 	
 	public SoundManager(String name, boolean isLoop) {
 		try {
 			this.isLoop = isLoop;
-			file = new File("./sounds/background.mp3");
+			file = new File(name);
 			fis = new FileInputStream(file);
 			bis = new BufferedInputStream(fis);
 			player = new Player(bis);
@@ -27,6 +28,14 @@ public class SoundManager extends Thread {
 		}
 	}
 	
+	public static void playBackground() {
+		introMusic = new SoundManager("./sounds/background.mp3", true);
+		introMusic.start();
+	}
+	
+	public static void stopBackground() {
+		introMusic.close();
+	}
 	
 	public void close() { // 항상 종료할 수 있도록 하는 함수.
 		isLoop = false;
@@ -49,20 +58,3 @@ public class SoundManager extends Thread {
 	}
 
 }
-
-
-
-
-
-
-//예진이 코드
-//public class SoundManager {
-//	private static Sound mSound;
-//	
-//	public static void playBackground() {
-//		File clap = new File("./sounds/background.mp3");
-//		mSound = new Sound(clap);
-//		mSound.playLoop();
-//	}
-//	
-//}
