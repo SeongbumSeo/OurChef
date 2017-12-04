@@ -34,8 +34,14 @@ public class RecipeScene extends SceneAbstract
 	private ImageIcon IconDish, IconDish2;
 	private ImageIcon IconStar, IconStar2;
 	private JLabel lblDish, lblName, lblStar;
-
 	private HashMap<JButton, Recipe> recButtonMap;
+	
+	// 슬라이드
+	private JPanel pnlSlider;
+	private JButton btnPrevious, btnNext;
+	private JLabel lblImage, lblText;
+	private Recipe currentRecipe;
+	private Slide currentSlide;
 
 	public void onShow() {
 		// 카트의 재료들로 만들 수 있는 레시피들 탐색
@@ -43,7 +49,109 @@ public class RecipeScene extends SceneAbstract
 		
 		RecipeL = new RecipeListener();
 		recButtonL = new RecipeButtonListener();
+		
+		createSlider();
+		createRecipePanel(recipes);
+		
+		// 뒤로가기 버튼 및 홈버튼
+		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+		btnGoBack.setLayout(null);
+		btnGoBack.setContentAreaFilled(false);
+		btnGoBack.setBorderPainted(false);
+		btnGoBack.addActionListener(RecipeL);
+		add(btnGoBack);
 
+		btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+		btnGoHome.setLayout(null);
+		btnGoHome.setContentAreaFilled(false);
+		btnGoHome.setBorderPainted(false);
+		btnGoHome.addActionListener(RecipeL);
+		add(btnGoHome);
+
+		// 물꼬기
+		fish = new ImageButton("images/fish.png", "images/fish.png", 680, 500);
+		fish.setLocation(1000, 500);
+		fish.setLayout(null);
+		fish.setContentAreaFilled(false);
+		fish.setBorderPainted(false);
+		fish.addActionListener(RecipeL);
+		add(fish);
+
+		// 배경
+		imgBackground = new ImageIcon("./images/recipeListBackground2.png");
+		lblBackground = new JLabel();
+		lblBackground.setIcon(imgBackground);
+		lblBackground.setBounds(0, 0, 1600, 900);
+		lblBackground.setLayout(null);
+		add(lblBackground);
+	}
+
+	public void onHide() {
+
+	}
+	
+	private void showSlide(Slide slide) {
+		lblImage.setIcon(getSlideImage(slide.getImage()));
+		lblText.setText("<html><center>" + slide.getText() + "</center></html>");
+		pnlSlider.setVisible(true);
+		currentSlide = slide;
+	}
+	
+	private ImageIcon getSlideImage(String path) {
+		ImageIcon icon = new ImageIcon(path);
+		Image image = icon.getImage();
+		image = image.getScaledInstance(600, 338, java.awt.Image.SCALE_SMOOTH);
+		return new ImageIcon(image);
+	}
+	
+	private void createSlider() {
+		pnlSlider = new JPanel();
+		pnlSlider.setBounds(700, 200, 770, 486);
+		pnlSlider.setOpaque(false);
+		pnlSlider.setLayout(null);
+		pnlSlider.setVisible(false);
+		add(pnlSlider);
+		
+		// 이미지
+		lblImage = new JLabel();
+		lblImage.setBounds(385-300, 20, 600, 338);
+		pnlSlider.add(lblImage);
+		
+		// 텍스트
+		lblText = new JLabel();
+		lblText.setBounds(385-300, 486-100-15, 600, 100);
+		lblText.setFont(new Font(lblText.getFont().getFontName(), Font.PLAIN, 20));
+		lblText.setVerticalAlignment(SwingConstants.TOP);
+		lblText.setLayout(null);
+		pnlSlider.add(lblText);
+		
+		// 뒤로 버튼
+		btnPrevious = new JButton(new ImageIcon("./images/slider_previous.png"));
+		btnPrevious.setBounds(20, 486-46-15, 46, 46);
+		btnPrevious.setContentAreaFilled(false);
+		btnPrevious.setBorderPainted(false);
+		btnPrevious.addActionListener(RecipeL);
+		pnlSlider.add(btnPrevious);
+		
+		// 앞으로 버튼
+		btnNext= new JButton(new ImageIcon("./images/slider_next.png"));
+		btnNext.setBounds(770-46-20, 486-46-15, 46, 46);
+		btnNext.setContentAreaFilled(false);
+		btnNext.setBorderPainted(false);
+		btnNext.addActionListener(RecipeL);
+		pnlSlider.add(btnNext);
+		
+		// 배경
+		ImageIcon iconBackground = new ImageIcon("./images/slider_background.png");
+		Image imgBackground = iconBackground.getImage();
+		imgBackground = imgBackground.getScaledInstance(770, 486, java.awt.Image.SCALE_SMOOTH);
+		iconBackground = new ImageIcon(imgBackground);
+		JLabel lblBackground = new JLabel(iconBackground);
+		lblBackground.setBounds(0, 0, 770, 486);
+		pnlSlider.add(lblBackground);
+	}
+	
+	private void createRecipePanel(List<Recipe> recipes) {
 		pnlRecipes = new JPanel();
 		pnlRecipes.setLayout(new GridLayout(0, 1));
 		pnlRecipes.setOpaque(false);
@@ -86,7 +194,7 @@ public class RecipeScene extends SceneAbstract
 			// 이름
 			lblName = new JLabel("<html>" + item.getName() + "</html>");
 			lblName.setBounds(200, 15, 250, 50);
-			lblName.setFont(new Font(lblName.getFont().getFontName(), lblName.getFont().getStyle(), 20));
+			lblName.setFont(new Font(lblName.getFont().getFontName(), lblName.getFont().getStyle(), 17));
 			lblName.setVerticalAlignment(SwingConstants.TOP);
 			lblName.setLayout(null);
 
@@ -114,42 +222,6 @@ public class RecipeScene extends SceneAbstract
 			lblNone.setPreferredSize(new Dimension(480, 0));
 			pnlRecipes.add(lblNone);
 		}
-
-		// 뒤로가기 버튼 및 홈버튼
-		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
-		btnGoBack.setLayout(null);
-		btnGoBack.setContentAreaFilled(false);
-		btnGoBack.setBorderPainted(false);
-		btnGoBack.addActionListener(RecipeL);
-		add(btnGoBack);
-
-		btnGoHome = new ImageButton("images/goHome.png", 20, 25);
-		btnGoHome.setLayout(null);
-		btnGoHome.setContentAreaFilled(false);
-		btnGoHome.setBorderPainted(false);
-		btnGoHome.addActionListener(RecipeL);
-		add(btnGoHome);
-
-		// 물꼬기
-		fish = new ImageButton("images/fish.png", "images/fish.png", 680, 500);
-		fish.setLocation(1000, 500);
-		fish.setLayout(null);
-		fish.setContentAreaFilled(false);
-		fish.setBorderPainted(false);
-		fish.addActionListener(RecipeL);
-		add(fish);
-
-		// 배경
-		imgBackground = new ImageIcon("./images/recipeListBackground2.png");
-		lblBackground = new JLabel();
-		lblBackground.setIcon(imgBackground);
-		lblBackground.setBounds(0, 0, 1600, 900);
-		lblBackground.setLayout(null);
-		add(lblBackground);
-	}
-
-	public void onHide() {
-
 	}
 
 	private class RecipeListener implements ActionListener
@@ -161,6 +233,18 @@ public class RecipeScene extends SceneAbstract
 				SceneManager.switchScene(new CartScene());
 			} else if (obj == btnGoHome) {
 				SceneManager.switchScene(new IntroScene());
+			} else if (obj == btnPrevious) {
+				int index = currentRecipe.getSlides().indexOf(currentSlide);
+				if (index == 0)
+					return;
+				
+				showSlide(currentRecipe.getSlides().get(index-1));
+			} else if (obj == btnNext) {
+				int index = currentRecipe.getSlides().lastIndexOf(currentSlide);
+				if (index >= currentRecipe.getSlides().size()-1)
+					return;
+				
+				showSlide(currentRecipe.getSlides().get(index+1));
 			}
 		}
 	}
@@ -169,9 +253,9 @@ public class RecipeScene extends SceneAbstract
 	{
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
-			Recipe rec = recButtonMap.get(obj);
+			currentRecipe = recButtonMap.get(obj);
 			
-			System.out.println(rec.getName());
+			showSlide(currentRecipe.getSlides().get(0));
 		}
 	}
 }

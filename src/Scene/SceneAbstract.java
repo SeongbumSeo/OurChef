@@ -21,6 +21,15 @@ public abstract class SceneAbstract extends JPanel implements Scene
 		applyDefaultFont("JejuGothic");
 	}
 	
+	public Font loadFont(String name, int size) {
+		try {
+			// 폰트 파일 로드
+			File file = new File("fonts/" + name + ".ttf");
+			Font fontBase = Font.createFont(Font.TRUETYPE_FONT, file);
+			return fontBase.deriveFont(Font.PLAIN, size);
+		} catch (Exception e) { }
+		return new Font(Font.SANS_SERIF, Font.PLAIN, size);
+	}
 	/**
 	 * 현재 기본 폰트를 반환합니다.
 	 * @return 기본 폰트
@@ -32,15 +41,9 @@ public abstract class SceneAbstract extends JPanel implements Scene
 	 * 폰트가 적용되지 않은 컴포넌트에 기본 폰트를 적용하는 메소드입니다.
 	 */
 	private void applyDefaultFont(String name) {
-		try {
-			// 폰트 파일 로드
-			File file = new File("fonts/" + name + ".ttf");
-			Font fontBase = Font.createFont(Font.TRUETYPE_FONT, file);
-			defaultFont = fontBase.deriveFont(Font.PLAIN, 40);
-			
-			// 폰트 적용
-			applyDefaultFont(this, defaultFont);
-		} catch (Exception e) { }
+		defaultFont = loadFont(name, 40);
+		// 폰트 적용
+		applyDefaultFont(this, defaultFont);
 	}
 	/**
 	 * 전체 컴포넌트를 전위순회하며 기본 폰트를 적용하는 메소드입니다.
