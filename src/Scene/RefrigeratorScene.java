@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.io.File;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
+
 import Main.*;
 import Scene.*;
 import GUI.*;
@@ -63,6 +65,7 @@ public class RefrigeratorScene extends SceneAbstract
 	private RefrigeratorListener refL;
 	private IngredientButtonListener ingButtonL;
 	private SearchResultListener searchResultL;
+	private SearchDocumentListener searchDocumentL;
 	private ImageListener imgL;
 
 	
@@ -73,6 +76,7 @@ public class RefrigeratorScene extends SceneAbstract
 		refL = new RefrigeratorListener();
 		ingButtonL = new IngredientButtonListener();
 		searchResultL = new SearchResultListener();
+		searchDocumentL = new SearchDocumentListener();
 		imgL = new ImageListener();
 		
 		createSearchBar(ingredients); // 검색UI 생성
@@ -115,6 +119,7 @@ public class RefrigeratorScene extends SceneAbstract
 		txtSearch = new JTextField();
 		txtSearch.setBounds(950, 70, 430, 55);
 		txtSearch.addActionListener(refL);
+		txtSearch.getDocument().addDocumentListener(searchDocumentL);
 		add(txtSearch);
 		btnSearch = new ImageButton("images/searchIcon.png", "images/searchIcon_h.png", 1390, 70);
 		btnSearch.addActionListener(refL);
@@ -341,6 +346,25 @@ public class RefrigeratorScene extends SceneAbstract
 						SoundManager onButton = new SoundManager("./sounds/cancelIngre.mp3", false);
 						onButton.start();
 					}
+		}
+	}
+	
+	private class SearchDocumentListener implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent e) {
+			onUpdate();
+		}
+		public void removeUpdate(DocumentEvent e) {
+			onUpdate();
+		}
+		public void insertUpdate(DocumentEvent e) {
+			onUpdate();
+		}
+		
+		private void onUpdate() {
+			// 효과음
+			SoundManager onButton = new SoundManager("./sounds/keyboard.mp3", false);
+			onButton.start();
 		}
 	}
 	
