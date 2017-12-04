@@ -328,10 +328,18 @@ public class RefrigeratorScene extends SceneAbstract
 						// 선택한 재료를 카트에 추가
 						cart.add(ing);
 						changeBlack(item.getKey(), ing);
+						
+						// 효과음
+						SoundManager onButton = new SoundManager("./sounds/selectIngre.mp3", false);
+						onButton.start();
 					} else {
 						// 카트에서 제거
 						cart.remove(ing);
 						changeOriginal(item.getKey(), ing);
+						
+						// 효과음
+						SoundManager onButton = new SoundManager("./sounds/cancelIngre.mp3", false);
+						onButton.start();
 					}
 		}
 	}
