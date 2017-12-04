@@ -34,8 +34,13 @@ public class RefrigeratorScene extends SceneAbstract
 	// 카트
 	private ImageButton btnCart;
 
+	//검색된 버튼
+	JButton[] btnSearchedIngredient; 
+	
 	//test
-	JButton b1,b2,b3,b4,b5,b6;
+	private JButton b1,b2,b3,b4,b5,b6;
+	private JButton b7,b8,b9,b10,b11,b12;
+	private JButton b13,b14,b15,b16,b17,b18;
 		
 	
 	// 검색
@@ -76,24 +81,64 @@ public class RefrigeratorScene extends SceneAbstract
 		
 		//검색 스크롤패인 생성
 		pnlSearch=new JPanel();
+		pnlSearch.setOpaque(false);
 		pnlSearch.setLayout(new GridLayout(0, 1));
-		pnlSearchScroll=new JScrollPane(pnlSearch,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pnlSearchScroll=new JScrollPane(pnlSearch,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pnlSearchScroll.getViewport().setOpaque(false);
+		pnlSearchScroll.setOpaque(false);
+		pnlSearchScroll.setBorder(null);
 		pnlSearchScroll.setBounds(950, 125, 430, 200);
 		add(pnlSearchScroll);
 		
+		btnSearchedIngredient=new JButton[40];
+		
+		for(int i=0 ; i<40 ; i++) {
+			btnSearchedIngredient[i]=new JButton("2");
+			btnSearchedIngredient[i].setContentAreaFilled(false); // 버튼 바탕색 제거
+			btnSearchedIngredient[i].setBorderPainted(false);
+			pnlSearch.add(btnSearchedIngredient[i]);
+		}
+		
+		
 		//test
-		b1=new JButton();
+		
+		b1=new JButton("1");
 		pnlSearch.add(b1);
-		b2=new JButton();
+		b2=new JButton("1");
 		pnlSearch.add(b2);
-		b3=new JButton();
+		b3=new JButton("1");
 		pnlSearch.add(b3);
-		b4=new JButton();
+		b4=new JButton("1");
 		pnlSearch.add(b4);
-		b5=new JButton();
+		b5=new JButton("1");
 		pnlSearch.add(b5);
-		b6=new JButton();
+		b6=new JButton("1");
 		pnlSearch.add(b6);
+		b7=new JButton("1");
+		pnlSearch.add(b7);
+		b8=new JButton("1");
+		pnlSearch.add(b8);
+		b9=new JButton("1");
+		pnlSearch.add(b9);
+		b10=new JButton("1");
+		pnlSearch.add(b10);
+		b11=new JButton("1");
+		pnlSearch.add(b11);
+		b12=new JButton("1");
+		pnlSearch.add(b12);
+		
+		b13=new JButton();
+		pnlSearch.add(b13);
+		b14=new JButton();
+		pnlSearch.add(b14);
+		b15=new JButton();
+		pnlSearch.add(b15);
+		b16=new JButton();
+		pnlSearch.add(b16);
+		b17=new JButton();
+		pnlSearch.add(b17);
+		b18=new JButton();
+		pnlSearch.add(b18);
 				
 		
 
