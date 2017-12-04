@@ -34,7 +34,13 @@ public class SoundManager extends Thread {
 	}
 	
 	public static void stopBackground() {
+		introMusic.setIsLoop(false);
 		introMusic.close();
+		introMusic.interrupt();
+	}
+	
+	public void setIsLoop(boolean bool) {
+		this.isLoop = bool;
 	}
 	
 	public void close() { // 항상 종료할 수 있도록 하는 함수.
