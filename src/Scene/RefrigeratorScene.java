@@ -205,27 +205,35 @@ public class RefrigeratorScene extends SceneAbst
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
-				
+				changeBlack(ing);
 			} else { // 선택된 상태라면
-				
+				changeOriginal(ing);
 			}
 		} 
 		
-		// 마우스 눌린 상태
-		public void mousePressed(MouseEvent event) {
-				
-			
-		}
-		
-		// 마우스가 눌려서 풀린 상태
-		public void mouseReleased(MouseEvent event) {
-			
-		}
-		
 		// 마우스가 컴포넌트 안으로 들어온 상태
-		public void mouseEntered(MouseEvent event) {}
-		
+		public void mouseEntered(MouseEvent event) {
+			Object obj = event.getSource();
+			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
+				changeLight(ing);
+			}
+		}
+				
 		// 마우스가 컴포넌트 밖으로 나간 상태
-		public void mouseExited(MouseEvent event) {}
+		public void mouseExited(MouseEvent event) {
+			Object obj = event.getSource();
+			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
+				changeOriginal(ing);
+			}
+		}
+		
+		public void mousePressed(MouseEvent event) {}
+		public void mouseReleased(MouseEvent event) {}
 	}
 }
