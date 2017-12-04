@@ -1,7 +1,6 @@
 package Data;
 
 import java.util.*;
-
 import Main.IOManager;
 
 public class Recipe
@@ -12,6 +11,7 @@ public class Recipe
 	private int level;
 	private String video;
 	private String origin;
+	private List<Slide> slides;
 	
 	public Recipe(String name, String icon, List<Ingredient> ingredients, int level, String video, String origin) {
 		this.name = name;
@@ -62,6 +62,13 @@ public class Recipe
 	}
 	public void setOrigin(String origin) {
 		this.origin = origin;
+	}
+	
+	public List<Slide> getSlides() {
+		return slides;
+	}
+	public void setSlides(List<Slide> slides) {
+		this.slides = slides;
 	}
 	
 	/**

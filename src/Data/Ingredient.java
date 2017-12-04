@@ -1,7 +1,6 @@
 package Data;
 
 import java.util.*;
-
 import Main.IOManager;
 
 public class Ingredient

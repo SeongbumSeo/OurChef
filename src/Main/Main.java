@@ -32,6 +32,7 @@ public class Main
 	private static void loadData() {
 		ingredients = Data.Ingredient.load("data/ingredients.csv");
 		recipes = Data.Recipe.load("data/recipes.csv", ingredients);
+		Data.Slide.load("data/slides.csv", recipes);
 		cart = new ArrayList<Ingredient>();
 		favorites = new ArrayList<Recipe>();
 	}
