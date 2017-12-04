@@ -3,7 +3,7 @@ package Scene;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import Main.Main;
+import Main.*;
 import Scene.*;
 import GUI.*;
 
@@ -88,7 +88,7 @@ public class IntroScene extends SceneAbst
 			if (obj == btnAbout) { // 사용 방법 버튼 클릭
 				pnlAbout.setVisible(true);
 			} else if (obj == btnStart || obj == btnStart2) { // 시작 버튼 클릭
-				Main.switchScene(new RefrigeratorScene());
+				SceneManager.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				pnlAbout.setVisible(false);
 			}

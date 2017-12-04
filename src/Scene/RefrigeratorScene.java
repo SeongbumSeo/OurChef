@@ -178,9 +178,9 @@ public class RefrigeratorScene extends SceneAbst
 				animCartMove = new Animation(btnCart, false, new MoveListener());
 				animCartMove.move(1500, 250, 500);
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
-				Main.switchScene(new IntroScene());
+				SceneManager.switchScene(new IntroScene());
 			} else if (obj == btnGoHome) { // 홈 버튼 클릭
-				Main.switchScene(new IntroScene());
+				SceneManager.switchScene(new IntroScene());
 			} else if (obj == txtInput || obj == btnSearch) {
 
 			}
@@ -209,7 +209,7 @@ public class RefrigeratorScene extends SceneAbst
 	private class MoveListener implements AnimationListener
 	{
 		public void onCompleted() {
-			Main.switchScene(new CartScene());
+			SceneManager.switchScene(new CartScene());
 		}
 	}
 	

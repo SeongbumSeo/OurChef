@@ -151,9 +151,9 @@ public class RecipeListScene extends SceneAbst
 			Object obj = event.getSource();
 
 			if (obj == btnGoBack) {
-				Main.switchScene(new CartScene());
+				SceneManager.switchScene(new CartScene());
 			} else if (obj == btnGoHome) {
-				Main.switchScene(new IntroScene());
+				SceneManager.switchScene(new IntroScene());
 			}
 		}
 	}

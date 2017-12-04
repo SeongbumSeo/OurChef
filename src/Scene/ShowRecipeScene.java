@@ -3,7 +3,7 @@ package Scene;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
-import Main.Main;
+import Main.*;
 import Scene.*;
 import GUI.*;
 
@@ -62,9 +62,9 @@ public class ShowRecipeScene extends SceneAbst
 	      Object obj = event.getSource();
 	       
 	      if (obj == btnGoBack) {
-	         Main.switchScene(new RecipeListScene());
+	    	  SceneManager.switchScene(new RecipeListScene());
 	      } else if (obj == btnGoHome) {
-	         Main.switchScene(new RecipeListScene());
+	    	  SceneManager.switchScene(new RecipeListScene());
 	      }
 	   }
 	}

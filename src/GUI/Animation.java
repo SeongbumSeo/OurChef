@@ -87,9 +87,9 @@ public class Animation
 		fadeMode = 1;
 		opacity = 0;
 		screenFader = new JPanel();
-		screenFader.setBounds(0, 0, Main.getFrame().getWidth(), Main.getFrame().getHeight());
+		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight());
 		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
-		Main.getFrame().getContentPane().add(screenFader);
+		SceneManager.getFrame().getContentPane().add(screenFader);
 		
 		// 애니메이션 쓰레드 실행
 		startThread(DELAY_FADE, new FadeThread());
@@ -106,9 +106,9 @@ public class Animation
 		fadeMode = -1;
 		opacity = 64;
 		screenFader = new JPanel();
-		screenFader.setBounds(0, 0, Main.getFrame().getWidth(), Main.getFrame().getHeight());
+		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight());
 		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
-		Main.getFrame().getContentPane().add(screenFader);
+		SceneManager.getFrame().getContentPane().add(screenFader);
 		
 		// 애니메이션 쓰레드 실행
 		startThread(DELAY_FADE, new FadeThread());
@@ -199,7 +199,7 @@ public class Animation
 					break;
 				
 				screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity)); // 투명도 설정
-				Main.getFrame().setVisible(true);
+				SceneManager.getFrame().setVisible(true);
 				
 				try { // 딜레이 적용
 					Thread.sleep(delay);
@@ -210,8 +210,7 @@ public class Animation
 			}
 			
 			// 완료 시
-			System.out.println("--- " + lastOpacity);
-			Main.getFrame().getContentPane().remove(screenFader);
+			SceneManager.getFrame().getContentPane().remove(screenFader);
 			if (listener != null) // 리스너의 완료 콜백 호출
 				listener.onCompleted();
 		}
