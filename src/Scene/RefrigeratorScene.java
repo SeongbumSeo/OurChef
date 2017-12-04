@@ -34,10 +34,19 @@ public class RefrigeratorScene extends SceneAbstract
 	// 카트
 	private ImageButton btnCart;
 
+	//test
+	JButton b1,b2,b3,b4,b5,b6;
+		
+	
 	// 검색
 	private JTextField txtInput;
 	private ImageButton btnSearch;
+	//검색으로 인한 패널
+	private JPanel pnlSearch;
+	// 검색 스크롤페인
+	private JScrollPane pnlSearchScroll;
 
+	
 	// 각 라인의 패널
 	private JPanel[] pnlLine;
 	// 각 라인의 스크롤 페인
@@ -54,6 +63,7 @@ public class RefrigeratorScene extends SceneAbstract
 	private IngredientButtonListener ingButtonL;
 	private ImageListener imgL;
 
+	
 	public void onShow() {
 		// 재료 정보 가져오기
 		List<Ingredient> ingredients = DataManager.getIngredients();
@@ -61,6 +71,31 @@ public class RefrigeratorScene extends SceneAbstract
 		refL = new RefrigeratorListener();
 		ingButtonL = new IngredientButtonListener();
 		imgL = new ImageListener();
+		
+		
+		
+		//검색 스크롤패인 생성
+		pnlSearch=new JPanel();
+		pnlSearch.setLayout(new GridLayout(0, 1));
+		pnlSearchScroll=new JScrollPane(pnlSearch,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pnlSearchScroll.setBounds(950, 125, 430, 200);
+		add(pnlSearchScroll);
+		
+		//test
+		b1=new JButton();
+		pnlSearch.add(b1);
+		b2=new JButton();
+		pnlSearch.add(b2);
+		b3=new JButton();
+		pnlSearch.add(b3);
+		b4=new JButton();
+		pnlSearch.add(b4);
+		b5=new JButton();
+		pnlSearch.add(b5);
+		b6=new JButton();
+		pnlSearch.add(b6);
+				
+		
 
 		pnlLine = new JPanel[MAX_LINES];
 		pnlLineScroll = new JScrollPane[MAX_LINES];
