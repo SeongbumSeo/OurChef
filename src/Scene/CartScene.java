@@ -170,7 +170,7 @@ public class CartScene extends SceneAbstract
 				selected.clear();
 			} else if (obj == btnRecipe) { // 레시피 버튼 클릭
 				// RecipeListScene으로 이동
-				SceneManager.switchScene(new RecipeListScene());
+				SceneManager.switchScene(new RecipeScene());
 			} else if (obj == btnGoBack) {
 				SceneManager.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoHome) {

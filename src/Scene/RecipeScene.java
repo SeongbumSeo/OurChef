@@ -10,7 +10,7 @@ import Main.*;
 import Scene.*;
 import GUI.*;
 
-public class RecipeListScene extends SceneAbstract
+public class RecipeScene extends SceneAbstract
 {
 	// 배경
 	private ImageIcon imgBackground;
