@@ -194,7 +194,7 @@ public class RecipeScene extends SceneAbstract
 			// 이름
 			lblName = new JLabel("<html>" + item.getName() + "</html>");
 			lblName.setBounds(200, 15, 250, 50);
-			lblName.setFont(new Font(lblName.getFont().getFontName(), lblName.getFont().getStyle(), 17));
+			lblName.setFont(new Font(lblName.getFont().getFontName(), lblName.getFont().getStyle(), 20));
 			lblName.setVerticalAlignment(SwingConstants.TOP);
 			lblName.setLayout(null);
 
