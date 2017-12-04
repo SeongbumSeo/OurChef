@@ -88,6 +88,7 @@ public class IntroScene extends SceneAbstract
 		lblAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.add(lblAbout);
 		
+		
 		add(pnlAbout);
 	}
 	
@@ -105,9 +106,11 @@ public class IntroScene extends SceneAbstract
 			} else if (obj == btnSoundOn){
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
+				SoundManager.stopBackground();
 			} else if (obj == btnSoundOff) {
 				btnSoundOff.setVisible(false);
 				btnSoundOn.setVisible(true);
+				SoundManager.playBackground();
 			}
 		}
 	}
