@@ -99,17 +99,17 @@ public class CartScene extends SceneAbst
 	    add(btnGoHome);
 		
 		// trash button
-		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h2.png", 1080, 660);
+		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h2.png", 1085, 665);
 		btnTrash.addActionListener(CartL);
 		add(btnTrash);
 		
 		// favorite button
-		btnFavorite = new ImageButton("images/knife.png","images/knife_h.png",1180,665);
+		/*btnFavorite = new ImageButton("images/knife.png","images/knife_h.png",1180,665);
 		btnFavorite.addActionListener(CartL);
-		add(btnFavorite);
+		add(btnFavorite);*/
 		
 		// recipe button
-		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h2.png", 1270, 685);
+		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h2.png", 1250, 680);
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);
 		
