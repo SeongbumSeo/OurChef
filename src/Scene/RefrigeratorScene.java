@@ -160,13 +160,16 @@ public class RefrigeratorScene extends SceneAbst
 	{
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
-			
-			// 선택한 재료를 카트에 추가
 			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
-			cart.add(ing); // 카트에 재료 추가
 			
-			System.out.println("카트에 추가됨: " + ing.getName());
+			if (!cart.contains(ing)) { // 선택한 재료를 카트에 추가
+				cart.add(ing);
+				System.out.println("카트에 추가됨: " + ing.getName());
+			} else {
+				cart.remove(ing);
+				System.out.println("카트에서 제거됨: " + ing.getName());
+			}
 		}
 	}
 	
