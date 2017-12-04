@@ -6,6 +6,7 @@ import javax.swing.*;
 import Main.*;
 import Scene.*;
 import GUI.*;
+import Sound.*;
 
 public class IntroScene extends SceneAbstract
 {
