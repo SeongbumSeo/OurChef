@@ -2,10 +2,10 @@ package Scene;
 
 import java.awt.event.*;
 import java.util.*;
+import java.util.List;
 import java.awt.*;
 import javax.swing.*;
 
-import Data.Recipe;
 import Main.*;
 import Scene.*;
 import GUI.*;
@@ -32,15 +32,23 @@ public class CartScene extends SceneAbst
 	
 	// 이벤트
 	private CartListener CartL;
+	private IngredientButtonListener ingButtonL;
 	
 	private static final int[] ITEM_SIZE = { 100, 100 };
 	private JPanel pnlIngredients;
 	private JScrollPane pnlIngredientsScroll;
 	private JLabel lblIngre;
 	private HashMap<JButton, Ingredient> ingButtonMap;
+	private List<Ingredient> cart;
+	private List<Ingredient> selected;
 	
 	public void onShow() {
+		// 카트 정보 가져오기
+		cart = Main.getCart();
+		selected = new ArrayList<Ingredient>();
+		
 		CartL = new CartListener();
+		ingButtonL = new IngredientButtonListener();
 		
 		pnlIngredients = new JPanel();
 		pnlIngredients.setLayout(new GridLayout(0, 1));
@@ -54,57 +62,24 @@ public class CartScene extends SceneAbst
 		
 		// 카트 버튼들 추가
 		ingButtonMap = new HashMap<JButton, Ingredient>();
-		for (Ingredient item : Main.getCart()) {
+		for (Ingredient item : cart) {
 			// 아이콘
 			ImageIcon icon = new ImageIcon(item.getIcon());
 			Image image = icon.getImage();
 			image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 			icon = new ImageIcon(image);
 			
-			lblIngre = new JLabel();
-			lblIngre.setIcon(icon);
-			lblIngre.setLayout(null);
-			lblIngre.setBounds(0,0,icon.getIconWidth(),icon.getIconHeight());
-			lblIngre.setHorizontalAlignment(SwingConstants.CENTER);
-			lblIngre.setOpaque(false);
-			pnlIngredients.add(lblIngre);
-			
 			// 재료 버튼
 			JButton btn = new JButton();
-			btn.setPreferredSize(new Dimension(100, 100));
+			btn.setIcon(icon);
+			btn.setPreferredSize(new Dimension(100, 140));
 			btn.setContentAreaFilled(false); // 버튼 바탕색 제거
 			btn.setBorderPainted(false); // 버튼 테두리 제거
+			btn.addActionListener(ingButtonL);
 			pnlIngredients.add(btn);
 			
 			ingButtonMap.put(btn, item);
 		}
-		
-		
-		/*// 카트 안에 들어있는 목록들   
-        ing = new JPanel();
-        ing.setLayout(new GridLayout(12,1));
-        ing.setOpaque(false);
-                
-        btnIngredients=new JButton[12];
-        for(int i=0 ; i<12 ; i++) {
-        	btnIngredients[i]=new JButton("1");
-            btnIngredients[i].setBounds(30+30*i, 18, 45, 45);
-            ing.add(btnIngredients[i]);
-        }//1라인
-                
-        JScrollPane scrollPanel = new JScrollPane(ing);
-        scrollPanel.setBounds(1200, 200, 100, 400);
-        scrollPanel.getViewport().setOpaque(false);
-        scrollPanel.setOpaque(false);
-        scrollPanel.setBorder(null);
-        add(scrollPanel); 
-		
-		// ingredients
-		ingredients = new JPanel();
-		ingredients.setOpaque(false);
-		ingredients.setLocation(1100, 50);
-		
-		add(ingredients);*/
 		
 		// 뒤로가기 버튼 및 홈버튼
 	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
@@ -156,7 +131,13 @@ public class CartScene extends SceneAbst
 			
 			if (obj == btnTrash) { // 쓰레기통 버튼 클릭
 				// 선택된 재료들 삭제
+				for (Map.Entry<JButton, Ingredient> item : ingButtonMap.entrySet())
+					if (selected.contains(item.getValue()))
+						pnlIngredients.remove(item.getKey());
+				pnlIngredients.repaint();
 				
+				cart.removeAll(selected);
+				selected.clear();
 			} else if (obj == btnRecipe) { // 레시피 버튼 클릭
 				// RecipeListScene으로 이동
 				Main.switchScene(new RecipeListScene());
@@ -164,6 +145,22 @@ public class CartScene extends SceneAbst
 				Main.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoHome) {
 				Main.switchScene(new IntroScene());
+			}
+		}
+	}
+	
+	private class IngredientButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event) {
+			Object obj = event.getSource();
+			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
+			
+			if (!selected.contains(ing)) {
+				selected.add(ing);
+				System.out.println("카트 내 재료 선택: " + ing.getName());
+			} else {
+				selected.remove(ing);
+				System.out.println("카트 내 재료 선택 취소: " + ing.getName());
 			}
 		}
 	}
