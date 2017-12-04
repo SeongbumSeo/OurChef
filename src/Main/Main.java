@@ -10,7 +10,7 @@ public class Main
 	 */
 	public static void main(String[] args) {
 		DataManager.loadData();
-		SceneManager.showWindow("우리집 셰프님", 1600, 900);
+		SceneManager.showWindow("Our Chef", 1600, 900);
 		SceneManager.switchScene(new IntroScene());
 	}
 }
