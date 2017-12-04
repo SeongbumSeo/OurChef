@@ -142,12 +142,21 @@ public class RefrigeratorScene extends SceneAbst
 
 	}
 	
+	public JButton getMyButton(Ingredient ing) {
+		int type = ing.getType();
+		
+		
+	}
+	
 	public void changeBlack(Ingredient ing) {
 		// 아이콘
 		ImageIcon icon = new ImageIcon(ing.getIconBlack());
 		Image image = icon.getImage();			
 		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(image);
+		
+		// 버튼 불러오고 아이콘 적용
+		
 	}
 	
 	public void changeLight(Ingredient ing) {
@@ -156,6 +165,9 @@ public class RefrigeratorScene extends SceneAbst
 		Image image = icon.getImage();			
 		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(image);
+		
+		// 버튼 불러오고 아이콘 적용
+		
 	}
 	
 	public void changeOriginal(Ingredient ing) {
@@ -164,6 +176,9 @@ public class RefrigeratorScene extends SceneAbst
 		Image image = icon.getImage();			
 		image = image.getScaledInstance((int)((float)icon.getIconWidth()/icon.getIconHeight()*ITEM_SIZE[1]), ITEM_SIZE[1], java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(image);
+		
+		// 버튼 불러오고 아이콘 적용
+		
 	}
 
 	private class RefrigeratorListener implements ActionListener
