@@ -244,15 +244,17 @@ public class RefrigeratorScene extends SceneAbstract
 	private void search(String keyword) {
 		int results = 0;
 		
-		pnlSearch.removeAll();
-		ingSearchMap.clear();
-		for (Ingredient ing : DataManager.getIngredients())
-			if (ing.getName().toLowerCase().contains(keyword.toLowerCase())) {
-				addSearchResultButton(ing);
-				results++;
-			}
-		pnlSearch.revalidate();
-		pnlSearch.repaint();
+		if (keyword.length() > 0) { // 검색어가 공백이 아닌 경우
+			pnlSearch.removeAll();
+			ingSearchMap.clear();
+			for (Ingredient ing : DataManager.getIngredients())
+				if (ing.getName().toLowerCase().contains(keyword.toLowerCase())) {
+					addSearchResultButton(ing);
+					results++;
+				}
+			pnlSearch.revalidate();
+			pnlSearch.repaint();
+		}
 		
 		if (results == 0) { // 검색 결과가 없는 경우
 			pnlSearchScroll.setVisible(false);
