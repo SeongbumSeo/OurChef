@@ -11,7 +11,7 @@ import Scene.*;
 import GUI.*;
 import Data.*;
 
-public class CartScene extends SceneAbst
+public class CartScene extends SceneAbstract
 {
 	// 상수
 	private static final int[] ITEM_SIZE = { 100, 100 };

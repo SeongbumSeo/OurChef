@@ -7,7 +7,7 @@ import Main.*;
 import Scene.*;
 import GUI.*;
 
-public class IntroScene extends SceneAbst
+public class IntroScene extends SceneAbstract
 {
 	// 배경
 	private ImageIcon imgBackground;

@@ -36,7 +36,7 @@ public class SceneManager
 				Scene.class.cast(comp).onHide();
 		
 		frame.getContentPane().removeAll(); // 프레임 내 모든 컴포넌트(씬 포함) 삭제
-		frame.getContentPane().add((SceneAbst)scene); // 프레임에 씬 패널 추가
+		frame.getContentPane().add((SceneAbstract)scene); // 프레임에 씬 패널 추가
 		frame.setVisible(true); // 윈도우 가시화
 	}
 	

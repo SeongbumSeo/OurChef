@@ -10,7 +10,7 @@ import Scene.*;
 import GUI.*;
 import Data.*;
 
-public class RefrigeratorScene extends SceneAbst
+public class RefrigeratorScene extends SceneAbstract
 {
 	// 상수
 	private static final int MAX_LINES = 6;
