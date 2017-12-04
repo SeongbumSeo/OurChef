@@ -18,7 +18,7 @@ public abstract class SceneAbstract extends JPanel implements Scene
 		setLayout(null); // 배치관리자 제거
 		
 		onShow();
-		applyDefaultFont("JejuGothic");
+		applyDefaultFont("JejuGothic"); // 기본 폰트 적용
 	}
 	
 	public Font loadFont(String name, int size) {
