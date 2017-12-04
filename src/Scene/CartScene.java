@@ -54,7 +54,7 @@ public class CartScene extends SceneAbst
 		pnlIngredients.setLayout(new GridLayout(0, 1));
 		pnlIngredients.setOpaque(false);
 		pnlIngredientsScroll = new JScrollPane(pnlIngredients);
-		pnlIngredientsScroll.setBounds(1150, 210, 200, 400);
+		pnlIngredientsScroll.setBounds(1150, 210, 200, 420);
 		pnlIngredientsScroll.getViewport().setOpaque(false);
 		pnlIngredientsScroll.setOpaque(false);
 		pnlIngredientsScroll.setBorder(null);
