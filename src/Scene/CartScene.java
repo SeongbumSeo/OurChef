@@ -47,7 +47,7 @@ public class CartScene extends SceneAbst
 	
 	public void onShow() {
 		// 카트 정보 가져오기
-		cart = Main.getCart();
+		cart = DataManager.getCart();
 		selected = new ArrayList<Ingredient>();
 		
 		CartL = new CartListener();

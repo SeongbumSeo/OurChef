@@ -40,7 +40,7 @@ public class RecipeListScene extends SceneAbst
 
 	public void onShow() {
 		// 카트의 재료들로 만들 수 있는 레시피들 탐색
-		List<Recipe> recipes = Recipe.searchRecipes(Main.getRecipes(), Main.getCart());
+		List<Recipe> recipes = Recipe.searchRecipes(DataManager.getRecipes(), DataManager.getCart());
 		
 		RecipeL = new RecipeListener();
 

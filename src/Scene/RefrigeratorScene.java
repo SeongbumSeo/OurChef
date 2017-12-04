@@ -56,7 +56,7 @@ public class RefrigeratorScene extends SceneAbst
 
 	public void onShow() {
 		// 재료 정보 가져오기
-		List<Ingredient> ingredients = Main.getIngredients();
+		List<Ingredient> ingredients = DataManager.getIngredients();
 		
 		refL = new RefrigeratorListener();
 		ingButtonL = new IngredientButtonListener();
@@ -191,7 +191,7 @@ public class RefrigeratorScene extends SceneAbst
 	{
 		public void actionPerformed(ActionEvent event) {
 			Object obj = event.getSource();
-			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			List<Ingredient> cart = DataManager.getCart(); // 카트 리스트 객체
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) {
@@ -218,7 +218,7 @@ public class RefrigeratorScene extends SceneAbst
 		// 마우스가 컴포넌트 안으로 들어온 상태
 		public void mouseEntered(MouseEvent event) {
 			Object obj = event.getSource();
-			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			List<Ingredient> cart = DataManager.getCart(); // 카트 리스트 객체
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
@@ -229,7 +229,7 @@ public class RefrigeratorScene extends SceneAbst
 		// 마우스가 컴포넌트 밖으로 나간 상태
 		public void mouseExited(MouseEvent event) {
 			Object obj = event.getSource();
-			List<Ingredient> cart = Main.getCart(); // 카트 리스트 객체
+			List<Ingredient> cart = DataManager.getCart(); // 카트 리스트 객체
 			Ingredient ing = ingButtonMap.get(obj); // 선택한 재료
 			
 			if (!cart.contains(ing)) { // 선택되지 않은 상태라면
