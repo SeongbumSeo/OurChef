@@ -6,7 +6,6 @@ import javax.swing.*;
 import Main.*;
 import Scene.*;
 import GUI.*;
-import Sound.*;
 
 public class IntroScene extends SceneAbstract
 {
@@ -42,17 +41,17 @@ public class IntroScene extends SceneAbstract
 		add(btnSoundOff);
 		
 		// 사용 방법 버튼 추가
-		btnAbout = new ImageButton("images/bottle.png", "images/bottle_h.png", 350, 395);
+		btnAbout = new ImageButton("images/introScene/bottle.png", "images/introScene/bottle_h.png", 350, 395);
 		btnAbout.addActionListener(introL);
 		add(btnAbout);
 		
 		// 시작 버튼 추가
-		btnStart = new ImageButton("images/basket.png", "images/basket_h.png", 1090, 558);
+		btnStart = new ImageButton("images/introScene/basket.png", "images/introScene/basket_h.png", 1090, 558);
 		btnStart.addActionListener(introL);
 		add(btnStart);
 		
 		// 배경 설정
-		imgBackground = new ImageIcon("images/imgBackgroundWithName.png");
+		imgBackground = new ImageIcon("images/introScene/imgBackgroundWithName.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
@@ -72,7 +71,7 @@ public class IntroScene extends SceneAbstract
 		pnlAbout.setLayout(null);
 		pnlAbout.setVisible(false);
 
-		btnStart2 = new ImageButton("images/basket.png", "images/basket_h.png", 1180, 630);
+		btnStart2 = new ImageButton("images/introScene/basket.png", "images/introScene/basket_h.png", 1180, 630);
 		btnStart2.addActionListener(introL);
 		pnlAbout.add(btnStart2);
 		
@@ -84,7 +83,7 @@ public class IntroScene extends SceneAbstract
 		pnlAbout.add(btnGoBack);
 		
 		lblAbout = new JLabel();
-		lblAbout.setIcon(new ImageIcon("images/imgPnlBackground.png"));
+		lblAbout.setIcon(new ImageIcon("images/introScene/imgPnlBackground.png"));
 		lblAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.add(lblAbout);
 		
