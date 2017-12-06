@@ -65,7 +65,7 @@ public class CartScene extends SceneAbstract
 		add(pnlIngredientsScroll);
 		
 		// 선택된 재료가 없는 경우				
-		if (selected.size() == 0) {
+		if (cart.size() == 0) {
 			JLabel lblNone = new JLabel("<html><center>There are no ingredients!</center></html>");
 			lblNone.setFont(new Font("./fonts/JejuGothic.ttf", Font.PLAIN, 40));
 			lblNone.setHorizontalAlignment(SwingConstants.CENTER);
