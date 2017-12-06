@@ -196,10 +196,18 @@ public class CartScene extends SceneAbstract
 				// 카트 내 재료 선택
 				selected.add(ing);
 				changeBlack((JButton)obj, ing);
+				
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/cancelIngre.mp3", false);
+				onButton.start();
 			} else {
 				// 카트 내 재료 선택 취소
 				selected.remove(ing);
 				changeOriginal((JButton)obj, ing);
+				
+				// 효과음
+				SoundManager onButton = new SoundManager("./sounds/selectIngre.mp3", false);
+				onButton.start();
 			}
 		}
 	}
