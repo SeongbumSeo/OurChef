@@ -75,7 +75,7 @@ public class IntroScene extends SceneAbstract
 		btnStart2.addActionListener(introL);
 		pnlAbout.add(btnStart2);
 		
-		btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+		btnGoBack = new ImageButton("images/buttons/goBack.png", 7, 810);
 		btnGoBack.setLayout(null);
 		btnGoBack.setContentAreaFilled(false);
 		btnGoBack.setBorderPainted(false);

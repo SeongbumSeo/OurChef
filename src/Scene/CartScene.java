@@ -84,14 +84,14 @@ public class CartScene extends SceneAbstract
 		}
 		
 		// 뒤로가기 버튼 및 홈버튼
-	    btnGoBack = new ImageButton("images/goBack.png", 7, 810);
+	    btnGoBack = new ImageButton("images/buttons/goBack.png", 7, 810);
 	    btnGoBack.setLayout(null);
 	    btnGoBack.setContentAreaFilled(false);
 	    btnGoBack.setBorderPainted(false);
 	    btnGoBack.addActionListener(CartL);
 	    add(btnGoBack);
 	      
-	    btnGoHome = new ImageButton("images/goHome.png", 20, 25);
+	    btnGoHome = new ImageButton("images/buttons/goHome.png", 20, 25);
 	    btnGoHome.setLayout(null);
 	    btnGoHome.setContentAreaFilled(false);
 	    btnGoHome.setBorderPainted(false);
