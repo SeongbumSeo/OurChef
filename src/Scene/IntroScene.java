@@ -99,11 +99,15 @@ public class IntroScene extends SceneAbstract
 			if (obj == btnAbout) { // 사용 방법 버튼 클릭
 				pnlAbout.setVisible(true);
 				btnStart.setVisible(false);
+				btnStart.SoundOff();
+				btnAbout.SoundOff();
 			} else if (obj == btnStart || obj == btnStart2) { // 시작 버튼 클릭
 				SceneManager.switchScene(new RefrigeratorScene());
 			} else if (obj == btnGoBack) { // 뒤로 버튼 클릭
 				pnlAbout.setVisible(false);
 				btnStart.setVisible(true);
+				btnStart.SoundOn();
+				btnAbout.SoundOn();
 				// 효과음
 				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
 				onButton.start();

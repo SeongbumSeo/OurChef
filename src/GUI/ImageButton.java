@@ -10,6 +10,7 @@ public class ImageButton extends JButton
 	private ImageIcon image; // 버튼 이미지
 	private ImageIcon hoverImage; // 마우스 오버 시 버튼 이미지
 	private int iX, iY; // 버튼의 위치
+	private boolean onSound;
 	
 	private ImageButtonListener imageButtonL;
 	
@@ -45,6 +46,7 @@ public class ImageButton extends JButton
 	public ImageButton(String imageName, String hoverImageName) {
 		image = new ImageIcon(imageName);
 		hoverImage = new ImageIcon(hoverImageName);
+		onSound = true;
 		constructor();
 	}
 	/**
@@ -60,7 +62,15 @@ public class ImageButton extends JButton
 		
 		image = new ImageIcon(imageName);
 		hoverImage = new ImageIcon(hoverImageName);
+		onSound = true;
 		constructor();
+	}
+	
+	public void SoundOff() {
+		onSound = false;
+	}
+	public void SoundOn() {
+		onSound = true;
 	}
 	
 	
@@ -90,8 +100,10 @@ public class ImageButton extends JButton
 			((JButton)event.getSource()).setIcon(hoverImage);
 			
 			// 효과음
-			SoundManager onButton = new SoundManager("./sounds/onButton.mp3", false);
-			onButton.start();
+			if (onSound == true) {
+				SoundManager onButton = new SoundManager("./sounds/onButton.mp3", false);
+				onButton.start();
+			}
 			
 			// 크기 재설정
 			setSize(new Dimension(hoverImage.getIconWidth(), hoverImage.getIconHeight()));
