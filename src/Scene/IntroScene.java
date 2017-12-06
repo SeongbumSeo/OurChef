@@ -32,9 +32,9 @@ public class IntroScene extends SceneAbstract
 		createAboutPanel();
 		
 		// 소리 버튼 추가
-		btnSoundOn = new ImageButton("images/soundOn.png", 1395, 50);
+		btnSoundOn = new ImageButton("images/buttons/soundOn.png", 1395, 50);
 		btnSoundOn.addActionListener(introL);
-		btnSoundOff = new ImageButton("images/soundOff.png", 1395, 50);
+		btnSoundOff = new ImageButton("images/buttons/soundOff.png", 1395, 50);
 		btnSoundOff.addActionListener(introL);
 		btnSoundOff.setVisible(false);
 		add(btnSoundOn);
