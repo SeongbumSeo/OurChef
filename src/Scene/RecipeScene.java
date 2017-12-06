@@ -69,8 +69,7 @@ public class RecipeScene extends SceneAbstract
 		add(btnGoHome);
 
 		// 물꼬기
-		fish = new ImageButton("images/recipeScene/fish.png", 680, 500);
-		fish.setLocation(1000, 500);
+		fish = new ImageButton("images/recipeScene/fish.png", 650, 500);
 		fish.setLayout(null);
 		fish.setContentAreaFilled(false);
 		fish.setBorderPainted(false);
