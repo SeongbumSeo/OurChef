@@ -64,6 +64,15 @@ public class CartScene extends SceneAbstract
 		pnlIngredientsScroll.setBorder(null);
 		add(pnlIngredientsScroll);
 		
+		// 선택된 재료가 없는 경우				
+		if (selected.size() == 0) {
+			JLabel lblNone = new JLabel("<html><center>There are no ingredients!</center></html>");
+			lblNone.setFont(new Font("./fonts/JejuGothic.ttf", Font.PLAIN, 40));
+			lblNone.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNone.setPreferredSize(new Dimension(200, 400));
+			pnlIngredients.add(lblNone);
+		}
+		
 		// 카트 버튼들 추가
 		ingButtonMap = new HashMap<JButton, Ingredient>();
 		for (Ingredient item : cart) {
