@@ -94,7 +94,7 @@ public class RefrigeratorScene extends SceneAbstract
 		btnGoBack.addActionListener(refL);
 		add(btnGoBack);
 
-		btnGoHome = new ImageButton("images/buttons/oHome.png", 20, 25);
+		btnGoHome = new ImageButton("images/buttons/goHome.png", 20, 25);
 		btnGoHome.setLayout(null);
 		btnGoHome.setContentAreaFilled(false);
 		btnGoHome.setBorderPainted(false);
