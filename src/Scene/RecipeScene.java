@@ -69,7 +69,7 @@ public class RecipeScene extends SceneAbstract
 		add(btnGoHome);
 
 		// 물꼬기
-		fish = new ImageButton("images/fish.png", "images/fish.png", 680, 500);
+		fish = new ImageButton("images/recipeScene/fish.png", 680, 500);
 		fish.setLocation(1000, 500);
 		fish.setLayout(null);
 		fish.setContentAreaFilled(false);
@@ -78,7 +78,7 @@ public class RecipeScene extends SceneAbstract
 		add(fish);
 
 		// 배경
-		imgBackground = new ImageIcon("./images/recipeListBackground2.png");
+		imgBackground = new ImageIcon("./images/recipeScene/recipeListBackground2.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
@@ -126,7 +126,7 @@ public class RecipeScene extends SceneAbstract
 		pnlSlider.add(lblText);
 		
 		// 뒤로 버튼
-		btnPrevious = new JButton(new ImageIcon("./images/slider_previous.png"));
+		btnPrevious = new JButton(new ImageIcon("./images/recipeScene/slider_previous.png"));
 		btnPrevious.setBounds(20, 486-46-15, 46, 46);
 		btnPrevious.setContentAreaFilled(false);
 		btnPrevious.setBorderPainted(false);
@@ -134,7 +134,7 @@ public class RecipeScene extends SceneAbstract
 		pnlSlider.add(btnPrevious);
 		
 		// 앞으로 버튼
-		btnNext= new JButton(new ImageIcon("./images/slider_next.png"));
+		btnNext= new JButton(new ImageIcon("./images/recipeScene/slider_next.png"));
 		btnNext.setBounds(770-46-20, 486-46-15, 46, 46);
 		btnNext.setContentAreaFilled(false);
 		btnNext.setBorderPainted(false);
@@ -142,7 +142,7 @@ public class RecipeScene extends SceneAbstract
 		pnlSlider.add(btnNext);
 		
 		// 배경
-		ImageIcon iconBackground = new ImageIcon("./images/slider_background.png");
+		ImageIcon iconBackground = new ImageIcon("./images/recipeScene/slider_background.png");
 		Image imgBackground = iconBackground.getImage();
 		imgBackground = imgBackground.getScaledInstance(770, 486, java.awt.Image.SCALE_SMOOTH);
 		iconBackground = new ImageIcon(imgBackground);
