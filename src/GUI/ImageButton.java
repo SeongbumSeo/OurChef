@@ -21,6 +21,7 @@ public class ImageButton extends JButton
 	public ImageButton(String imageName) {
 		image = new ImageIcon(imageName);
 		hoverImage = null;
+		onSound = false;
 		constructor();
 	}
 	/**
