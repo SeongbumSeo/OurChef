@@ -99,7 +99,7 @@ public class CartScene extends SceneAbstract
 	    add(btnGoHome);
 		
 		// trash button
-		btnTrash = new ImageButton("images/trashCan.png", "images/trashCan_h2.png", 1100, 665);
+		btnTrash = new ImageButton("images/cartScene/trashCan.png", "images/cartScene/trashCan_h2.png", 1100, 665);
 		btnTrash.addActionListener(CartL);
 		add(btnTrash);
 		
@@ -109,12 +109,12 @@ public class CartScene extends SceneAbstract
 		add(btnFavorite);*/
 		
 		// recipe button
-		btnRecipe = new ImageButton("images/spatula.png", "images/spatula_h2.png", 1230, 680);
+		btnRecipe = new ImageButton("images/cartScene/spatula.png", "images/cartScene/spatula_h2.png", 1230, 680);
 		btnRecipe.addActionListener(CartL);
 		add(btnRecipe);
 		
 		// 배경
-		imgBackground = new ImageIcon("./images/cartBackground.png");
+		imgBackground = new ImageIcon("./images/cartScene/cartBackground.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
