@@ -3,7 +3,6 @@ package Scene;
 import java.util.*;
 import java.util.List;
 import java.awt.event.*;
-import java.io.File;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -83,7 +82,7 @@ public class RefrigeratorScene extends SceneAbstract
 		createLinePanels(ingredients); // 라인 패널들 생성
 
 		// CartScene으로 넘어가는 버튼 추가
-		btnCart = new ImageButton("images/cart.png", 900, 350);
+		btnCart = new ImageButton("images/cartScene/cart.png", 900, 350);
 		btnCart.addActionListener(refL);
 		add(btnCart);
 
@@ -103,7 +102,7 @@ public class RefrigeratorScene extends SceneAbstract
 		add(btnGoHome);
 		
 		// 배경
-		imgBackground = new ImageIcon("images/refBackground2.png");
+		imgBackground = new ImageIcon("images/cartScene/refBackground2.png");
 		lblBackground = new JLabel();
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setBounds(0, 0, 1600, 900);
@@ -121,7 +120,7 @@ public class RefrigeratorScene extends SceneAbstract
 		txtSearch.addActionListener(refL);
 		txtSearch.getDocument().addDocumentListener(searchDocumentL);
 		add(txtSearch);
-		btnSearch = new ImageButton("images/searchIcon.png", "images/searchIcon_h.png", 1390, 70);
+		btnSearch = new ImageButton("images/cartScene/searchIcon.png", "images/cartScene/searchIcon_h.png", 1390, 70);
 		btnSearch.addActionListener(refL);
 		add(btnSearch);
 		
