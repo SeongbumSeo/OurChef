@@ -85,7 +85,7 @@ public class Slide
 			map.get(row[0]).add(slide);
 		}
 		
-		// 해시맵을 이용해 레시피에 슬라이드 리스트들을 설정함
+		// 해시맵을 이용해 각 레시피에 슬라이드 리스트들을 설정함
 		for (Recipe rec : recipes)
 			if (map.containsKey(rec.getName()))
 				rec.setSlides(map.get(rec.getName()));
