@@ -145,6 +145,7 @@ public class Recipe
 	public static List<Recipe> searchRecipes(List<Recipe> dest, List<Ingredient> ingredients) {
 		List<Recipe> recipes = new ArrayList<Recipe>();
 		
+		// 레시피가 요구하는 모든 재료들이 재료 리스트에 포함되어 있을 시 탐색 결과에 추가
 		for (Recipe rec : dest)
 			if (ingredients.containsAll(rec.getIngredients()))
 				recipes.add(rec);
