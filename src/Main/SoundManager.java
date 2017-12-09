@@ -38,8 +38,8 @@ public class SoundManager extends Thread
 		isMute = false;
 	}
 	
-	public void toggleLoop(boolean bool) {
-		this.isLoop = bool;
+	public void toggleLoop(boolean toggle) {
+		this.isLoop = toggle;
 	}
 	
 	public void close() { // 항상 종료할 수 있도록 하는 함수
