@@ -1,7 +1,7 @@
 package Data;
 
 import java.util.*;
-import Main.*;
+import Main.IOManager;
 
 public class Recipe
 {
