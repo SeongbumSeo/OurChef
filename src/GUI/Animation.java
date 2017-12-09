@@ -7,8 +7,8 @@ import Main.*;
 public class Animation
 {
 	// 상수
-	public static final long DELAY_MOVE = 10;
-	public static final long DELAY_FADE = 25;
+	public static final long DELAY_MOVE = 10; // 이동 애니메이션 딜레이
+	public static final long DELAY_FADE = 25; // 페이드인/아웃 애니메이션 딜레이
 	
 	// 공통으로 사용되는 인스턴스 데이터
 	private Component comp; // 애니메이션 대상 컴포넌트
