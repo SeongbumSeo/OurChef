@@ -7,46 +7,42 @@ import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
 
-public class SoundManager extends Thread {
-	
+public class SoundManager extends Thread
+{
+	private static SoundManager BGM = new SoundManager("./sounds/background.mp3", true);
+	private static boolean isMute;
 	private Player player;
 	private boolean isLoop;
-	private File file;
-	private FileInputStream fis;
-	private BufferedInputStream bis;
-	private static SoundManager introMusic;
-	private boolean isMute;
 	
 	public SoundManager(String name, boolean isLoop) {
 		try {
 			this.isLoop = isLoop;
-			file = new File(name);
-			fis = new FileInputStream(file);
-			bis = new BufferedInputStream(fis);
+			File file = new File(name);
+			FileInputStream fis = new FileInputStream(file);
+			BufferedInputStream bis = new BufferedInputStream(fis);
 			player = new Player(bis);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public static void playBackground() {
-		introMusic = new SoundManager("./sounds/background.mp3", true);
-		introMusic.start();
-		introMusic.isMute = false;
+	public static SoundManager getBGM() {
+		return BGM;
 	}
 	
-	public static void stopBackground() {
-		introMusic.setIsLoop(false);
-		introMusic.close();
-		introMusic.interrupt();
-		introMusic.isMute = true;
+	public static void mute() {
+		isMute = true;
 	}
 	
-	public void setIsLoop(boolean bool) {
+	public static void unmute() {
+		isMute = false;
+	}
+	
+	public void toggleLoop(boolean bool) {
 		this.isLoop = bool;
 	}
 	
-	public void close() { // 항상 종료할 수 있도록 하는 함수.
+	public void close() { // 항상 종료할 수 있도록 하는 함수
 		isLoop = false;
 		player.close();
 		this.interrupt(); // 해당 스레드를 중지상태로
@@ -56,12 +52,8 @@ public class SoundManager extends Thread {
 	public void run() {
 		try {
 			do {
-				if (introMusic.isMute == false) {
-					player.play();//실행
-					fis = new FileInputStream(file);
-					bis = new BufferedInputStream(fis);
-					player = new Player(bis);
-				}
+				if (isMute == false)
+					player.play(); // 실행
 			} while (isLoop); // 무한반복
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

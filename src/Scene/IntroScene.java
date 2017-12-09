@@ -114,11 +114,11 @@ public class IntroScene extends SceneAbstract
 			} else if (obj == btnSoundOn){
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
-				SoundManager.stopBackground();
+				SoundManager.getBGM().start();
 			} else if (obj == btnSoundOff) {
 				btnSoundOff.setVisible(false);
 				btnSoundOn.setVisible(true);
-				SoundManager.playBackground();
+				SoundManager.getBGM().start();
 			}
 		}
 	}
