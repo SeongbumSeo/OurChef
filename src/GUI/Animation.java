@@ -11,31 +11,31 @@ public class Animation
 	public static final long DELAY_FADE = 25;
 	
 	// 공통으로 사용되는 인스턴스 데이터
-	private Component comp;
-	private AnimationListener listener;
-	private boolean wait;
-	private int speed;
-	private long startTime;
-	private long delay;
-	private Thread thread;
+	private Component comp; // 애니메이션 대상 컴포넌트
+	private AnimationListener listener; // 애니메이션의 이벤트 리스너
+	private boolean wait; // 애니메이션 완료까지 메인 쓰레드 대기 여부
+	private int speed; // 애니메이션 속도
+	private long startTime; // 애니메이션 출발 시각
+	private long delay; // 애니메이션 딜레이
+	private Thread thread; // 애니메이션 쓰레드
 	
 	// 이동 애니메이션에 사용
-	private int destX, destY;
-	private int startX, startY;
-	private int directionX, directionY;
-	private double distance;
-	private double angle;
+	private int destX, destY; // 목적 좌표
+	private int startX, startY; // 출발 좌표
+	private int directionX, directionY; // 이동 경로의 양음 여부
+	private double distance; // 거리
+	private double angle; // 이동 각도
 	
 	// 페이드인/아웃 애니메이션에 사용
-	private JPanel screenFader;
-	private int fadeMode;
-	private Color color;
-	private int opacity;
+	private JPanel screenFader; // 페이더 오브젝트
+	private int fadeMode; // 페이드인/아웃 모드
+	private Color color; // 페이더 색상
+	private int opacity; // 페이더 투명도
 	
 	/**
 	 * 애니메이션의 생성자입니다.
 	 * @param comp 애니메이션 대상 컴포넌트
-	 * @param wait 애니메이션 완료까지 대기 여부
+	 * @param wait 애니메이션 완료까지 메인 쓰레드 대기 여부
 	 */
 	public Animation(Component comp, boolean wait) {
 		this(comp, wait, null);
@@ -43,12 +43,12 @@ public class Animation
 	/**
 	 * 애니메이션의 생성자입니다.
 	 * @param comp 애니메이션 대상 컴포넌트
-	 * @param wait 애니메이션 완료까지 대기 여부
+	 * @param wait 애니메이션 완료까지 메인 쓰레드 대기 여부
 	 * @param listener 애니메이션 리스너 객체
 	 */
 	public Animation(Component comp, boolean wait, AnimationListener listener) {
 		this.comp = comp; // 애니메이션 대상 컴포넌트
-		this.wait = wait; // 애니메이션 완료까지 대기 여부
+		this.wait = wait; // 애니메이션 완료까지 메인 쓰레드 대기 여부
 		this.listener = listener; // 애니메이션 리스너 객체
 		this.thread = null; // 애니메이션 쓰레드 초기화
 	}
@@ -84,12 +84,12 @@ public class Animation
 		this.color = color;
 		this.speed = speed;
 
-		fadeMode = 1;
-		opacity = 0;
-		screenFader = new JPanel();
-		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight());
-		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
-		SceneManager.getFrame().getContentPane().add(screenFader);
+		fadeMode = 1; // 페이드인 모드
+		opacity = 0; // 페이더 투명도 0(최소)에서 시작
+		screenFader = new JPanel(); // 페이더 오브젝트 생성
+		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight()); // 페이더 사이즈 설정
+		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity)); // 페이더 컬러 및 투명도 설정
+		SceneManager.getFrame().getContentPane().add(screenFader); // 페이더 추가
 		
 		// 애니메이션 쓰레드 실행
 		startThread(DELAY_FADE, new FadeThread());
@@ -103,12 +103,12 @@ public class Animation
 		this.color = color;
 		this.speed = speed;
 
-		fadeMode = -1;
-		opacity = 64;
-		screenFader = new JPanel();
-		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight());
-		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity));
-		SceneManager.getFrame().getContentPane().add(screenFader);
+		fadeMode = -1; // 페이드아웃 모드
+		opacity = 64; // 페이더 투명도 64(최대)에서 시작
+		screenFader = new JPanel(); // 페이더 오브젝트 생성
+		screenFader.setBounds(0, 0, SceneManager.getFrame().getWidth(), SceneManager.getFrame().getHeight()); // 페이더 사이즈 설정
+		screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity)); // 페이더 컬러 및 투명도 설정
+		SceneManager.getFrame().getContentPane().add(screenFader); // 페이더 추가
 		
 		// 애니메이션 쓰레드 실행
 		startThread(DELAY_FADE, new FadeThread());
@@ -150,12 +150,12 @@ public class Animation
 	private class MoveThread extends Thread
 	{
 		public void run() {
-			double duration;
-			double distanceSoFar;
-			int x;
-			int y;
-			boolean conditionX = false;
-			boolean conditionY = false;
+			double duration; // 출발 이후 경과 시간
+			double distanceSoFar; // 현재 거리
+			int x; // 이동 좌표 X
+			int y; // 이동 좌표 Y
+			boolean conditionX = false; // X 도착 조건
+			boolean conditionY = false; // Y 도착 조건
 			
 			// 애니메이션 작업
 			while (!this.isInterrupted() && !conditionX && !conditionY) {
@@ -163,8 +163,8 @@ public class Animation
 				distanceSoFar = Math.min(speed * duration / 1000d, distance); // 현재 거리
 				x = startX - (int)(distanceSoFar * Math.cos(angle)); // 이동 좌표 X
 				y = startY - (int)(distanceSoFar * Math.sin(angle)); // 이동 좌표 Y
-				conditionX = (directionX > 0 && x >= destX) || (directionX < 0 && x <= destX); // X 완료 조건
-				conditionY = (directionY > 0 && y >= destY) || (directionY < 0 && y <= destY); // Y 완료 조건
+				conditionX = (directionX > 0 && x >= destX) || (directionX < 0 && x <= destX); // X 도착 조건
+				conditionY = (directionY > 0 && y >= destY) || (directionY < 0 && y <= destY); // Y 도착 조건
 				
 				comp.setLocation(x, y); // 이동
 				
@@ -193,24 +193,23 @@ public class Animation
 			
 			// 애니메이션 작업
 			while (!this.isInterrupted()) {
-				opacity += speed * fadeMode;
-				System.out.println(opacity);
+				opacity += speed * fadeMode; // 페이더의 새 투명도
 				if ((fadeMode == 1 && opacity >= lastOpacity) || (fadeMode == -1 && opacity <= lastOpacity)) // 종료 조건
 					break;
 				
 				screenFader.setBackground(new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity)); // 투명도 설정
-				SceneManager.getFrame().setVisible(true);
+				SceneManager.getFrame().repaint(); // 프레임 리페인트
 				
 				try { // 딜레이 적용
 					Thread.sleep(delay);
 				} catch (Exception e) {
 					e.printStackTrace();
-					this.interrupt();
+					this.interrupt(); // 예외 발생 시 쓰레드 중지
 				}
 			}
 			
 			// 완료 시
-			SceneManager.getFrame().getContentPane().remove(screenFader);
+			SceneManager.getFrame().getContentPane().remove(screenFader); // 페이더 제거
 			if (listener != null) // 리스너의 완료 콜백 호출
 				listener.onCompleted();
 		}
