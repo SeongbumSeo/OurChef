@@ -20,7 +20,12 @@ public abstract class SceneAbstract extends JPanel implements Scene
 		onShow();
 		applyDefaultFont("JejuGothic"); // 기본 폰트 적용
 	}
-	
+	/**
+	 * 폰트 파일을 로드합니다.
+	 * @param name
+	 * @param size
+	 * @return 폰트
+	 */
 	public Font loadFont(String name, int size) {
 		try {
 			// 폰트 파일 로드
