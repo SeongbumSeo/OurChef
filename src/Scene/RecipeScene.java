@@ -151,6 +151,7 @@ public class RecipeScene extends SceneAbstract
 	}
 	
 	private void createRecipePanel(List<Recipe> recipes) {
+		// 레시피 패널 추가
 		pnlRecipes = new JPanel();
 		pnlRecipes.setLayout(new GridLayout(0, 1));
 		pnlRecipes.setOpaque(false);
@@ -232,21 +233,19 @@ public class RecipeScene extends SceneAbstract
 			SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
 			onButton.start();
 			
-			if (obj == btnGoBack) {
+			if (obj == btnGoBack) { // 뒤로가기
 				SceneManager.switchScene(new CartScene());
-			} else if (obj == btnGoHome) {
+			} else if (obj == btnGoHome) { // 홈으로
 				SceneManager.switchScene(new IntroScene());
-			} else if (obj == btnPrevious) {
+			} else if (obj == btnPrevious) { // 이전 슬라이드
 				int index = currentRecipe.getSlides().indexOf(currentSlide);
 				if (index == 0)
 					return;
-				
 				showSlide(currentRecipe.getSlides().get(index-1));
-			} else if (obj == btnNext) {
+			} else if (obj == btnNext) { // 다음 슬라이드
 				int index = currentRecipe.getSlides().lastIndexOf(currentSlide);
 				if (index >= currentRecipe.getSlides().size()-1)
 					return;
-				
 				showSlide(currentRecipe.getSlides().get(index+1));
 			}
 		}
@@ -262,6 +261,7 @@ public class RecipeScene extends SceneAbstract
 			SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
 			onButton.start();
 			
+			// 슬라이드쇼 시작
 			showSlide(currentRecipe.getSlides().get(0));
 		}
 	}
