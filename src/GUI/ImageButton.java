@@ -65,10 +65,15 @@ public class ImageButton extends JButton
 		onSound = true;
 		init(); // 이미지버튼 초기화
 	}
-	
+	/**
+	 * 이미지 버튼의 사운드 속성을 off합니다.
+	 */
 	public void SoundOff() {
 		onSound = false;
 	}
+	/**
+	 * 이미지 버튼의 사운드 속성을 on합니다.
+	 */
 	public void SoundOn() {
 		onSound = true;
 	}
