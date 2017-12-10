@@ -1,9 +1,7 @@
 package Main;
 
 import java.awt.*;
-
-import javax.swing.JFrame;
-
+import javax.swing.*;
 import Scene.*;
 
 public class SceneManager
