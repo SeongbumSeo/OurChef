@@ -66,15 +66,18 @@ public class IntroScene extends SceneAbstract
 	 * 사용 방법 패널을 생성하는 메소드입니다.
 	 */
 	private void createAboutPanel() {
+		//사용 방법 패널 생성
 		pnlAbout = new JPanel();
 		pnlAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.setLayout(null);
 		pnlAbout.setVisible(false);
-
+		
+		//시작 버튼
 		btnStart2 = new ImageButton("images/introScene/basket.png", "images/introScene/basket_h.png", 1180, 630);
 		btnStart2.addActionListener(introL);
 		pnlAbout.add(btnStart2);
 		
+		//뒤로가기 버튼
 		btnGoBack = new ImageButton("images/buttons/goBack.png", 7, 810);
 		btnGoBack.setLayout(null);
 		btnGoBack.setContentAreaFilled(false);
@@ -82,11 +85,11 @@ public class IntroScene extends SceneAbstract
 		btnGoBack.addActionListener(introL);
 		pnlAbout.add(btnGoBack);
 		
+		//배경 지정
 		lblAbout = new JLabel();
 		lblAbout.setIcon(new ImageIcon("images/introScene/imgPnlBackground.png"));
 		lblAbout.setBounds(0, 0, 1600, 900);
 		pnlAbout.add(lblAbout);
-		
 		
 		add(pnlAbout);
 	}
@@ -111,11 +114,11 @@ public class IntroScene extends SceneAbstract
 				// 효과음
 				SoundManager onButton = new SoundManager("./sounds/click.mp3", false);
 				onButton.start();
-			} else if (obj == btnSoundOn){
+			} else if (obj == btnSoundOn){ // 사운드 켜져있는 버튼 클릭
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
 				SoundManager.getBGM().start();
-			} else if (obj == btnSoundOff) {
+			} else if (obj == btnSoundOff) { // 사운드 꺼져있는 버튼 클릭
 				btnSoundOff.setVisible(false);
 				btnSoundOn.setVisible(true);
 				SoundManager.getBGM().start();
