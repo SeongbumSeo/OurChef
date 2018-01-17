@@ -118,12 +118,9 @@ public class IntroScene extends SceneAbstract
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
 <<<<<<< HEAD
-<<<<<<< HEAD
 				SoundManager.getBGM().start();
 			} else if (obj == btnSoundOff) { // 사운드 꺼져있는 버튼 클릭
 =======
-=======
->>>>>>> parent of 7629f44... SoundManager 최적화 및 수정
 				SoundManager.stopBackground();
 			} else if (obj == btnSoundOff) {
 >>>>>>> parent of 7629f44... SoundManager 최적화 및 수정
