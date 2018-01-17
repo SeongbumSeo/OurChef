@@ -14,9 +14,9 @@ public class SoundManager extends Thread
 	private boolean isMute;
 	
 	/**
-	 * 사운드매니저의 생성자입니다.
-	 * @param name 사운드 파일명
-	 * @param isLoop 반복 여부
+	 * 사운드 매니저의 생성자입니다.
+	 * @param name 파일의 이름입니다.
+	 * @param isLoop 반복여부를 나타냅니다.
 	 */
 	public SoundManager(String name, boolean isLoop) {
 		try {
@@ -30,12 +30,18 @@ public class SoundManager extends Thread
 		}
 	}
 	
+	/**
+	 * 배경음악을 재생합니다.
+	 */
 	public static void playBackgroud() {
 		introMusic = new SoundManager("./sounds/background.mp3", true);
 		introMusic.start();
 		introMusic.isMute = false;
 	}
 	
+	/**
+	 * 배경음악을 중지하고 음소거 모드로 변환합니다.
+	 */
 	public static void stopBackground() {
 		introMusic.setIsLoop(false);
 		introMusic.close();
@@ -43,6 +49,10 @@ public class SoundManager extends Thread
 		introMusic.isMute = true;
 	}
 	
+	/**
+	 * 배경음악의 반복 여부를 지정합니다.
+	 * @param bool
+	 */
 	public void setIsLoop(boolean bool) {
 		this.isLoop = bool;
 	}
