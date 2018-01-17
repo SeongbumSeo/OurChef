@@ -10,7 +10,7 @@ public class ImageButton extends JButton
 	private ImageIcon image; // 버튼 이미지
 	private ImageIcon hoverImage; // 마우스오버 시 버튼 이미지
 	private int iX, iY; // 버튼의 생성 위치
-	private boolean onSound;
+	private boolean onSound; // 이미지 버튼의 소리 on/off 여부
 	
 	private ImageButtonListener imageButtonL; // 마우스 이벤트 리스너
 	
@@ -21,7 +21,7 @@ public class ImageButton extends JButton
 	public ImageButton(String imageName) {
 		image = new ImageIcon(imageName); // 이미지 아이콘 객체
 		hoverImage = null; // 마우스오버 이미지 없음
-		onSound = false;
+		onSound = false; // 이미지 소리 없음
 		init(); // 이미지버튼 초기화
 	}
 	/**
@@ -46,7 +46,7 @@ public class ImageButton extends JButton
 	public ImageButton(String imageName, String hoverImageName) {
 		image = new ImageIcon(imageName); // 이미지 아이콘 객체
 		hoverImage = new ImageIcon(hoverImageName); // 마우스오버 시 적용할 이미지 아이콘 객체
-		onSound = true;
+		onSound = true; // 이미지 소리 재생
 		init(); // 이미지버튼 초기화
 	}
 	/**
@@ -62,7 +62,7 @@ public class ImageButton extends JButton
 
 		image = new ImageIcon(imageName); // 이미지 아이콘 객체
 		hoverImage = new ImageIcon(hoverImageName); // 마우스오버 시 적용할 이미지 아이콘 객체
-		onSound = true;
+		onSound = true; // 이미지 소리 재생
 		init(); // 이미지버튼 초기화
 	}
 	/**
