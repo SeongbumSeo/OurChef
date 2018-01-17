@@ -117,11 +117,16 @@ public class IntroScene extends SceneAbstract
 			} else if (obj == btnSoundOn){ // 사운드 켜져있는 버튼 클릭
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
+<<<<<<< HEAD
 				SoundManager.getBGM().start();
 			} else if (obj == btnSoundOff) { // 사운드 꺼져있는 버튼 클릭
+=======
+				SoundManager.stopBackground();
+			} else if (obj == btnSoundOff) {
+>>>>>>> parent of 7629f44... SoundManager 최적화 및 수정
 				btnSoundOff.setVisible(false);
 				btnSoundOn.setVisible(true);
-				SoundManager.getBGM().start();
+				SoundManager.playBackground();
 			}
 		}
 	}
