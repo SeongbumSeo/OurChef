@@ -5,10 +5,13 @@ import javazoom.jl.player.Player;
 
 public class SoundManager extends Thread
 {
-	private static SoundManager BGM = new SoundManager("./sounds/background.mp3", true); // 배경음악
-	private static boolean isMute; // 음소거 여부
 	private Player player; // 사운드 플레이어
 	private boolean isLoop; // 반복 여부
+	private File file;
+	private FileInputStream fis;
+	private BufferedInputStream bis;
+	private static SoundManager introMusic;
+	private boolean isMute;
 	
 	/**
 	 * 사운드매니저의 생성자입니다.
@@ -18,43 +21,30 @@ public class SoundManager extends Thread
 	public SoundManager(String name, boolean isLoop) {
 		try {
 			this.isLoop = isLoop; // 반복 여부
-			// 사운드 파일 읽어 플레이어 객체 생성
-			File file = new File(name);
-			FileInputStream fis = new FileInputStream(file);
-			BufferedInputStream bis = new BufferedInputStream(fis);
+			file = new File(name);
+			fis = new FileInputStream(file);
+			bis = new BufferedInputStream(fis);
 			player = new Player(bis);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	/**
-	 * 배경음악을 반환합니다.
-	 * @return 배경음악
-	 */
-	public static SoundManager getBGM() {
-		return BGM;
+	public static void playBackgroud() {
+		introMusic = new SoundManager("./sounds/background.mp3", true);
+		introMusic.start();
+		introMusic.isMute = false;
 	}
 	
-	/**
-	 * 음소거합니다.
-	 */
-	public static void mute() {
-		isMute = true;
-	}
-	/**
-	 * 음소거를 해제합니다.
-	 */
-	public static void unmute() {
-		isMute = false;
+	public static void stopBackground() {
+		introMusic.setIsLoop(false);
+		introMusic.close();
+		introMusic.interrupt();
+		introMusic.isMute = true;
 	}
 	
-	/**
-	 * 반복 여부를 설정합니다.
-	 * @param toggle 반복 여부
-	 */
-	public void toggleLoop(boolean toggle) {
-		this.isLoop = toggle;
+	public void setIsLoop(boolean bool) {
+		this.isLoop = bool;
 	}
 	
 	/**
@@ -73,8 +63,11 @@ public class SoundManager extends Thread
 	public void run() {
 		try {
 			do {
-				if (isMute == false) // 음소거 상태가 아닌 경우 재생
+				if (introMusic.isMute == false) // 음소거 상태가 아닌 경우 재생
 					player.play();
+					fis = new FileInputStream(file);
+					bis = new BufferedInputStream(fis);
+					player = new Player(bis);
 			} while (isLoop); // 무한반복
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

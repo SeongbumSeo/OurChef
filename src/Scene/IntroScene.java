@@ -117,11 +117,11 @@ public class IntroScene extends SceneAbstract
 			} else if (obj == btnSoundOn){ // 사운드 켜져있는 버튼 클릭
 				btnSoundOn.setVisible(false);
 				btnSoundOff.setVisible(true);
-				SoundManager.getBGM().start();
+				SoundManager.stopBackground();;
 			} else if (obj == btnSoundOff) { // 사운드 꺼져있는 버튼 클릭
 				btnSoundOff.setVisible(false);
 				btnSoundOn.setVisible(true);
-				SoundManager.getBGM().start();
+				SoundManager.playBackgroud();
 			}
 		}
 	}

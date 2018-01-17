@@ -12,6 +12,6 @@ public class Main
 		DataManager.loadData(); // 프로그램 구동에 필요한 데이터 로드
 		SceneManager.showWindow("Our Chef", 1600, 900); // 윈도우 보여주기
 		SceneManager.switchScene(new IntroScene()); // IntroScene으로 씬 전환
-		SoundManager.getBGM().start(); // BGM 재생
+		SoundManager.playBackgroud(); // BGM 재생
 	}
 }
